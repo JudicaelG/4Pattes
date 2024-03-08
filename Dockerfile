@@ -23,13 +23,7 @@ RUN apk add --no-cache \
 	;
 
 RUN set -eux; \
-	install-php-extensions \
-		@composer \
-		apcu \
-		intl \
-		opcache \
-		zip \
-	;
+	install-php-extensions @composer apcu intl opcache zip;
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
