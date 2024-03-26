@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-    background-color: white;
+    background-color: #fffafa;
+}
+
+.shadow-t{
+    box-shadow: 0 4px 6px 10px rgb(0 0 0 / 0.1), 0 2px 4px -10px rgb(0 0 0 / 0.1);
 }
