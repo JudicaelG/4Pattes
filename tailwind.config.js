@@ -7,12 +7,13 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      'text': '#050316',
-      'background': '#fffafa',
-      'primary': '#b60707',
-      'secondary': '#ffdbdb',
-      'accent': '#ff3d3d',
-     },
+      'text': '#260000',
+      'background': '#FFF5F2',
+      'primary': '#B50707',
+      'secondary': '#910202',
+      'accent': '#E0453C',
+      'button-menu': '#F6887A',
+     }
   },
   plugins: [],
 }

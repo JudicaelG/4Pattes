@@ -1,19 +1,28 @@
-<nav class="fixed bottom-0 z-50 w-full h-16 lg:top-0 text-base bg-secondary shadow-t max-w-full">
+<nav class="fixed bottom-0 z-50 w-full h-16 lg:top-0 text-base max-w-full lg:z-0">
     <div class="grid h-full max-w-lg grid-cols-1 mx-auto justify-items-center">
         {% if app.user %}
-            <ul class="lg:hidden flex flex-auto flex-row items-center justify-around">
-                <li class="rounded-full bg-background p-1 place-self-end"><a href="{{path('index')}}"><img class="max-w-10" alt="Profil" src="{{ asset('images/icons/user.svg') }}" /></a></li>
-                <li class="rounded-full bg-background p-1"><a href="{{path('index')}}"><img class="max-w-10" alt="animal" src="{{ asset('images/icons/cat.svg') }}" /></a></li>
-                <li class="text-lg place-self-start"><a href="{{ path('index') }}">4Pattes</a></li>
-                <li class="rounded-full bg-background p-1"><a href="{{path('index')}}"><img class="max-w-10" alt="Profil" src="{{ asset('images/icons/ride.svg') }}" /></a></li>
-                <li class="rounded-full bg-background p-1 place-self-end"><a href="{{path('index')}}"><img class="max-w-10" alt="Profil" src="{{ asset('images/icons/advice.svg') }}" /></a></li>
-                
-            </ul>
-            </ul>
+            <div class="semi-circle bg-primary shadow-t lg:hidden">
+                <ul class="lg:hidden flex flex-auto flex-row">
+                    <li class="rounded-full bg-button-menu p-1 menu-icon-profil"><a href="{{path('index')}}"><img class="max-w-10" alt="Profil" src="{{ asset('images/icons/user.svg') }}" /></a></li>
+                    <li class="rounded-full bg-button-menu p-2 menu-icon-animal"><a href="{{path('index')}}"><img class="max-w-10" alt="animal" src="{{ asset('images/icons/animal.svg') }}" /></a></li>
+                    <li class="rounded-full bg-button-menu p-2 menu-icon-home"><a href="{{path('index')}}"><img class="max-w-10" alt="animal" src="{{ asset('images/icons/home.svg') }}" /></a></li>
+                    <li class="rounded-full bg-button-menu p-2 menu-icon-ride"><a href="{{path('index')}}"><img class="max-w-10" alt="Profil" src="{{ asset('images/icons/ride.svg') }}" /></a></li>
+                    <li class="rounded-full bg-button-menu p-2 menu-icon-advice"><a href="{{path('index')}}"><img class="max-w-10" alt="Profil" src="{{ asset('images/icons/advice.svg') }}" /></a></li>
+                    
+                </ul>
+            </div>
+            <div class="bg-background">
+                <ul class="flex flex-auto flex-row">
+                    <li>Profil</li>
+                    <li>Animal</li>
+                    <li>Ride</li>
+                    <li>Advice</li>
+                </ul>
+            </div>
         {% else %}
             <ul class="lg:hidden flex flex-auto flex-row justify-between items-center">
                 <li><a href="{{ path('index') }}">4Pattes</a></li>
-                <li class="rounded-full bg-background"><a href="{{path('login')}}"><img class="max-w-10" alt="connnexion/inscription" src="{{ asset('images/icons/user.svg') }}" /></a></li>
+                <li class="rounded-full bg-background"><a href="{{path('app_login')}}"><img class="max-w-10" alt="connnexion/inscription" src="{{ asset('images/icons/user.svg') }}" /></a></li>
             </ul>
         {% endif %}
     </div>
