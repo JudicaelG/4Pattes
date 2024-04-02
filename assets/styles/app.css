@@ -73,3 +73,7 @@ body {
     display: none;
     /* Safari and Chrome */
   }
+
+  .text-white{
+    color: white;
+  }

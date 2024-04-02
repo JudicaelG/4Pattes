@@ -11,5 +11,46 @@
         You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
     </div>
     {{ include ('partial/animal-resume.html.twig') }}
+
+    <div>
+        <h2 class="text-center uppercase my-3.5">Derniers articles</h2>
+        <div class="grid grid-cols-2 gap-2.5 mx-1">
+            <div class="relative">
+                <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="titre de l'article"/>
+                <div class="absolute z-20 bg-text/40 h-2/6 w-full bottom-0">
+                    <h3 class="text-white ml-2.5 uppercase mt-1">Titre de l'article</h3>
+                    <p class="text-white mt-1 ml-1">résumé de l'articles....</p>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="titre de l'article"/>
+                <div class="absolute z-20 bg-text/40 h-2/6 w-full bottom-0">
+                    <h3 class="text-white ml-2.5 uppercase mt-1">Titre de l'article</h3>
+                    <p class="text-white mt-1 ml-1">résumé de l'articles....</p>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="titre de l'article"/>
+                <div class="absolute z-20 bg-text/40 h-2/6 w-full bottom-0">
+                    <h3 class="text-white ml-2.5 uppercase mt-1">Titre de l'article</h3>
+                    <p class="text-white mt-1 ml-1">résumé de l'articles....</p>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="titre de l'article"/>
+                <div class="absolute z-20 bg-text/40 h-2/6 w-full bottom-0">
+                    <h3 class="text-white ml-2.5 uppercase mt-1">Titre de l'article</h3>
+                    <p class="text-white mt-1 ml-1">résumé de l'articles....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-3.5 bg-button-menu">
+        <h2 class="uppercase text-center">Prochaines sorties</h2>
+        <div my-1 mx-1>
+            <h3 class="uppercase">Sortie A - <span class="lowercase italic">Nom de la ville</span></h3>
+            <p>Description</p>
+        </div>
+    </div>
     {% endif %}
 {% endblock %}
