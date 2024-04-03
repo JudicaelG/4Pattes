@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Animals;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,9 +18,24 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AnimalsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
-        parent::__construct($registry, Animals::class);
+        parent::__construct($registry, Animals::class, $entityManager);
+    }
+
+    public function saveAnimal(Animals $animal): Response{
+        
+        $newAnimal = new Animals();
+        $newAnimal->setName = $animal->Name;
+        $newAnimal->SetBirthday = $animal->Birthday;
+        $newAnimal->SetsetBreedId = $animal->BreedId;
+        $newAnimal->SetUserId = $aniaml->UserId;
+
+        $entityManager->persist($newAnimal);
+
+        $entityManager->flush();
+
+        return new Response('Your animal has been added !');
     }
 
 //    /**
