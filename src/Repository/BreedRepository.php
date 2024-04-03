@@ -21,6 +21,14 @@ class BreedRepository extends ServiceEntityRepository
         parent::__construct($registry, Breed::class);
     }
 
+    public function findOnebyName($name): Breed{
+        return $this->createQueryBuilder('b')
+        ->andWhere('b.name = :name')
+        ->setParameter('name', $name)
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return Breed[] Returns an array of Breed objects
 //     */

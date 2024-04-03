@@ -26,14 +26,14 @@ class AnimalsRepository extends ServiceEntityRepository
     public function saveAnimal(Animals $animal): Response{
         
         $newAnimal = new Animals();
-        $newAnimal->setName = $animal->Name;
-        $newAnimal->SetBirthday = $animal->Birthday;
-        $newAnimal->SetsetBreedId = $animal->BreedId;
-        $newAnimal->SetUserId = $aniaml->UserId;
+        $newAnimal->setName($animal->getName());
+        $newAnimal->SetBirthday($animal->getBirthday());
+        $newAnimal->SetBreedId($animal->getBreedId());
+        $newAnimal->SetUserId($animal->getUserId());
 
-        $entityManager->persist($newAnimal);
+        $this->entityManager->persist($newAnimal);
 
-        $entityManager->flush();
+        $this->$entityManager->flush();
 
         return new Response('Your animal has been added !');
     }
