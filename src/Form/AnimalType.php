@@ -23,7 +23,7 @@ class AnimalType extends AbstractType
             ])
             ->add('breed_id', EntityType::class, [
                 'class' => Breed::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('save', SubmitType::class, ['label' => 'Add animal'])
         ;
