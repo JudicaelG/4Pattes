@@ -23,17 +23,17 @@ class AnimalsRepository extends ServiceEntityRepository
         parent::__construct($registry, Animals::class, $entityManager);
     }
 
-    public function saveAnimal(Animals $animal): Response{
+    public function saveAnimal(Animals $animal, $entityManager): Response{
         
         $newAnimal = new Animals();
         $newAnimal->setName($animal->getName());
         $newAnimal->SetBirthday($animal->getBirthday());
         $newAnimal->SetBreedId($animal->getBreedId());
         $newAnimal->SetUserId($animal->getUserId());
+        
+        $entityManager->persist($newAnimal);
 
-        $this->entityManager->persist($newAnimal);
-
-        $this->$entityManager->flush();
+        $entityManager->flush();
 
         return new Response('Your animal has been added !');
     }

@@ -39,9 +39,9 @@ class AnimalRepositoryTest extends KernelTestCase
         $animal->SetUserId($testUser);
 
         $animalInsert = $this->entityManager->getRepository(Animals::class)
-        ->saveAnimal($animal);
+        ->saveAnimal($animal, $this->entityManager);
 
-        $this->assertsame('Your animal has been added !', $animalInsert);
+        $this->assertsame('Your animal has been added !', $animalInsert->getContent());
     }
 
     protected function tearDown(): void
@@ -49,7 +49,5 @@ class AnimalRepositoryTest extends KernelTestCase
         parent::tearDown();
 
         // doing this is recommended to avoid memory leaks
-        $this->entityManager->close();
-        $this->entityManager = null;
     }
 }
