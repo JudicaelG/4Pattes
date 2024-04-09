@@ -38,6 +38,14 @@ class AnimalsRepository extends ServiceEntityRepository
         return new Response('Your animal has been added !');
     }
 
+    public function getConnectedUserAnimals($userId){
+        return $this->createQueryBuilder('a')
+        ->andWhere('a.user_id = :userId')
+        ->setParameter('userId', $userId)
+        ->getQuery()
+        ->getResult();
+    }
+
 //    /**
 //     * @return Animals[] Returns an array of Animals objects
 //     */

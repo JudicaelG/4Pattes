@@ -15,6 +15,7 @@ class AnimalController extends AbstractController
     #[Route('/animal', name: 'animal')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $animalRepository = $entityManager->getRepository(Animals::Class);
         $animal = new Animals();
         $animal->SetUserId($this->getUser());
         
@@ -24,14 +25,18 @@ class AnimalController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $animal = $form->getData();
 
-            $animalInsert = $entityManager->getRepository(Animals::Class)
+            $animalInsert = $animalRepository
             ->saveAnimal($animal, $entityManager);
 
             return $this->redirectToRoute('animal');
         }
 
+        $animalsOfUser = $animalRepository
+        ->getConnectedUserAnimals($this->getUser()->GetId());
+        
         return $this->render('animal/index.html.twig', [
-            'form' => $form
+            'form' => $form,
+            'animalsOfUser' => $animalsOfUser
         ]);
     }
 
