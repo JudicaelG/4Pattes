@@ -13,7 +13,7 @@ body {
 @media (max-width: 1024px) {
     .semi-circle{
         height: 7rem;
-        width: 15rem;
+        width: 17rem;
         border-radius: 10rem 10rem 0 0;
         position: relative;
         top: -3rem;
@@ -29,8 +29,8 @@ body {
 
     .menu-icon-animal{
         position: relative;
-        top: 0rem;
-        left: -2rem;
+        top: -0.5rem;
+        left: -1.5rem;
         -webkit-box-shadow: -5.5px -2px 4px 0px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: -5.5px -2px 4px 0px rgba(0, 0, 0, 0.1);
         box-shadow: -5.5px -2px 4px 0px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@ body {
 
     .menu-icon-profil{
         position: relative;
-        top: 4rem;
+        top: 3.3rem;
         left: -1rem;
         -webkit-box-shadow: -4px -2px 4px 0px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: -4px -2px 4px 0px rgba(0, 0, 0, 0.1);
@@ -47,8 +47,8 @@ body {
 
     .menu-icon-ride{
         position: relative;
-        top: 0rem;
-        right: -2rem;
+        top: -0.5rem;
+        right: -1.5rem;
         -webkit-box-shadow: 5.5px -2px 4px 0px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: 5.5px -2px 4px 0px rgba(0, 0, 0, 0.1);
         box-shadow: 5.5px -2px 4px 0px rgba(0, 0, 0, 0.1);
@@ -56,7 +56,7 @@ body {
 
     .menu-icon-advice{
         position: relative;
-        top: 4rem;
+        top: 3.3rem;
         right: -1rem;
         -webkit-box-shadow: 4px -2px 4px 0px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: 4px -2px 4px 0px rgba(0, 0, 0, 0.1);
