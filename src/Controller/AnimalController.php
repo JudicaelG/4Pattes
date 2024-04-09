@@ -13,10 +13,25 @@ use App\Form\AnimalType;
 class AnimalController extends AbstractController
 {
     #[Route('/animal', name: 'animal')]
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $animal = new Animals();
+        $animal->SetUserId($this->getUser());
+        
+        $form = $this->createForm(AnimalType::class, $animal);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $animal = $form->getData();
+
+            $animalInsert = $entityManager->getRepository(Animals::Class)
+            ->saveAnimal($animal, $entityManager);
+
+            return $this->redirectToRoute('animal');
+        }
+
         return $this->render('animal/index.html.twig', [
-            'controller_name' => 'AnimalController',
+            'form' => $form
         ]);
     }
 

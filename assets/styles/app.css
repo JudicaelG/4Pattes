@@ -109,3 +109,8 @@ body {
   .text-white{
     color: white;
   }
+
+  .input-focus-red{
+    border-color: #B50707;
+    border-width: 3px;
+  }

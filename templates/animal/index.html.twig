@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'tailwind_2_layout.html.twig' %}
 
-{% block title %}Hello AnimalController!{% endblock %}
+{% block title %}My animal{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello world! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/judi/4Pattes/src/Controller/AnimalController.php</code></li>
-        <li>Your template at <code>/home/judi/4Pattes/templates/animal/index.html.twig</code></li>
-    </ul>
-</div>
+    <h2>My animal</h2>
+    <div class="bg-button-menu grid grid-cols-2">
+        <div>
+            {{form_start(form)}}
+                <div class="mx-2">
+                    <label class="block">{{field_label(form.name)}}</label>
+                    <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="w-full input-focus-red">
+                </div>
+                <div class="mx-2">
+                    <label class="block">{{field_label(form.birthday)}}</label>
+                    <input type="date" name="{{field_name(form.birthday)}}" value="{{field_value(form.birthday)}}" class="w-full input-focus-red">
+                </div>
+                <div class="mx-2">
+                    <label class="block">{{field_label(form.breed_id)}}</label>
+                    <select name="{{field_name(form.breed_id)}}" value="{{field_value(form.breed_id)}}" class="w-full input-focus-red">
+                         {% for label, value in field_choices(form.breed_id) %}
+                            <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="my-2 mx-2 float-right">
+                    <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
+                        Add
+                    </button>
+                </div>
+                {{ form_rest(form) }}
+            {{form_end(form)}}
+            
+        </div>
+        <div>
+            <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+        </div>
+    </div>
 {% endblock %}
