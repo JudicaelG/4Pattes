@@ -55,6 +55,7 @@
                     <h4 class="font-semibold">Prochain vaccin : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                     <h4 class="font-semibold">RDV vétérinaire : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                 </section>
+                <a class="float-right bg-primary p-2 text-white min-w-11 mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >Modifier</button></a>
             </div>
         {% endfor %}
     </div>

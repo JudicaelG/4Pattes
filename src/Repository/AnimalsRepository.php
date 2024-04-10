@@ -25,6 +25,23 @@ class AnimalsRepository extends ServiceEntityRepository
 
     public function saveAnimal(Animals $animal, $entityManager): Response{
         
+        if($animal->getId()){
+            $editAnimal = $entityManager->getRepository(Animals::Class)->find($animal->getId());
+            if(!$editAnimal){
+                throw $this->createNotFoundException(
+                    'Pas d\'animal avec cette identifiant'
+                );
+            }
+
+            $editAnimal->setName($animal->getName());
+            $editAnimal->SetBirthday($animal->getBirthday());
+            $editAnimal->SetBreedId($animal->getBreedId());
+            $editAnimal->SetUserId($animal->getUserId());
+            $entityManager->flush();
+
+            return new Response('Your animal has been modified !');
+        }
+
         $newAnimal = new Animals();
         $newAnimal->setName($animal->getName());
         $newAnimal->SetBirthday($animal->getBirthday());

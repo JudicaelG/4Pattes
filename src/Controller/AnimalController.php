@@ -39,10 +39,11 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/animal/new', name: 'new_animal')]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/animal/edit/{id}', name: 'edit_animal')]
+    public function new(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $animal = new Animals();
+        $animalRepository = $entityManager->getRepository(Animals::Class);
+        $animal = $animalRepository->find($id);
         $animal->SetUserId($this->getUser());
         
         $form = $this->createForm(AnimalType::class, $animal);
@@ -51,16 +52,20 @@ class AnimalController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $animal = $form->getData();
 
-            $animalInsert = $entityManager->getRepository(Animals::Class)
+            $animalInsert = $animalRepository
             ->saveAnimal($animal, $entityManager);
+
+            return $this->redirectToRoute('animal');
         }
 
-        return $this->render('animal/new.html.twig', [
+        $animalsOfUser = $animalRepository
+        ->getConnectedUserAnimals($this->getUser()->GetId());
+        return $this->render('animal/index.html.twig', [
             'form' => $form,
+            'animalsOfUser' => $animalsOfUser
         ]);
 
 
     }
-
 
 }
