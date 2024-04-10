@@ -5,7 +5,7 @@
 
 {% block body %}
     <h2>My animal</h2>
-    <div class="bg-button-menu grid grid-cols-2 shadow-lg">
+    <div class="bg-button-menu grid grid-cols-2 shadow-lg mx-3.5">
         <div>
             {{form_start(form)}}
                 <div class="mx-2">
@@ -36,5 +36,22 @@
         <div>
             <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
         </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 mx-3.5 mt-3.5">
+    
+        {% for animal in animalsOfUser %}
+
+            <div class="bg-button-menu shadow-xl">
+                <section class="px-4 py-4">
+                    <h3><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
+                    <hr class="w-1/2 my-2">
+                    <h4 class="font-semibold">Anniversaire : </h4><p class="ml-2">{{animal.getAge()}}</p>
+                    <h4 class="font-semibold">Poids : </h4><p class="ml-2">19 Kg</p>
+                    <h4 class="font-semibold">Prochain vaccin : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+                    <h4 class="font-semibold">RDV vétérinaire : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+                </section>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

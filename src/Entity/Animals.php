@@ -123,4 +123,13 @@ class Animals
 
         return $this;
     }
+
+    public function getAge()
+    {
+        $now = new \DateTime('now');
+        $age = $this->getBirthday();
+        $diffence = $now->diff($age);
+
+        return $diffence->format('%y an et %m mois');
+    }
 }

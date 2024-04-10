@@ -39,11 +39,17 @@ class AnimalsRepository extends ServiceEntityRepository
     }
 
     public function getConnectedUserAnimals($userId){
-        return $this->createQueryBuilder('a')
-        ->andWhere('a.user_id = :userId')
-        ->setParameter('userId', $userId)
-        ->getQuery()
-        ->getResult();
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a, b
+            FROM App\Entity\Animals a
+            INNER JOIN a.breed_id b
+            WHERE a.user_id = :userId
+            ORDER BY a.id DESC'
+        )->setParameter('userId', $userId);
+
+        return $query->getResult();
     }
 
 //    /**
