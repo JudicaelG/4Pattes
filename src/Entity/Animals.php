@@ -32,6 +32,9 @@ class Animals
     #[ORM\ManyToMany(targetEntity: Vaccinated::class, mappedBy: 'animal_id')]
     private Collection $vaccinateds;
 
+    #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 3, nullable: true, options:["default" => 0,])]
+    private ?string $weight = null;
+
     public function __construct()
     {
         $this->vaccinateds = new ArrayCollection();
@@ -131,5 +134,17 @@ class Animals
         $diffence = $now->diff($age);
 
         return $diffence->format('%y an et %m mois');
+    }
+
+    public function getWeight(): ?string
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(string $weight): static
+    {
+        $this->weight = $weight;
+
+        return $this;
     }
 }

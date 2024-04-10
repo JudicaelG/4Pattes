@@ -17,6 +17,10 @@
                     <input type="date" name="{{field_name(form.birthday)}}" value="{{field_value(form.birthday)}}" class="w-full input-focus-red">
                 </div>
                 <div class="mx-2">
+                    <label class="block">{{field_label(form.weight)}}</label>
+                    <input type="number" name="{{field_name(form.weight)}}" value="{{field_value(form.weight)}}" class="w-full input-focus-red">
+                </div>
+                <div class="mx-2">
                     <label class="block">{{field_label(form.breed_id)}}</label>
                     <select name="{{field_name(form.breed_id)}}" value="{{field_value(form.breed_id)}}" class="w-full input-focus-red">
                          {% for label, value in field_choices(form.breed_id) %}
@@ -47,7 +51,7 @@
                     <h3><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
                     <hr class="w-1/2 my-2">
                     <h4 class="font-semibold">Anniversaire : </h4><p class="ml-2">{{animal.getAge()}}</p>
-                    <h4 class="font-semibold">Poids : </h4><p class="ml-2">19 Kg</p>
+                    <h4 class="font-semibold">Poids : </h4><p class="ml-2">{{animal.weight}} Kg</p>
                     <h4 class="font-semibold">Prochain vaccin : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                     <h4 class="font-semibold">RDV vétérinaire : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                 </section>
