@@ -55,6 +55,11 @@ class AnimalsRepository extends ServiceEntityRepository
         return new Response('Your animal has been added !');
     }
 
+    public function deleteAnimal($id, $entityManager){
+        
+
+    }
+
     public function getConnectedUserAnimals($userId){
         $entityManager = $this->getEntityManager();
 

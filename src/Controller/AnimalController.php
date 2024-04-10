@@ -68,4 +68,23 @@ class AnimalController extends AbstractController
 
     }
 
+    #[Route('/animal/delete/{id}', name: 'delete_animal')]
+    public function delete(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    {
+        $deleteAnimal = $entityManager->getRepository(Animals::Class)->find($id);
+        if(!$deleteAnimal){
+            throw $this->createNotFoundException(
+                'Pas d\'animal avec cette identifiant'
+            );
+        }
+
+        $entityManager->remove($deleteAnimal);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('animal');
+    }
+
+    
+
+
 }
