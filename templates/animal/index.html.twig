@@ -1,27 +1,27 @@
 {% extends 'base.html.twig' %}
 {% form_theme form 'tailwind_2_layout.html.twig' %}
 
-{% block title %}My animal{% endblock %}
+{% block title %}{% trans %}Mon animal{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h2>My animal</h2>
+    <h2>{% trans %}Mon animal{% endtrans %}</h2>
     <div class="bg-button-menu grid grid-cols-2 shadow-lg mx-3.5">
         <div>
             {{form_start(form)}}
                 <div class="mx-2">
-                    <label class="block">{{field_label(form.name)}}</label>
+                    <label class="block">{{field_label(form.name)|trans}}</label>
                     <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="w-full input-focus-red">
                 </div>
                 <div class="mx-2">
-                    <label class="block">{{field_label(form.birthday)}}</label>
+                    <label class="block">{{field_label(form.birthday)|trans}}</label>
                     <input type="date" name="{{field_name(form.birthday)}}" value="{{field_value(form.birthday)}}" class="w-full input-focus-red">
                 </div>
                 <div class="mx-2">
-                    <label class="block">{{field_label(form.weight)}}</label>
+                    <label class="block">{{field_label(form.weight)|trans}}</label>
                     <input type="number" name="{{field_name(form.weight)}}" value="{{field_value(form.weight)}}" class="w-full input-focus-red">
                 </div>
                 <div class="mx-2">
-                    <label class="block">{{field_label(form.breed_id)}}</label>
+                    <label class="block">{{field_label(form.breed_id)|trans}}</label>
                     <select name="{{field_name(form.breed_id)}}" value="{{field_value(form.breed_id)}}" class="w-full input-focus-red">
                          {% for label, value in field_choices(form.breed_id) %}
                             <option value="{{ value }}">{{ label }}</option>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
-                        Add
+                        {% trans %}Ajouter{% endtrans %}
                     </button>
                 </div>
                 {{ form_rest(form) }}
@@ -50,13 +50,13 @@
                 <section class="px-4 py-4">
                     <h3><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
                     <hr class="w-1/2 my-2">
-                    <h4 class="font-semibold">Anniversaire : </h4><p class="ml-2">{{animal.getAge()}}</p>
-                    <h4 class="font-semibold">Poids : </h4><p class="ml-2">{{animal.weight}} Kg</p>
-                    <h4 class="font-semibold">Prochain vaccin : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
-                    <h4 class="font-semibold">RDV vétérinaire : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+                    <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.getAge()}}</p>
+                    <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
+                    <h4 class="font-semibold">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+                    <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                 </section>
-                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >Modifier</button></a>
-                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('delete_animal', {id: animal.id})}}"<button class="" >Delete</button></a>
+                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >{% trans %}Modifier{% endtrans %}</button></a>
+                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('delete_animal', {id: animal.id})}}"<button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
             </div>
         {% endfor %}
     </div>

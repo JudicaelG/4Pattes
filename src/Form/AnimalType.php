@@ -7,6 +7,7 @@ use App\Entity\Breed;
 use App\Entity\User;
 use App\Entity\Vaccinated;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,17 +18,18 @@ class AnimalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
+            ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('birthday', null, [
                 'widget' => 'single_text',
+                'label' => 'Anniversaire',
             ])
             ->add('breed_id', EntityType::class, [
                 'class' => Breed::class,
                 'choice_label' => 'name',
-                'label' => 'Breed'
+                'label' => 'Race'
             ])
-            ->add('weight')
-            ->add('save', SubmitType::class, ['label' => 'Add animal'])
+            ->add('weight', null, ['label' => 'Poids'])
+            ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
     }
 
