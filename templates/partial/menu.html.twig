@@ -16,22 +16,22 @@
                 </ul>
                 <ul class="hidden lg:flex text-background">
                     <li class="mx-4"><a class="flex items-center" href="{{path('index')}}"><img class="max-w-10 rounded-full bg-button-menu p-2 menu-icon-home mr-1" 
-                    alt="Home" src="{{ asset('images/icons/home.svg') }}" />{{trans}}Accueil{{endtrans}}</a></li>
+                    alt="Home" src="{{ asset('images/icons/home.svg') }}" />{%trans%}Accueil{%endtrans%}</a></li>
                     <li class="mx-4"><a class="flex items-center" href="{{path('index')}}"><img class="max-w-10 rounded-full bg-button-menu p-2 menu-icon-profil mr-1" 
-                    alt="Profil" src="{{ asset('images/icons/user.svg') }}" />{{trans}}Profil{{endtrans}}</a></li>
+                    alt="Profil" src="{{ asset('images/icons/user.svg') }}" />{%trans%}Profil{%endtrans%}</a></li>
                     <li class="mx-4"><a class="flex items-center" href="{{path('animal')}}"><img class="max-w-10 rounded-full bg-button-menu p-2 menu-icon-animal mr-1" 
-                    alt="Animal" src="{{ asset('images/icons/animal.svg') }}" />{{trans}}Animal{{endtrans}}</a></li>
+                    alt="Animal" src="{{ asset('images/icons/animal.svg') }}" />{%trans%}Animal{%endtrans%}</a></li>
                     <li class="mx-4"><a class="flex items-center" href="{{path('index')}}"><img class="max-w-10 rounded-full bg-button-menu p-2 menu-icon-ride mr-1" 
-                    alt="Ride" src="{{ asset('images/icons/ride.svg') }}" />{{trans}}Balade{{endtrans}}</a></li>
+                    alt="Ride" src="{{ asset('images/icons/ride.svg') }}" />{%trans%}Balade{%endtrans%}</a></li>
                     <li class="mx-4"><a class="flex items-center" href="{{path('index')}}"><img class="max-w-10 rounded-full bg-button-menu p-2 menu-icon-advice mr-1" 
-                    alt="Advice" src="{{ asset('images/icons/advice.svg') }}" />{{trans}}Conseil{{endtrans}}</a></li>
+                    alt="Advice" src="{{ asset('images/icons/advice.svg') }}" />{%trans%}Conseil{%endtrans%}</a></li>
                 </ul>
             </div>
         {% else %}
             <ul class="lg:hidden flex flex-auto flex-row justify-between items-center">
                 <li><a href="{{ path('index') }}">4Pattes</a></li>
                 <li class="rounded-full bg-background"><a href="{{path('app_login')}}"><img class="max-w-10" 
-                alt="connnexion/inscription" src="{{ asset('images/icons/user.svg') }}" />{{trans}}Connexion{{endtrans}}</a></li>
+                alt="connnexion/inscription" src="{{ asset('images/icons/user.svg') }}" />{%trans%}Connexion{%endtrans%}</a></li>
             </ul>
         {% endif %}
     </div>
