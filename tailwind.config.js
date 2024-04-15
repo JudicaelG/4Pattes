@@ -13,6 +13,7 @@ module.exports = {
       'secondary': '#910202',
       'accent': '#E0453C',
       'button-menu': '#F6887A',
+      'bg-card': '#D15B4B',
      }
   },
   plugins: [],

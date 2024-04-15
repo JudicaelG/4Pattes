@@ -1,6 +1,6 @@
 <script src="{{ asset('js/carrousel.js') }}"></script>
 
-<div class="relative w-full h-52 mx-auto bg-button-menu">
+<div class="relative w-full h-52 mx-auto bg-button-menu lg:hidden">
 
     {% for animal in animalsOfTheUser %}
         {% if loop.first %}
@@ -32,43 +32,6 @@
         {% endif %}
     {% endfor %}
 
-    {#<div class="slide relative h-40 flex flex-row justify-center items-center mx-14 my-4">
-        <div class="mx-4">
-            <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
-        </div>
-        <div class="mx-4">
-            <h2>Mirabel, border collie</h2>
-            <p class="ml-4">Age : 1 an et 1 mois</p>
-            <p class="ml-4">Poids : 19 kg</p>
-            <p class="ml-4">Prochain vaccin : 22 mai 2024</p>
-            <p class="ml-4">RDV vétérinaire : 30 juin 2024</p>
-        </div>
-    </div>
-    <div class="slide hidden relative h-40 flex flex-row justify-center items-center mx-14 my-4">
-        <div class="mx-4">
-            <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
-        </div>
-        <div class="mx-4">
-            <h2>Mirabel, border collie</h2>
-            <p class="ml-4">Age : 1 an et 1 mois</p>
-            <p class="ml-4">Poids : 19 kg</p>
-            <p class="ml-4">Prochain vaccin : 22 mai 2024</p>
-            <p class="ml-4">RDV vétérinaire : 30 juin 2024</p>
-        </div>
-    </div>
-    <div class="slide hidden relative h-40 flex flex-row justify-center items-center mx-14 my-4">
-        <div class="mx-4">
-            <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
-        </div>
-        <div class="mx-4">
-            <h2>Mirabel, border collie</h2>
-            <p class="ml-4">Age : 1 an et 1 mois</p>
-            <p class="ml-4">Poids : 19 kg</p>
-            <p class="ml-4">Prochain vaccin : 22 mai 2024</p>
-            <p class="ml-4">RDV vétérinaire : 30 juin 2024</p>
-        </div>
-    </div>#}
-
     <!-- The previous button -->
     <a class="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 hover:text-amber-500 cursor-pointer"
         onclick="moveSlide(-1)">❮</a>
@@ -88,6 +51,24 @@
         {% endfor %}
     </div>
 </div>
+
+<div class="w-full hidden lg:grid grid-cols-6 gap-2.5 mx-auto">
+    {% for animal in animalsOfTheUser %}
+        <div class="bg-button-menu h-96 shadow-lg rounded-md">            
+            <div class="bg-bg-card h-1/3 flex justify-center items-center rounded-md">
+                <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
+            </div>
+            <img src="{{asset('images/default/dog.JPG')}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
+            <div class="">
+                <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
+                <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
+                <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
+                <h4 class="font-semibold ml-4 inline">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
 
 
 

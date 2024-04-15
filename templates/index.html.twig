@@ -4,12 +4,18 @@
 
 {% block body %}
     {% if app.user %}
-    <h1 class="text-3xl font-bold">
-        Bonjour Judicaël, Mirabel, Ruby, Nala et Clochette
+    <h1 class="text-3xl font-bold my-3.5">
+        Bonjour, 
+        {% for animal in animalsOfTheUser %}            
+            {% if loop.last %}
+                {{animal.name}}
+            {% else %}
+                {{animal.name}},
+            {% endif %}
+            
+        {% endfor %}
     </h1>
-    <div class="mb-3">
-        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-    </div>
+
     {{ include ('partial/animal-resume.html.twig', {animalsOfTheUser: animalsOfTheUser}) }}
 
     <div>
