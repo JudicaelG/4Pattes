@@ -1,7 +1,38 @@
 <script src="{{ asset('js/carrousel.js') }}"></script>
 
 <div class="relative w-full h-52 mx-auto bg-button-menu">
-    <div class="slide relative h-40 flex flex-row justify-center items-center mx-14 my-4">
+
+    {% for animal in animalsOfTheUser %}
+        {% if loop.first %}
+            <div class="slide relative h-40 flex flex-row justify-center items-center mx-14 my-4">
+                <div class="mx-4">
+                    <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
+                </div>
+                <div class="mx-4">
+                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="slide hidden relative h-40 flex flex-row justify-center items-center mx-14 my-4">
+                <div class="mx-4">
+                    <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
+                </div>
+                <div class="mx-4">
+                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p>
+                </div>
+            </div>   
+        {% endif %}
+    {% endfor %}
+
+    {#<div class="slide relative h-40 flex flex-row justify-center items-center mx-14 my-4">
         <div class="mx-4">
             <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
         </div>
@@ -36,7 +67,7 @@
             <p class="ml-4">Prochain vaccin : 22 mai 2024</p>
             <p class="ml-4">RDV vétérinaire : 30 juin 2024</p>
         </div>
-    </div>
+    </div>#}
 
     <!-- The previous button -->
     <a class="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 hover:text-amber-500 cursor-pointer"
@@ -47,10 +78,14 @@
         onclick="moveSlide(1)">❯</a>
 
         <!-- The dots -->
-    <div class="flex justify-center items-center space-x-2.5">
-        <div class="dot w-4 h-4 rounded-full cursor-pointer bg-background" onclick="currentSlide(1)"></div>
-        <div class="dot w-4 h-4 rounded-full cursor-pointer bg-text" onclick="currentSlide(2)"></div>
-        <div class="dot w-4 h-4 rounded-full cursor-pointer bg-text" onclick="currentSlide(3)"></div>
+    <div class="flex justify-center items-center space-x-2.5">.
+        {% for animal in animalsOfTheUser %}
+            {% if loop.first %}
+                <div class="dot w-4 h-4 rounded-full cursor-pointer bg-background" onclick="currentSlide({{loop.index}})"></div>
+            {% else %}
+                <div class="dot w-4 h-4 rounded-full cursor-pointer bg-text" onclick="currentSlide({{loop.index}})"></div>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
 
