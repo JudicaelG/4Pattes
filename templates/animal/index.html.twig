@@ -3,6 +3,10 @@
 
 {% block title %}{% trans %}Mon animal{% endtrans %}{% endblock %}
 
+{% block javascripts %}
+            <script src="{{ asset('js/ModalConfirmationDelete.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <h2>{% trans %}Mon animal{% endtrans %}</h2>
     <div class="bg-button-menu grid grid-cols-2 shadow-lg mx-3.5">
@@ -41,6 +45,7 @@
             <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
         </div>
     </div>
+    {{ include ('partial/messages/delete-message.html.twig') }}
 
     <div class="grid grid-cols-2 gap-8 mx-3.5 mt-3.5">
     
@@ -56,7 +61,7 @@
                     <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                 </section>
                 <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >{% trans %}Modifier{% endtrans %}</button></a>
-                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('delete_animal', {id: animal.id})}}"<button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
+                <a class="float-right bg-primary p-2 text-white mx-4 my-4" animal-id="{{animal.id}}" onclick="askDelete({{animal.id}})"><button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
             </div>
         {% endfor %}
     </div>
