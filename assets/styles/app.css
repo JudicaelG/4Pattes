@@ -114,3 +114,13 @@ body {
     border-color: #B50707;
     border-width: 3px;
   }
+
+  .parent-hover:hover {
+    background-color: #AF3929;
+    border-radius: 0.5rem;
+  }
+
+  .parent-hover:hover .child-hover{
+    opacity: 0.8;
+    transition: all 0.2s;
+  }
