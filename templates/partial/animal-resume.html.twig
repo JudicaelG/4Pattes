@@ -59,7 +59,11 @@
                 <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
             </div>            
             <div class="bg-button-menu h-2/3 rounded-b-lg">
+                {% if animal.profilePhoto %}
+                <img src="{{asset('uploads/animals/profilephoto/' ~ animal.profilePhoto)}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
+                {% else %}
                 <img src="{{asset('images/default/dog.JPG')}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
+                {% endif %}
                 <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
                 <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
                 <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>

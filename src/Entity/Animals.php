@@ -35,6 +35,9 @@ class Animals
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 3, nullable: true, options:["default" => 0,])]
     private ?string $weight = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profilePhoto = null;
+
     public function __construct()
     {
         $this->vaccinateds = new ArrayCollection();
@@ -144,6 +147,18 @@ class Animals
     public function setWeight(string $weight): static
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getProfilePhoto(): ?string
+    {
+        return $this->profilePhoto;
+    }
+
+    public function setProfilePhoto(?string $profilePhoto): static
+    {
+        $this->profilePhoto = $profilePhoto;
 
         return $this;
     }

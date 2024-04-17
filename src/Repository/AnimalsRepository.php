@@ -35,6 +35,7 @@ class AnimalsRepository extends ServiceEntityRepository
 
             $editAnimal->setName($animal->getName());
             $editAnimal->SetBirthday($animal->getBirthday());
+            $editAnimal->SetWeight($animal->getWeight());
             $editAnimal->SetBreedId($animal->getBreedId());
             $editAnimal->SetUserId($animal->getUserId());
             $entityManager->flush();
@@ -45,8 +46,10 @@ class AnimalsRepository extends ServiceEntityRepository
         $newAnimal = new Animals();
         $newAnimal->setName($animal->getName());
         $newAnimal->SetBirthday($animal->getBirthday());
+        $newAnimal->SetWeight($animal->getWeight());
         $newAnimal->SetBreedId($animal->getBreedId());
         $newAnimal->SetUserId($animal->getUserId());
+        $newAnimal->setProfilePhoto($animal->getProfilePhoto());
         
         $entityManager->persist($newAnimal);
 

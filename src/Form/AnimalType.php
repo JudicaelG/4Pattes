@@ -8,6 +8,8 @@ use App\Entity\User;
 use App\Entity\Vaccinated;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,6 +31,15 @@ class AnimalType extends AbstractType
                 'label' => 'Race'
             ])
             ->add('weight', null, ['label' => 'Poids'])
+            ->add('profilePhoto', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => new File([
+                    'maxSize' => '1024k',
+                    'mimeTypes' => ['image/png', 'image/jpeg'],
+                    'mimeTypesMessage' => 'Vous ne pouvez upload que des images de type jpg ou png',
+                ]),
+            ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
     }

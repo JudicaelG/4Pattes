@@ -9,11 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals; 
 use App\Form\AnimalType;
+use App\Service\FileUploader;
 
 class AnimalController extends AbstractController
 {
     #[Route('/animal', name: 'animal')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::Class);
         $animal = new Animals();
@@ -24,7 +25,11 @@ class AnimalController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $animal = $form->getData();
-
+            $photoProfile = $form->get('profilePhoto')->getData();
+            if($photoProfile){
+                $photoProfileName = $fileUploader->upload($photoProfile);
+                $animal->setProfilePhoto($photoProfileName);
+            }
             $animalInsert = $animalRepository
             ->saveAnimal($animal, $entityManager);
 
