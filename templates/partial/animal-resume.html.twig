@@ -1,6 +1,6 @@
 <script src="{{ asset('js/carrousel.js') }}"></script>
 
-<div class="relative w-full h-52 mx-auto bg-button-menu lg:hidden">
+<div class="relative w-full h-52 mx-auto bg-card-secondary lg:hidden">
 
     {% for animal in animalsOfTheUser %}
         {% if loop.first %}
@@ -55,10 +55,10 @@
 <div class="w-full hidden lg:grid grid-cols-6 gap-2.5 mx-auto">
     {% for animal in animalsOfTheUser %}
         <div class="h-96 shadow-lg parent-hover">            
-            <div class=" h-1/3 flex justify-center items-center bg-bg-card  rounded-t-lg child-hover">
+            <div class=" h-1/3 flex justify-center items-center bg-button-menu  rounded-t-lg child-hover">
                 <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
             </div>            
-            <div class="bg-button-menu h-2/3 rounded-b-lg">
+            <div class="bg-card-secondary h-2/3 rounded-b-lg">
                 {% if animal.profilePhoto %}
                 <img src="{{asset('uploads/animals/profilephoto/' ~ animal.profilePhoto)}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
                 {% else %}

@@ -14,6 +14,7 @@ module.exports = {
       'accent': '#E0453C',
       'button-menu': '#F6887A',
       'bg-card': '#D15B4B',
+      'card-secondary': '#FEC4B7'
      }
   },
   plugins: [],
