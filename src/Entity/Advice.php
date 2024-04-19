@@ -29,6 +29,9 @@ class Advice
     #[ORM\ManyToOne(inversedBy: 'advice')]
     private ?Breed $Breed_id = null;
 
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $tag = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,6 +100,18 @@ class Advice
     public function setBreedId(?Breed $Breed_id): static
     {
         $this->Breed_id = $Breed_id;
+
+        return $this;
+    }
+
+    public function getTag(): array
+    {
+        return $this->tag;
+    }
+
+    public function setTag(array $tag): static
+    {
+        $this->tag = $tag;
 
         return $this;
     }
