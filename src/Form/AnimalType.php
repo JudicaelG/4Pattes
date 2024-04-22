@@ -9,6 +9,7 @@ use App\Entity\Vaccinated;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,9 +22,8 @@ class AnimalType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ['label'=>'Nom'])
-            ->add('birthday', null, [
-                'widget' => 'single_text',
-                'label' => 'Anniversaire',
+            ->add('birthday', DateType::class, [
+                'label' => 'Anniversaire'
             ])
             ->add('breed_id', EntityType::class, [
                 'class' => Breed::class,
@@ -34,6 +34,7 @@ class AnimalType extends AbstractType
             ->add('profilePhoto', FileType::class, [
                 'mapped' => false,
                 'required' => false,
+                'label' => 'Photo de profil',
                 'constraints' => new File([
                     'maxSize' => '1024k',
                     'mimeTypes' => ['image/png', 'image/jpeg'],

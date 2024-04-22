@@ -12,29 +12,34 @@
     <div class="bg-card-secondary grid grid-cols-2 shadow-lg mx-3.5">
         <div>
             {{form_start(form)}}
-                <div class="mx-2">
-                    <label class="block">{{field_label(form.name)|trans}}</label>
+                <div class="mx-2 my-2">                    
+                    <label class="block">{{field_label(form.name)|trans}}</label>                    
                     <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="w-full input-focus-red">
+                    <span class="error-form">{{ form_errors(form.name) }}</span>
                 </div>
-                <div class="mx-2">
+                <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.birthday)|trans}}</label>
                     <input type="date" name="{{field_name(form.birthday)}}" value="{{field_value(form.birthday)}}" class="w-full input-focus-red">
+                    <span class="error-form">{{ form_errors(form.birthday) }}</span>
                 </div>
-                <div class="mx-2">
+                <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.weight)|trans}}</label>
                     <input type="number" name="{{field_name(form.weight)}}" value="{{field_value(form.weight)}}" class="w-full input-focus-red">
+                    <span class="error-form">{{ form_errors(form.weight) }}</span>
                 </div>
-                <div class="mx-2">
+                <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.breed_id)|trans}}</label>
                     <select name="{{field_name(form.breed_id)}}" value="{{field_value(form.breed_id)}}" class="w-full input-focus-red">
                          {% for label, value in field_choices(form.breed_id) %}
                             <option value="{{ value }}">{{ label }}</option>
                         {% endfor %}
                     </select>
+                    <span class="error-form">{{ form_errors(form.breed_id) }}</span>
                 </div>
-                <div class="mx-2">
+                <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.profilePhoto)|trans}}</label>
                     <input type="file" name="{{field_name(form.profilePhoto)}}" value="{{field_value(form.profilePhoto)}}" class="w-full">
+                    <span class="error-form">{{ form_errors(form.profilePhoto) }}</span>
                 </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
@@ -64,6 +69,7 @@
                     <h4 class="font-semibold">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                     <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                 </section>
+                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>
                 <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >{% trans %}Modifier{% endtrans %}</button></a>
                 <a class="float-right bg-primary p-2 text-white mx-4 my-4" animal-id="{{animal.id}}" onclick="askDelete({{animal.id}})"><button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
             </div>

@@ -124,3 +124,8 @@ body {
     opacity: 0.8;
     transition: all 0.2s;
   }
+
+  .error-form{
+    color: #910202;
+    font-weight: bold;
+  }

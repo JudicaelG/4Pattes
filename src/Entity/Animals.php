@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnimalsRepository::class)]
 class Animals
@@ -17,12 +18,17 @@ class Animals
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max:255)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotNull]
+    #[Assert\Type("\DateTimeInterface")]
     private ?\DateTimeInterface $birthday = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
+    #[Assert\NotBlank]
     private ?Breed $breed_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
@@ -33,6 +39,8 @@ class Animals
     private Collection $vaccinateds;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 3, nullable: true, options:["default" => 0,])]
+    #[Assert\NotBlank]
+    #[Assert\PositiveOrZero]
     private ?string $weight = null;
 
     #[ORM\Column(length: 255, nullable: true)]
