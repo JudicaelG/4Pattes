@@ -62,6 +62,7 @@ class BreedFixtures extends Fixture implements FixtureGroupInterface
         foreach ($allBreeds as $breedName) {
             $breed = new Breed();
             $breed->setName($breedName);
+            $breed->setType("dog");
             $manager->persist($breed);
         }
 

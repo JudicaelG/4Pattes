@@ -25,6 +25,9 @@ class Breed
     #[ORM\OneToMany(targetEntity: Advice::class, mappedBy: 'Breed_id')]
     private Collection $advice;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $type = null;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
@@ -111,6 +114,18 @@ class Breed
                 $advice->setBreedId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }
