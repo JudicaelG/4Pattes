@@ -6,6 +6,8 @@ use App\Entity\Animals;
 use App\Entity\Breed;
 use App\Entity\User;
 use App\Entity\Vaccinated;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -27,6 +29,10 @@ class AnimalType extends AbstractType
             ])
             ->add('breed_id', EntityType::class, [
                 'class' => Breed::class,
+                'query_builder' => function (EntityRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('b')
+                        ->orderBy('b.name', 'ASC');
+                },
                 'choice_label' => 'name',
                 'label' => 'Race'
             ])

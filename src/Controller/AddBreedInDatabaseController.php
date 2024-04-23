@@ -1,17 +1,18 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\Controller;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
-use App\Entity\Breed;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Breed; 
 
-class BreedFixtures extends Fixture implements FixtureGroupInterface
+class AddBreedInDatabaseController extends AbstractController
 {
-    public function load(ObjectManager $manager): void
+    #[Route('/add/breed/in/database', name: 'app_add_breed_in_database')]
+    public function index(EntityManagerInterface $manager): Response
     {
-        // Fonction pour récupérer les noms des races de chiens à partir d'une URL
         function fetchDogBreeds($url) {
             $breedNames = array();
 
@@ -47,6 +48,7 @@ class BreedFixtures extends Fixture implements FixtureGroupInterface
                     $url=null;
                 }
                 
+                
             }
 
             return $breedNames;
@@ -66,10 +68,7 @@ class BreedFixtures extends Fixture implements FixtureGroupInterface
         }
 
         $manager->flush();
-    }
 
-    public static function getGroups(): array
-    {
-        return ['group1'];
+        return new Response("Ok");
     }
 }
