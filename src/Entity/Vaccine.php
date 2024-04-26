@@ -74,18 +74,6 @@ class Vaccine
         return $this;
     }
 
-    public function getRecall(): ?\DateTimeInterface
-    {
-        return $this->recall;
-    }
-
-    public function setRecall(\DateTimeInterface $recall): static
-    {
-        $this->recall = $recall;
-
-        return $this;
-    }
-
     public function isWeek2(): ?bool
     {
         return $this->Week_2;

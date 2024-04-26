@@ -4,8 +4,7 @@ namespace App\Form;
 
 use App\Entity\Animals;
 use App\Entity\Breed;
-use App\Entity\User;
-use App\Entity\Vaccinated;
+use App\Entity\Vaccine;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,6 +15,8 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AnimalType extends AbstractType
@@ -46,6 +47,20 @@ class AnimalType extends AbstractType
                     'mimeTypes' => ['image/png', 'image/jpeg'],
                     'mimeTypesMessage' => 'Vous ne pouvez upload que des images de type jpg ou png',
                 ]),
+            ])
+            ->add('vaccine_id', EntityType::class,[
+                'class' => Vaccine::class,
+                'query_builder' => function(EntityRepository $er): QueryBuilder{
+                    return $er->createQueryBuilder('v')
+                    ->orderBy('v.name', 'ASC');
+                },
+                'mapped' => false,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name',
+                'choice_value' => 'name',
+                'label' => 'Vaccins',
+                'attr' => ['onclick' => 'test(this)'],
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
