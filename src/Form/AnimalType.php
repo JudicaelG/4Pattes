@@ -60,7 +60,7 @@ class AnimalType extends AbstractType
                 'choice_label' => 'name',
                 'choice_value' => 'name',
                 'label' => 'Vaccins',
-                'attr' => ['onclick' => 'test(this)'],
+                'attr' => ['onclick' => 'addingDateInput(this)'],
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
