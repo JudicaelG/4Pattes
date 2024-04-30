@@ -4,7 +4,10 @@ namespace App\Form;
 
 use App\Entity\Animals;
 use App\Entity\Breed;
+use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Repository\VaccineRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -13,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormEvent;
@@ -22,7 +26,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class AnimalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    {   
+        /*$entityMananger = $options['entityManager'];
+        
+        $vaccines = $entityMananger->getrepository(Vaccine::class)->findAll();
+
+
+        foreach($vaccines as $vaccin ){
+            $builder
+                ->add('date_'.$vaccin->getName(), DateType::class, [
+                    'label' => 'Date du vaccin '.$vaccin->getName(),
+                    'row_attr' => ['class' => 'hidden', 'id' => 'date_'.$vaccin->getName()],
+                    'mapped' => false,
+                ]);
+        }
+*/
         $builder
             ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('birthday', DateType::class, [
@@ -58,18 +76,26 @@ class AnimalType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'choice_label' => 'name',
-                'choice_value' => 'name',
+                'choice_value' => 'id',
+                'choice_name' => 'name',
+                'choice_attr' => function () { return ['onclick' => 'addingDateInput(this)'];},
                 'label' => 'Vaccins',
-                'attr' => ['onclick' => 'addingDateInput(this)'],
+            ])
+            ->add('vaccine_date', VaccinetedType::class, [
+                'label' => 'Date des vaccins',
+                'mapped' => false,
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
+
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Animals::class,
+            'entityManager' => null,
         ]);
     }
 }

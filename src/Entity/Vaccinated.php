@@ -25,6 +25,9 @@ class Vaccinated
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $next_recall = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $last_date_injection = null;
+
     public function __construct()
     {
         $this->animal_id = new ArrayCollection();
@@ -92,6 +95,18 @@ class Vaccinated
     public function setNextRecall(\DateTimeInterface $next_recall): static
     {
         $this->next_recall = $next_recall;
+
+        return $this;
+    }
+
+    public function getLastDateInjection(): ?\DateTimeInterface
+    {
+        return $this->last_date_injection;
+    }
+
+    public function setLastDateInjection(?\DateTimeInterface $last_date_injection): static
+    {
+        $this->last_date_injection = $last_date_injection;
 
         return $this;
     }

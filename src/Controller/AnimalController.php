@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals; 
 use App\Form\AnimalType;
+use App\Form\VaccineRelationshipType;
 use App\Service\FileUploader;
 
 class AnimalController extends AbstractController
@@ -16,7 +17,7 @@ class AnimalController extends AbstractController
     #[Route('/animal', name: 'animal')]
     public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
-        $animalRepository = $entityManager->getRepository(Animals::Class);
+        $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = new Animals();
         $animal->SetUserId($this->getUser());
         
@@ -24,6 +25,9 @@ class AnimalController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            
+            dump($form->get('vaccine_date'));
+            die();
             $animal = $form->getData();
             $photoProfile = $form->get('profilePhoto')->getData();
             if($photoProfile){
