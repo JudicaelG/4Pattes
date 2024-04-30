@@ -26,8 +26,6 @@ class AnimalController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             
-            dump($form->get('vaccine_date'));
-            die();
             $animal = $form->getData();
             $photoProfile = $form->get('profilePhoto')->getData();
             if($photoProfile){
