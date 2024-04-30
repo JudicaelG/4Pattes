@@ -20,6 +20,14 @@ class VaccineFixtures extends Fixture
         
         $manager->persist($vaccine);
 
+        $vaccine = new Vaccine();
+        $vaccine->setName("Rage");
+        $vaccine->setMonth3(true);
+        $vaccine->setYear1(true);
+        $vaccine->setAnnualRecall(true);
+        
+        $manager->persist($vaccine);
+
         $manager->flush();
     }
 }

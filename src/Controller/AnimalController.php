@@ -10,30 +10,31 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals; 
 use App\Form\AnimalType;
 use App\Form\VaccineRelationshipType;
+use App\Service\AddVaccinated;
 use App\Service\FileUploader;
 
 class AnimalController extends AbstractController
 {
     #[Route('/animal', name: 'animal')]
-    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = new Animals();
         $animal->SetUserId($this->getUser());
         
         $form = $this->createForm(AnimalType::class, $animal);
-
+        
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            
             $animal = $form->getData();
+            //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);
             $photoProfile = $form->get('profilePhoto')->getData();
             if($photoProfile){
                 $photoProfileName = $fileUploader->upload($photoProfile);
                 $animal->setProfilePhoto($photoProfileName);
             }
             $animalInsert = $animalRepository
-            ->saveAnimal($animal, $entityManager);
+            ->saveAnimal($animal, $entityManager, $form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $addVaccinated);
 
             return $this->redirectToRoute('animal');
         }

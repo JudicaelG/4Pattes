@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
@@ -33,7 +32,7 @@ class VaccinetedType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Vaccinated::class,
+            
         ]);
     }
 }

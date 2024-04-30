@@ -83,6 +83,7 @@ class AnimalType extends AbstractType
             ])
             ->add('vaccine_date', VaccinetedType::class, [
                 'label' => 'Date des vaccins',
+                'required' => false,
                 'mapped' => false,
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])

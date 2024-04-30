@@ -35,7 +35,7 @@ class Animals
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user_id = null;
 
-    #[ORM\ManyToMany(targetEntity: Vaccinated::class, mappedBy: 'animal_id')]
+    #[ORM\ManyToMany(targetEntity: Vaccinated::class, mappedBy: 'animal_id', cascade: ["persist"])]
     private Collection $vaccinateds;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 3, nullable: true, options:["default" => 0,])]

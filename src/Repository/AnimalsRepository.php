@@ -3,10 +3,13 @@
 namespace App\Repository;
 
 use App\Entity\Animals;
+use App\Service\AddVaccinated;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Form\Form;
 
 /**
  * @extends ServiceEntityRepository<Animals>
@@ -23,7 +26,7 @@ class AnimalsRepository extends ServiceEntityRepository
         parent::__construct($registry, Animals::class, $entityManager);
     }
 
-    public function saveAnimal(Animals $animal, $entityManager): Response{
+    public function saveAnimal(Animals $animal, $entityManager, $vaccines, $dateVaccine, $addVaccinated): Response{
         
         if($animal->getId()){
             $editAnimal = $entityManager->getRepository(Animals::Class)->find($animal->getId());
@@ -50,7 +53,8 @@ class AnimalsRepository extends ServiceEntityRepository
         $newAnimal->SetBreedId($animal->getBreedId());
         $newAnimal->SetUserId($animal->getUserId());
         $newAnimal->setProfilePhoto($animal->getProfilePhoto());
-        
+        $newAnimal = $addVaccinated->AddVaccine($vaccines, $dateVaccine, $animal);   
+
         $entityManager->persist($newAnimal);
 
         $entityManager->flush();
