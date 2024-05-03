@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -52,6 +53,7 @@ class AnimalType extends AbstractType
                     return $er->createQueryBuilder('b')
                         ->orderBy('b.name', 'ASC');
                 },
+                'group_by' => 'type',
                 'choice_label' => 'name',
                 'label' => 'Race'
             ])

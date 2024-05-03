@@ -30,11 +30,7 @@
                 </div>
                 <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.breed_id)|trans}}</label>
-                    <select name="{{field_name(form.breed_id)}}" value="{{field_value(form.breed_id)}}" class="w-full input-focus-red">
-                         {% for label, value in field_choices(form.breed_id) %}
-                            <option value="{{ value }}">{{ label }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form_widget(form.breed_id) }}
                     <span class="error-form">{{ form_errors(form.breed_id) }}</span>
                 </div>
                 <div class="mx-2 my-2">
