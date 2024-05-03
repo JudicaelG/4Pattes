@@ -45,9 +45,11 @@
                 <div class="mx-2 my-2" id="vaccine">
                     {{ form_label(form.vaccine_id) }}
                     {{ form_widget(form.vaccine_id) }}
+                    <span class="error-form">{{ form_errors(form.vaccine_id) }}</span>
                 </div>
-                <div class="mx-2 my-2" id="date_vaccine">
+                <div class="mx-2 my-2 date_vaccine_input" id="date_vaccine">
                    {{form_widget(form.vaccine_date)}}
+                   <span class="error-form">{{ form_errors(form.vaccine_date) }}</span>
                 </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
