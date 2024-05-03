@@ -29,7 +29,7 @@ class AnimalsRepository extends ServiceEntityRepository
     public function saveAnimal(Animals $animal, $entityManager, $vaccines, $dateVaccine, $addVaccinated): Response{
         
         if($animal->getId()){
-            $editAnimal = $entityManager->getRepository(Animals::Class)->find($animal->getId());
+            $editAnimal = $entityManager->getRepository(Animals::class)->find($animal->getId());
             if(!$editAnimal){
                 throw $this->createNotFoundException(
                     'Pas d\'animal avec cette identifiant'

@@ -26,8 +26,8 @@ class AnimalController extends AbstractController
         
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            
             $animal = $form->getData();
-            //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);
             $photoProfile = $form->get('profilePhoto')->getData();
             if($photoProfile){
                 $photoProfileName = $fileUploader->upload($photoProfile);
@@ -40,7 +40,7 @@ class AnimalController extends AbstractController
         }
 
         $animalsOfUser = $animalRepository
-        ->getConnectedUserAnimals($this->getUser()->GetId());
+        ->getConnectedUserAnimals($this->getUser()->getId());
         return $this->render('animal/index.html.twig', [
             'form' => $form,
             'animalsOfUser' => $animalsOfUser
@@ -50,7 +50,7 @@ class AnimalController extends AbstractController
     #[Route('/animal/edit/{id}', name: 'edit_animal')]
     public function new(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $animalRepository = $entityManager->getRepository(Animals::Class);
+        $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->find($id);
         $animal->SetUserId($this->getUser());
         
@@ -79,7 +79,7 @@ class AnimalController extends AbstractController
     #[Route('/animal/delete/{id}', name: 'delete_animal')]
     public function delete(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $deleteAnimal = $entityManager->getRepository(Animals::Class)->find($id);
+        $deleteAnimal = $entityManager->getRepository(Animals::class)->find($id);
         if(!$deleteAnimal){
             throw $this->createNotFoundException(
                 'Pas d\'animal avec cette identifiant'
