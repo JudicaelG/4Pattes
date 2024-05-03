@@ -6,8 +6,8 @@ use App\Entity\Animals;
 use App\Entity\Breed;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
-use App\Repository\VaccineRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,12 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\ChoiceList\ChoiceList;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AnimalType extends AbstractType
@@ -88,6 +84,19 @@ class AnimalType extends AbstractType
                 'required' => false,
                 'mapped' => false,
             ])
+            /*->add('vaccinateds', EntityType::class,[
+                'class' => Vaccine::class,
+                'query_builder' => function(EntityRepository $er): QueryBuilder{
+                    return $er->createQueryBuilder('v')
+                    ->orderBy('v.name', 'ASC');
+                },
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name',
+                'choice_value' => 'id',
+                'choice_name' => 'name',
+                'choice_attr' => function () { return ['onclick' => 'addingDateInput(this)'];},
+            ])*/
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
 

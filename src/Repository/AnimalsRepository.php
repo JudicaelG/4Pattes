@@ -62,8 +62,7 @@ class AnimalsRepository extends ServiceEntityRepository
         return new Response('Your animal has been added !');
     }
 
-    public function deleteAnimal($id, $entityManager){
-        
+    public function deleteAnimal($id, $entityManager){       
 
     }
 
@@ -81,6 +80,18 @@ class AnimalsRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function getAnimalWithVaccineAndVaccineDate($id){
+        return $this->createQueryBuilder('a')
+        ->andWhere('a.id = :id') 
+        ->setParameter('id', $id)
+        ->leftJoin('a.vaccinateds', 'v')
+        ->addSelect('v')
+        ->leftJoin('v.vaccine_id', 'vc')
+        ->addSelect('vc')
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
+    
 //    /**
 //     * @return Animals[] Returns an array of Animals objects
 //     */

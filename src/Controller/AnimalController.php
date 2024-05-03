@@ -26,7 +26,7 @@ class AnimalController extends AbstractController
         
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            
+
             $animal = $form->getData();
             $photoProfile = $form->get('profilePhoto')->getData();
             if($photoProfile){
@@ -51,11 +51,11 @@ class AnimalController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
-        $animal = $animalRepository->find($id);
-        $animal->SetUserId($this->getUser());
-        
+        $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
+        //$animal->SetUserId($this->getUser());
         $form = $this->createForm(AnimalType::class, $animal);
-
+        /*dump($animalRepository->getAnimalWithVaccineAndVaccineDate($id));
+        die();*/
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $animal = $form->getData();

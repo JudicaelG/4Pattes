@@ -110,4 +110,9 @@ class Vaccinated
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->vaccine_id->name;
+    }
 }
