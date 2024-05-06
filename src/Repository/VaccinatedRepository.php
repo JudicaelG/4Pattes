@@ -21,6 +21,16 @@ class VaccinatedRepository extends ServiceEntityRepository
         parent::__construct($registry, Vaccinated::class);
     }
 
+    public function getVaccineDateByAnimal($id): array{
+        return $this->createQueryBuilder('v')
+        ->innerJoin('v.animal_id', 'a')
+        ->addSelect('a')
+        ->andWhere('a.id = :animalId')
+        ->setParameter('animalId', $id)
+        ->getQuery()
+        ->getResult();
+    }
+
 //    /**
 //     * @return Vaccinated[] Returns an array of Vaccinated objects
 //     */

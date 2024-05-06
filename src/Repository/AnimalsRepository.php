@@ -86,8 +86,6 @@ class AnimalsRepository extends ServiceEntityRepository
         ->setParameter('id', $id)
         ->leftJoin('a.vaccinateds', 'v')
         ->addSelect('v')
-        ->leftJoin('v.vaccine_id', 'vc')
-        ->addSelect('vc')
         ->getQuery()
         ->getOneOrNullResult();
     }

@@ -7,8 +7,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\Animals; 
+use App\Entity\Animals;
+use App\Entity\Vaccinated;
+use App\Form\AnimalEditType;
 use App\Form\AnimalType;
+use App\Form\EditVaccineDateAnimalType;
 use App\Form\VaccineRelationshipType;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
@@ -39,8 +42,9 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('animal');
         }
 
-        $animalsOfUser = $animalRepository
+        $animalsOfUser = $animalRepository        
         ->getConnectedUserAnimals($this->getUser()->getId());
+
         return $this->render('animal/index.html.twig', [
             'form' => $form,
             'animalsOfUser' => $animalsOfUser
@@ -52,10 +56,7 @@ class AnimalController extends AbstractController
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
-        //$animal->SetUserId($this->getUser());
-        $form = $this->createForm(AnimalType::class, $animal);
-        /*dump($animalRepository->getAnimalWithVaccineAndVaccineDate($id));
-        die();*/
+        $form = $this->createForm(AnimalEditType::class, $animal);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $animal = $form->getData();
@@ -68,7 +69,7 @@ class AnimalController extends AbstractController
 
         $animalsOfUser = $animalRepository
         ->getConnectedUserAnimals($this->getUser()->GetId());
-        return $this->render('animal/index.html.twig', [
+        return $this->render('animal/edit.html.twig', [
             'form' => $form,
             'animalsOfUser' => $animalsOfUser
         ]);
