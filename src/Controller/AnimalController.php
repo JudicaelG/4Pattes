@@ -37,7 +37,7 @@ class AnimalController extends AbstractController
                 $animal->setProfilePhoto($photoProfileName);
             }
             $animalInsert = $animalRepository
-            ->saveAnimal($animal, $entityManager, $form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $addVaccinated);
+            ->saveAnimal($animal, $entityManager, $addVaccinated, $form->get('vaccine_id')->getData(), $form->get('vaccine_date'));
 
             return $this->redirectToRoute('animal');
         }
@@ -52,17 +52,19 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/animal/edit/{id}', name: 'edit_animal')]
-    public function new(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, int $id, AddVaccinated $addVaccinated): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
         $form = $this->createForm(AnimalEditType::class, $animal);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $animal = $form->getData();
 
+
+            $animal = $form->getData();
+            
             $animalInsert = $animalRepository
-            ->saveAnimal($animal, $entityManager);
+            ->saveAnimal($animal, $entityManager, $addVaccinated, null, null );
 
             return $this->redirectToRoute('animal');
         }

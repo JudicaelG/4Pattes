@@ -26,7 +26,7 @@ class AnimalsRepository extends ServiceEntityRepository
         parent::__construct($registry, Animals::class, $entityManager);
     }
 
-    public function saveAnimal(Animals $animal, $entityManager, $vaccines, $dateVaccine, $addVaccinated): Response{
+    public function saveAnimal(Animals $animal, $entityManager, $addVaccinated, $vaccines = null, $dateVaccine = null): Response{
         
         if($animal->getId()){
             $editAnimal = $entityManager->getRepository(Animals::class)->find($animal->getId());
@@ -41,6 +41,9 @@ class AnimalsRepository extends ServiceEntityRepository
             $editAnimal->SetWeight($animal->getWeight());
             $editAnimal->SetBreedId($animal->getBreedId());
             $editAnimal->SetUserId($animal->getUserId());
+            foreach($animal->getVaccinateds() as $vaccinated){
+                $editAnimal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
+            }
             $entityManager->flush();
 
             return new Response('Your animal has been modified !');

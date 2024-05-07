@@ -10,6 +10,7 @@ use DateInterval;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Form\Form;
 
 class AddVaccinated{
@@ -27,6 +28,11 @@ class AddVaccinated{
         }
 
         return $animal;
+    }
+
+    public function RecalculNextRecall(Vaccinated $vaccinated): Vaccinated{
+        $vaccinated->setNextRecall($this->CalculNextRecall($vaccinated->getVaccineId()->first(), $vaccinated->getLastDateInjection()));
+        return $vaccinated;
     }
 
     private function CalculNextRecall(Vaccine $vaccine, DateTime $lastDateInjection): DateTimeInterface {

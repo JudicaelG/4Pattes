@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -84,19 +85,6 @@ class AnimalType extends AbstractType
                 'required' => false,
                 'mapped' => false,
             ])
-            /*->add('vaccinateds', EntityType::class,[
-                'class' => Vaccine::class,
-                'query_builder' => function(EntityRepository $er): QueryBuilder{
-                    return $er->createQueryBuilder('v')
-                    ->orderBy('v.name', 'ASC');
-                },
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'name',
-                'choice_value' => 'id',
-                'choice_name' => 'name',
-                'choice_attr' => function () { return ['onclick' => 'addingDateInput(this)'];},
-            ])*/
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
 
