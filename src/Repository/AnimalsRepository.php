@@ -42,7 +42,20 @@ class AnimalsRepository extends ServiceEntityRepository
     }
 
     public function getConnectedUserAnimals($userId){
-        $entityManager = $this->getEntityManager();
+
+        return $this->createQueryBuilder('a')
+        ->innerJoin('a.breed_id', 'b')
+        ->addSelect('b')
+        ->innerJoin('a.vaccinateds', 'v')
+        ->addSelect('v')
+        ->innerJoin('v.vaccine_id', 'vc')
+        ->addSelect('vc')
+        ->andWhere('a.user_id = :userId')
+        ->setParameter('userId', $userId)
+        ->getQuery()
+        ->getResult();
+
+        /*$entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT a, b
@@ -52,7 +65,7 @@ class AnimalsRepository extends ServiceEntityRepository
             ORDER BY a.id DESC'
         )->setParameter('userId', $userId);
 
-        return $query->getResult();
+        return $query->getResult();*/
     }
 
     public function getAnimalWithVaccineAndVaccineDate($id){

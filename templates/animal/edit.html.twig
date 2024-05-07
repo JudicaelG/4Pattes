@@ -38,15 +38,18 @@
                     <input type="file" name="{{field_name(form.profilePhoto)}}" value="{{field_value(form.profilePhoto)}}" class="w-full">
                     <span class="error-form">{{ form_errors(form.profilePhoto) }}</span>
                 </div>
-                {% for vaccinated in form.vaccinateds %}
-                <div class="mx-2 my-2" id="vaccine">
-                    {% for vaccine in vaccinated.vars.value.getVaccineId() %}
-                        {{ form_label(form.name, vaccine.name) }}
+                <div class="mx-2 my-2 grid grid-cols-4 gap-2.5">
+                    <label class="block">{% trans %}Vaccins{% endtrans %}</label>
+                    {% for vaccinated in form.vaccinateds %}
+                        <div class="">
+                            {% for vaccine in vaccinated.vars.value.getVaccineId() %}
+                                {{ form_label(form.name, vaccine.name) }}
+                            {% endfor %}
+                            {{ form_widget(vaccinated) }}
+                            <span class="error-form">{{ form_errors(vaccinated) }}</span>
+                        </div>
                     {% endfor %}
-                    {{ form_widget(vaccinated) }}
-                    <span class="error-form">{{ form_errors(vaccinated) }}</span>
                 </div>
-                {% endfor %}
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
                         {% trans %}Modifier{% endtrans %}

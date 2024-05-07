@@ -60,12 +60,12 @@ class AnimalType extends AbstractType
                 'required' => false,
                 'label' => 'Photo de profil',
                 'constraints' => new File([
-                    'maxSize' => '1024k',
+                    'maxSize' => '9M',
                     'mimeTypes' => ['image/png', 'image/jpeg'],
                     'mimeTypesMessage' => 'Vous ne pouvez upload que des images de type jpg ou png',
                 ]),
             ])
-            ->add('vaccine_id', EntityType::class,[
+            /*->add('vaccine_id', EntityType::class,[
                 'class' => Vaccine::class,
                 'query_builder' => function(EntityRepository $er): QueryBuilder{
                     return $er->createQueryBuilder('v')
@@ -84,6 +84,9 @@ class AnimalType extends AbstractType
                 'label' => 'Date des vaccins',
                 'required' => false,
                 'mapped' => false,
+            ])*/
+            ->add('vaccinateds', CollectionType::class,[
+                'entry_type' => EditVaccineDateAnimalType::class
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;

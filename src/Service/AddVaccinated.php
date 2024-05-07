@@ -16,7 +16,7 @@ use Symfony\Component\Form\Form;
 class AddVaccinated{
     public function __construct(){}
 
-    public function AddVaccine(ArrayCollection $vaccines, Form $dateVaccine, Animals $animal): Animals{
+    /*public function AddVaccine(ArrayCollection $vaccines, Form $dateVaccine, Animals $animal): Animals{
         
         foreach($vaccines as $vaccine){
             $vaccinated = new Vaccinated();
@@ -28,24 +28,26 @@ class AddVaccinated{
         }
 
         return $animal;
-    }
+    }*/
 
     public function RecalculNextRecall(Vaccinated $vaccinated): Vaccinated{
-        $vaccinated->setNextRecall($this->CalculNextRecall($vaccinated->getVaccineId()->first(), $vaccinated->getLastDateInjection()));
+        $nextRecall = $this->CalculNextRecall($vaccinated->getVaccineId()->first(), $vaccinated->getLastDateInjection());
+        $vaccinated->setNextRecall($nextRecall);
         return $vaccinated;
     }
 
     private function CalculNextRecall(Vaccine $vaccine, DateTime $lastDateInjection): DateTimeInterface {
+        $nextRecall = $lastDateInjection;
 
         if($vaccine->isAnnualRecall()){
-            $lastDateInjection->modify('+1 Year');
+            $nextRecall->modify('+1 Year');
         }
 
         if($vaccine->isAnnual3Recall())
         {
-           $lastDateInjection->modify('+3 Year');
+           $nextRecall->modify('+3 Year');
         }
-
-        return $lastDateInjection;
+        
+        return $nextRecall;
     }
 }

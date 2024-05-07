@@ -38,7 +38,7 @@
                     <input type="file" name="{{field_name(form.profilePhoto)}}" value="{{field_value(form.profilePhoto)}}" class="w-full">
                     <span class="error-form">{{ form_errors(form.profilePhoto) }}</span>
                 </div>
-                <div class="mx-2 my-2" id="vaccine">
+                {#<div class="mx-2 my-2" id="vaccine">
                     {{ form_label(form.vaccine_id) }}
                     {{ form_widget(form.vaccine_id) }}
                     <span class="error-form">{{ form_errors(form.vaccine_id) }}</span>
@@ -46,6 +46,18 @@
                 <div class="mx-2 my-2 date_vaccine_input" id="date_vaccine">
                    {{form_widget(form.vaccine_date)}}
                    <span class="error-form">{{ form_errors(form.vaccine_date) }}</span>
+                </div>#}
+                <label class="my-2 mx-2 block">{% trans %}Vaccins{% endtrans %}</label>
+                <div class="mx-2 my-2 grid grid-cols-4 gap-2.5">
+                {% for vaccinated in form.vaccinateds %}
+                    <div class="">
+                        {% for vaccine in vaccinated.vars.value.getVaccineId() %}
+                            {{ form_label(form.name, vaccine.name) }}
+                        {% endfor %}
+                        {{ form_widget(vaccinated) }}
+                        <span class="error-form">{{ form_errors(vaccinated) }}</span>
+                    </div>
+                    {% endfor %}
                 </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
@@ -68,11 +80,15 @@
 
             <div class="bg-card-secondary shadow-xl">
                 <section class="px-4 py-4">
-                    <h3><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
+                    <h3><img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('uploads/animals/profilephoto/' ~ animal.getProfilePhoto())}}" /><span class="ml-4 font-bold inline">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
                     <hr class="w-1/2 my-2">
                     <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.getAge()}}</p>
                     <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
-                    <h4 class="font-semibold">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+                    {% for vaccine in animal.getVaccinateds() %}
+                        {% for vaccineId in vaccine.getVaccineId() %}
+                            <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetLastDateInjection()|date("d/m/Y")}}</p>
+                        {% endfor %}
+                    {% endfor %}                    
                     <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
                 </section>
                 <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>

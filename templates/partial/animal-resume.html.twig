@@ -66,7 +66,11 @@
                 {% endif %}
                 <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
                 <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
-                <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
+                    {% for vaccine in animal.getVaccinateds() %}
+                        {% for vaccineId in vaccine.getVaccineId() %}
+                            <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetLastDateInjection()|date("d/m/Y")}}</p>
+                        {% endfor %}
+                    {% endfor %}  
                 <h4 class="font-semibold ml-4 inline">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p>
             </div>
         </div>

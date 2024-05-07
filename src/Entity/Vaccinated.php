@@ -22,7 +22,7 @@ class Vaccinated
     #[ORM\ManyToMany(targetEntity: Vaccine::class)]
     private Collection $vaccine_id;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable:true)]
     private ?\DateTimeInterface $next_recall = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]

@@ -9,10 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals;
 use App\Entity\Vaccinated;
+use App\Entity\Vaccine;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
-use App\Form\EditVaccineDateAnimalType;
-use App\Form\VaccineRelationshipType;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
 
@@ -22,7 +21,15 @@ class AnimalController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
+        $vaccins = $entityManager->getRepository(Vaccine::class)->findAll();
         $animal = new Animals();
+
+        foreach($vaccins as $vaccin){
+            $vaccinated = new Vaccinated();
+            $vaccinated->addVaccineId($vaccin);
+            $animal->addVaccinated($vaccinated);
+        }
+
         $animal->SetUserId($this->getUser());
         
         $form = $this->createForm(AnimalType::class, $animal);
@@ -36,7 +43,12 @@ class AnimalController extends AbstractController
                 $photoProfileName = $fileUploader->upload($photoProfile);
                 $animal->setProfilePhoto($photoProfileName);
             }
-            $animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
+            foreach($animal->getVaccinateds() as $vaccinated){
+                if($vaccinated->getLastDateInjection()){
+                    $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
+                }
+            }
+            //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
 

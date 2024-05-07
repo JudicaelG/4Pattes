@@ -21,22 +21,9 @@ class EditVaccineDateAnimalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('next_recall', DateType::class, [
-            ])
             ->add('last_date_injection', DateType::class, [
-            ])
-            ->add('vaccine_id', EntityType::class, [
-                'class' => Vaccine::class,
-                'query_builder' => function(EntityRepository $er): QueryBuilder{
-                    return $er->createQueryBuilder('v')
-                    ->orderBy('v.name', 'ASC');
-                },
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'name',
-                'choice_value' => 'id',
-                'choice_name' => 'name',
-                'label' => 'Vaccins',
+                'label' => 'Date de la dernière injection',
+                'required' => false
             ])
         ;
     }
