@@ -21,44 +21,16 @@ use Symfony\Component\Form\Form;
  */
 class AnimalsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Animals::class, $entityManager);
+        parent::__construct($registry, Animals::class);
     }
 
-    public function saveAnimal(Animals $animal, $entityManager, $addVaccinated, $vaccines = null, $dateVaccine = null): Response{
+    public function saveAnimal(Animals $animal): Response{
         
-        if($animal->getId()){
-            $editAnimal = $entityManager->getRepository(Animals::class)->find($animal->getId());
-            if(!$editAnimal){
-                throw $this->createNotFoundException(
-                    'Pas d\'animal avec cette identifiant'
-                );
-            }
+        $entityManager = $this->getEntityManager();
 
-            $editAnimal->setName($animal->getName());
-            $editAnimal->SetBirthday($animal->getBirthday());
-            $editAnimal->SetWeight($animal->getWeight());
-            $editAnimal->SetBreedId($animal->getBreedId());
-            $editAnimal->SetUserId($animal->getUserId());
-            foreach($animal->getVaccinateds() as $vaccinated){
-                $editAnimal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
-            }
-            $entityManager->flush();
-
-            return new Response('Your animal has been modified !');
-        }
-
-        $newAnimal = new Animals();
-        $newAnimal->setName($animal->getName());
-        $newAnimal->SetBirthday($animal->getBirthday());
-        $newAnimal->SetWeight($animal->getWeight());
-        $newAnimal->SetBreedId($animal->getBreedId());
-        $newAnimal->SetUserId($animal->getUserId());
-        $newAnimal->setProfilePhoto($animal->getProfilePhoto());
-        $newAnimal = $addVaccinated->AddVaccine($vaccines, $dateVaccine, $animal);   
-
-        $entityManager->persist($newAnimal);
+        $entityManager->persist($animal);
 
         $entityManager->flush();
 

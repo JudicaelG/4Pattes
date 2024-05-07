@@ -36,8 +36,9 @@ class AnimalController extends AbstractController
                 $photoProfileName = $fileUploader->upload($photoProfile);
                 $animal->setProfilePhoto($photoProfileName);
             }
+            $animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
             $animalInsert = $animalRepository
-            ->saveAnimal($animal, $entityManager, $addVaccinated, $form->get('vaccine_id')->getData(), $form->get('vaccine_date'));
+            ->saveAnimal($animal);
 
             return $this->redirectToRoute('animal');
         }
@@ -56,15 +57,22 @@ class AnimalController extends AbstractController
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
+
+        if(!$animal){
+            return $this->redirectToRoute('animal');
+        }
+
         $form = $this->createForm(AnimalEditType::class, $animal);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 
 
             $animal = $form->getData();
-            
-            $animalInsert = $animalRepository
-            ->saveAnimal($animal, $entityManager, $addVaccinated, null, null );
+            foreach($animal->getVaccinateds() as $vaccinated){
+                $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
+            }
+
+            $entityManager->flush();
 
             return $this->redirectToRoute('animal');
         }
