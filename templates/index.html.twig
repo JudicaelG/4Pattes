@@ -5,15 +5,18 @@
 {% block body %}
     {% if app.user %}
     <h1 class="text-3xl font-bold my-3.5">
+    {% if animalsOfTheUser %}
         Bonjour, 
         {% for animal in animalsOfTheUser %}            
             {% if loop.last %}
                 {{animal.name}}
             {% else %}
                 {{animal.name}},
-            {% endif %}
-            
+            {% endif %}            
         {% endfor %}
+    {% else %}
+        Bonjour !
+    {% endif %}
     </h1>
 
     {{ include ('partial/animal-resume.html.twig', {animalsOfTheUser: animalsOfTheUser}) }}

@@ -10,7 +10,7 @@
 
 {% block body %}
     <h2>{% trans %}Mon animal{% endtrans %}</h2>
-    <div class="bg-card-secondary grid grid-cols-2 shadow-lg mx-3.5">
+    <div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5">
         <div>
             {{form_start(form)}}
                 <div class="mx-2 my-2">                    
@@ -38,16 +38,6 @@
                     <input type="file" name="{{field_name(form.profilePhoto)}}" value="{{field_value(form.profilePhoto)}}" class="w-full">
                     <span class="error-form">{{ form_errors(form.profilePhoto) }}</span>
                 </div>
-                {#<div class="mx-2 my-2" id="vaccine">
-                    {{ form_label(form.vaccine_id) }}
-                    {{ form_widget(form.vaccine_id) }}
-                    <span class="error-form">{{ form_errors(form.vaccine_id) }}</span>
-                </div>
-                <div class="mx-2 my-2 date_vaccine_input" id="date_vaccine">
-                   {{form_widget(form.vaccine_date)}}
-                   <span class="error-form">{{ form_errors(form.vaccine_date) }}</span>
-                </div>#}
-                
                 <div class="mx-2 my-2 ">
                     <label class="block">{% trans %}Vaccins{% endtrans %}</label>
                     <div class="grid grid-cols-4 gap-2.5">
@@ -71,7 +61,7 @@
             {{form_end(form)}}
             
         </div>
-        <div>
+        <div class="hidden lg:grid">
             <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
         </div>
     </div>

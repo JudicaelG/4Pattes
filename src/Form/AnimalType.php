@@ -25,20 +25,6 @@ class AnimalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {   
-        /*$entityMananger = $options['entityManager'];
-        
-        $vaccines = $entityMananger->getrepository(Vaccine::class)->findAll();
-
-
-        foreach($vaccines as $vaccin ){
-            $builder
-                ->add('date_'.$vaccin->getName(), DateType::class, [
-                    'label' => 'Date du vaccin '.$vaccin->getName(),
-                    'row_attr' => ['class' => 'hidden', 'id' => 'date_'.$vaccin->getName()],
-                    'mapped' => false,
-                ]);
-        }
-*/
         $builder
             ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('birthday', DateType::class, [
@@ -65,26 +51,6 @@ class AnimalType extends AbstractType
                     'mimeTypesMessage' => 'Vous ne pouvez upload que des images de type jpg ou png',
                 ]),
             ])
-            /*->add('vaccine_id', EntityType::class,[
-                'class' => Vaccine::class,
-                'query_builder' => function(EntityRepository $er): QueryBuilder{
-                    return $er->createQueryBuilder('v')
-                    ->orderBy('v.name', 'ASC');
-                },
-                'mapped' => false,
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'name',
-                'choice_value' => 'id',
-                'choice_name' => 'name',
-                'choice_attr' => function () { return ['onclick' => 'addingDateInput(this)'];},
-                'label' => 'Vaccins',
-            ])
-            ->add('vaccine_date', VaccinetedType::class, [
-                'label' => 'Date des vaccins',
-                'required' => false,
-                'mapped' => false,
-            ])*/
             ->add('vaccinateds', CollectionType::class,[
                 'entry_type' => EditVaccineDateAnimalType::class
             ])

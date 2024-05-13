@@ -2,17 +2,17 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
 use App\Entity\Breed;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Persistence\ObjectManager;
 
-class BreedFixtures extends Fixture implements FixtureGroupInterface
+class CatBreedFixtures extends Fixture implements FixtureGroupInterface
 {
     public function load(ObjectManager $manager): void
     {
         // Fonction pour récupérer les noms des races de chiens à partir d'une URL
-        function fetchDogBreeds($url) {
+        function fetchCatBreeds($url) {
             $breedNames = array();
 
             // Boucle pour parcourir toutes les pages
@@ -36,8 +36,8 @@ class BreedFixtures extends Fixture implements FixtureGroupInterface
                 }
 
                 // Extraction des noms des races de chiens de la page actuelle
-                foreach ($jsonData['data'] as $breedData) {
-                    $breedNames[] = $breedData['attributes']['name'];
+                foreach ($jsonData as $breedData) {
+                    $breedNames[] = $breedData['name'];
                 }
 
                 // Récupération de l'URL de la page suivante
@@ -53,16 +53,16 @@ class BreedFixtures extends Fixture implements FixtureGroupInterface
         }
 
         // URL de départ
-        $startUrl = "https://dogapi.dog/api/v2/breeds";
+        $startUrl = "https://api.thecatapi.com/v1/breeds";
 
         // Appel de la fonction pour récupérer les noms des races de chiens
-        $allBreeds = fetchDogBreeds($startUrl);
+        $allBreeds = fetchCatBreeds($startUrl);
 
         // Écriture des noms des races de chiens dans le fichier, un nom par ligne
         foreach ($allBreeds as $breedName) {
             $breed = new Breed();
             $breed->setName($breedName);
-            $breed->setType("dog");
+            $breed->setType("cat");
             $manager->persist($breed);
         }
 
