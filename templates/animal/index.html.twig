@@ -47,17 +47,20 @@
                    {{form_widget(form.vaccine_date)}}
                    <span class="error-form">{{ form_errors(form.vaccine_date) }}</span>
                 </div>#}
-                <label class="my-2 mx-2 block">{% trans %}Vaccins{% endtrans %}</label>
-                <div class="mx-2 my-2 grid grid-cols-4 gap-2.5">
-                {% for vaccinated in form.vaccinateds %}
-                    <div class="">
-                        {% for vaccine in vaccinated.vars.value.getVaccineId() %}
-                            {{ form_label(form.name, vaccine.name) }}
-                        {% endfor %}
-                        {{ form_widget(vaccinated) }}
-                        <span class="error-form">{{ form_errors(vaccinated) }}</span>
+                
+                <div class="mx-2 my-2 ">
+                    <label class="block">{% trans %}Vaccins{% endtrans %}</label>
+                    <div class="grid grid-cols-4 gap-2.5">
+                        {% for vaccinated in form.vaccinateds %}
+                            <div class="">
+                                {% for vaccine in vaccinated.vars.value.getVaccineId() %}
+                                    {{ form_label(form.name, vaccine.name) }}
+                                {% endfor %}
+                                {{ form_widget(vaccinated) }}
+                                <span class="error-form">{{ form_errors(vaccinated) }}</span>
+                            </div>
+                            {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
@@ -75,32 +78,6 @@
     {{ include ('partial/messages/delete-message.html.twig') }}
 
     <div class="grid grid-cols-2 gap-8 mx-3.5 mt-3.5">
-    
-        {% for animal in animalsOfUser %}
-
-            <div class="bg-card-secondary shadow-xl">
-                <section class="px-4 py-4">
-                    <h3>
-                    {% if animal.getProfilePhoto %}
-                        <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('uploads/animals/profilephoto/' ~ animal.getProfilePhoto())}}" />
-                    {% else %}
-                        <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('images/default/dog.JPG')}}" />  
-                    {% endif %}
-                        <span class="ml-4 font-bold inline">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
-                    <hr class="w-1/2 my-2">
-                    <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.getAge()}}</p>
-                    <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
-                    {% for vaccine in animal.getVaccinateds() %}
-                        {% for vaccineId in vaccine.getVaccineId() %}
-                            <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetNextRecall()|date("d/m/Y")}}</p>
-                        {% endfor %}
-                    {% endfor %}                    
-                    <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
-                </section>
-                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>
-                <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >{% trans %}Modifier{% endtrans %}</button></a>
-                <a class="float-right bg-primary p-2 text-white mx-4 my-4" animal-id="{{animal.id}}" onclick="askDelete({{animal.id}})"><button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
-            </div>
-        {% endfor %}
+        {{ include ('partial/animals/list-animals-by-user.html.twig', {animalsOfUser: animalsOfUser}) }}
     </div>
 {% endblock %}
