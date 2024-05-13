@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'tailwind_2_layout.html.twig' %}
+
+{% block title %}{% trans %}Mon animal{% endtrans %}{% endblock %}
+
+{% block body %}
+    {{form(form)}}
+{% endblock %}
