@@ -51,6 +51,7 @@ class AnimalsRepository extends ServiceEntityRepository
         ->innerJoin('v.vaccine_id', 'vc')
         ->addSelect('vc')
         ->andWhere('a.user_id = :userId')
+        ->orderBy('v.next_recall', 'asc')
         ->setParameter('userId', $userId)
         ->getQuery()
         ->getResult();
