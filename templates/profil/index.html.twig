@@ -1,8 +1,29 @@
 {% extends 'base.html.twig' %}
 {% form_theme form 'tailwind_2_layout.html.twig' %}
 
-{% block title %}{% trans %}Mon animal{% endtrans %}{% endblock %}
+{% block title %}{% trans %}Mon profil{% endtrans %}{% endblock %}
 
 {% block body %}
-    {{form(form)}}
+    <h2>{% trans %}Mon profil{% endtrans %}</h2>
+
+    <div class="grid grid-cols-1 mx-3.5">
+        {{form_start(form)}}
+        <div class="mx-2 my-2">                    
+            <label class="block">{{field_label(form.email)|trans}}</label>                    
+            <input name="{{field_name(form.email)}}" value="{{field_value(form.email)}}" class="w-full input-focus-red">
+            <span class="error-form">{{ form_errors(form.email) }}</span>
+        </div>
+        <div class="mx-2 my-2">                    
+            <label class="block">{{field_label(form.password)|trans}}</label>                    
+            <input type="password" name="{{field_name(form.password)}}" value="" class="w-full input-focus-red">
+            <span class="error-form">{{ form_errors(form.password) }}</span>
+        </div>
+        <div class="my-2 mx-2 float-right">
+            <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
+                {% trans %}Mettre à jour{% endtrans %}
+            </button>
+        </div>
+        {{form_rest(form)}}
+        {{form_end(form)}}
+    </div>
 {% endblock %}
