@@ -37,6 +37,7 @@ security:
     access_control:
         - {path: '^/animal', roles: ROLE_USER }
         - {path: '^/$', roles: ROLE_USER }
+        - {path: '^/profil', roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
