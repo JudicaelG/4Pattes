@@ -19,11 +19,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	acl \
 	file \
 	gettext \
+	zlib1g-dev \
+	libpng-dev \
 	git \
 	&& rm -rf /var/lib/apt/lists/*
 
+
 RUN set -eux; \
-	install-php-extensions @composer apcu intl opcache zip pdo pgsql pdo_pgsql;
+	install-php-extensions @composer apcu intl opcache zip pdo pgsql pdo_pgsql gd;
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1

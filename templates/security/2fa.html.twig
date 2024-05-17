@@ -1,0 +1,6 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<img src="{{ path('app_qr_code') }}" alt="2fa QR Code">
+{% include "@SchebTwoFactor/Authentication/form.html.twig" %}
+{% endblock %}
