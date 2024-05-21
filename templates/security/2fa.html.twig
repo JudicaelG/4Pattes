@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-{% include "@SchebTwoFactor/Authentication/form.html.twig" %}
+    <div class="min-h-screen flex items-center justify-center w-full">
+        <div class="bg-secondary dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
+            {% include "@SchebTwoFactor/Authentication/form.html.twig" %}
+        </div>
+    </div>
 {% endblock %}

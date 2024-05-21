@@ -43,9 +43,6 @@ class RegistrationController extends AbstractController
                 )
             );
             
-            $secret = $googleAuthenticator->generateSecret();
-            $user->setGoogleAuthenticatorSecret($secret);
-            
             $entityManager->persist($user);
             $entityManager->flush();
 

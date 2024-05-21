@@ -1,6 +1,6 @@
 <nav class="fixed lg:static bottom-0 z-50 w-full h-16 lg:top-0 text-base max-w-full lg:z-0">
     <div class="grid h-full grid-cols-1 mx-auto justify-items-center">
-        {% if app.user %}
+        {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
             <div class="semi-circle bg-primary shadow-t lg:rounded-none lg:w-full lg:h-16 lg:shadow-none lg:flex lg:items-center lg:justify-end">
                 <ul class="lg:hidden flex flex-auto flex-row">
                     <li class="rounded-full bg-button-menu p-2 menu-icon-profil"><a href="{{path('app_profil')}}"><img class="max-w-10" 
@@ -27,12 +27,6 @@
                     alt="Advice" src="{{ asset('images/icons/advice.svg') }}" />{%trans%}Conseil{%endtrans%}</a></li>
                 </ul>
             </div>
-        {% else %}
-            <ul class="lg:hidden flex flex-auto flex-row justify-between items-center">
-                <li><a href="{{ path('index') }}">4Pattes</a></li>
-                <li class="rounded-full bg-background"><a href="{{path('app_login')}}"><img class="max-w-10" 
-                alt="connnexion/inscription" src="{{ asset('images/icons/user.svg') }}" />{%trans%}Connexion{%endtrans%}</a></li>
-            </ul>
         {% endif %}
     </div>
 </nav>
