@@ -26,4 +26,12 @@
         {{form_rest(form)}}
         {{form_end(form)}}
     </div>
+     
+    <h2>{% trans %}Double authentication {% endtrans %}</h2>
+    {% if displayQrCodeGa %}
+        <p><img src="{{ path("app_qr_code") }}" /></p>
+    {% else %}
+        <a href="{{path("app_activate_2fa")}}"><button class="bg-primary p-2 text-white min-w-11">Activer le 2FA</button></a>
+    {% endif %}
+
 {% endblock %}

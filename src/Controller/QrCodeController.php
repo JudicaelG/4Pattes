@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
@@ -19,30 +21,17 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class QrCodeController extends AbstractController
 {
-    #[Route('/members/qr/ga', name: 'qr_code_ga')]
-    public function displayGoogleAuthenticatorQrCode(TokenStorageInterface $tokenStorage, GoogleAuthenticatorInterface $googleAuthenticator): Response
-    {
-        $user = $tokenStorage->getToken()->getUser();
-        if (!($user instanceof GoogleAuthenticatorTwoFactorInterface)) {
-            throw new NotFoundHttpException('Cannot display QR code');
-        }
+    #[Route('/activate/2fa', name: 'app_activate_2fa')]
+    public function activate2Fa(GoogleAuthenticatorInterface $googleAuthenticator, EntityManagerInterface $entityManager): Response
+    {   
+        $user = $entityManager->getRepository(User::class)->find($this->getUser()->getId());
 
-        return $this->displayQrCode($googleAuthenticator->getQRContent($user));
-    }
+                
+        $secret = $googleAuthenticator->generateSecret();
+        $user->setGoogleAuthenticatorSecret($secret);
 
-    private function displayQrCode(string $qrCodeContent): Response
-    {
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($qrCodeContent)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(ErrorCorrectionLevel::High)
-            ->size(200)
-            ->margin(0)
-            ->roundBlockSizeMode(RoundBlockSizeMode::Margin)
-            ->build();
-
-        return new Response($result->getString(), 200, ['Content-Type' => 'image/png']);
+        $entityManager->flush();
+        
+        return $this->redirectToRoute('app_profil');
     }
 }

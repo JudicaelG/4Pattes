@@ -6,9 +6,11 @@ use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface as GoogleAuthenticatorTwoFactorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class ProfilController extends AbstractController
@@ -16,10 +18,11 @@ class ProfilController extends AbstractController
 
 
     #[Route('/profil', name: 'app_profil')]
-    public function index(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, TokenStorageInterface $tokenStorage): Response
     {
 
         $user = $entityManager->getRepository(User::class)->find($this->getUser()->getId());
+        $userToken = $tokenStorage->getToken()->getUser();
 
         if(!$user){
             return $this->redirectToRoute('app_login');
@@ -43,7 +46,8 @@ class ProfilController extends AbstractController
         }
 
         return $this->render('profil/index.html.twig', [
-            'form' => $form
+            'form' => $form,
+            "displayQrCodeGa" => $userToken instanceof GoogleAuthenticatorTwoFactorInterface && $userToken->isGoogleAuthenticatorEnabled(),
         ]);
     }
 }
