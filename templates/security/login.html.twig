@@ -39,10 +39,16 @@
                         </label>
                     </div>
                 #}
-
-                <button class="my-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary" type="submit">
-                    Connexion
-                </button>
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="my-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary" type="submit">
+                        Connexion
+                    </button>
+                    <a href="{{path('app_register')}}">
+                        <button class="my-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary" type="button">
+                            Inscription
+                        </button>
+                    </a>
+                </div>
             </form>
         </div>
     </div>
