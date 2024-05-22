@@ -8,21 +8,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals;
-use App\Entity\User;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
-use Symfony\Component\Notifier\Notification\Notification;
-use Symfony\Component\Notifier\NotifierInterface;
-use Symfony\Component\Notifier\Recipient\Recipient;
 
 class AnimalController extends AbstractController
 {
     #[Route('/animal', name: 'animal')]
-    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated, NotifierInterface $notifier): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $vaccins = $entityManager->getRepository(Vaccine::class)->findAll();
@@ -55,9 +51,8 @@ class AnimalController extends AbstractController
             //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
-            
-            return $this->redirectToRoute('animal');
 
+            return $this->redirectToRoute('animal');
         }
 
         $animalsOfUser = $animalRepository        

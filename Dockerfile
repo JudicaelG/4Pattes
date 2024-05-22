@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 
 RUN set -eux; \
-	install-php-extensions @composer apcu intl opcache zip pdo pgsql pdo_pgsql gd;
+	install-php-extensions @composer apcu intl opcache zip pdo pgsql pdo_pgsql gd xml xsl;
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
