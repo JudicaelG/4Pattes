@@ -53,7 +53,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private Collection $participants;
 
     #[ORM\Column(type: 'string', nullable: true)]
-    private ?string $googleAuthenticatorSecret;
+    private ?string $googleAuthenticatorSecret = null;
 
     public function __construct()
     {
