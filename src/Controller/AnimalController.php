@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Form\AnimalCatType;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
 use App\Service\AddVaccinated;
@@ -33,12 +34,33 @@ class AnimalController extends AbstractController
         $animal->SetUserId($this->getUser());
         
         $form = $this->createForm(AnimalType::class, $animal);
+        $formCat = $this->createForm(AnimalCatType::class, $animal);
         
         $form->handleRequest($request);
+        $formCat->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 
             $animal = $form->getData();
             $photoProfile = $form->get('profilePhoto')->getData();
+            if($photoProfile){
+                $photoProfileName = $fileUploader->upload($photoProfile);
+                $animal->setProfilePhoto($photoProfileName);
+            }
+            foreach($animal->getVaccinateds() as $vaccinated){
+                if($vaccinated->getLastDateInjection()){
+                    $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
+                }
+            }
+            //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
+            $animalInsert = $animalRepository
+            ->saveAnimal($animal);
+
+            return $this->redirectToRoute('animal');
+        }
+        if($formCat->isSubmitted() && $formCat->isValid()){
+
+            $animal = $formCat->getData();
+            $photoProfile = $formCat->get('profilePhoto')->getData();
             if($photoProfile){
                 $photoProfileName = $fileUploader->upload($photoProfile);
                 $animal->setProfilePhoto($photoProfileName);
@@ -60,6 +82,8 @@ class AnimalController extends AbstractController
 
         return $this->render('animal/index.html.twig', [
             'form' => $form,
+            'formCat' => $formCat,
+            'animalTypeCat' => false,
             'animalsOfUser' => $animalsOfUser
         ]);
     }
@@ -69,13 +93,24 @@ class AnimalController extends AbstractController
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
+        $animalTypeCat = false;
+        $formCat = $this->createForm(AnimalCatType::class);
+        $form = $this->createForm(AnimalEditType::class);
 
         if(!$animal){
             return $this->redirectToRoute('animal');
         }
 
-        $form = $this->createForm(AnimalEditType::class, $animal);
+        if($animal->getBreedId()->gettype() == 'cat'){
+            $animalTypeCat = true;
+            $formCat = $this->createForm(AnimalCatType::class, $animal);
+        }else{
+            $form = $this->createForm(AnimalEditType::class, $animal);
+        }
+
+        
         $form->handleRequest($request);
+        $formCat->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 
 
@@ -89,10 +124,25 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('animal');
         }
 
+        if($formCat->isSubmitted() && $formCat->isValid()){
+
+
+            $animal = $formCat->getData();
+            foreach($animal->getVaccinateds() as $vaccinated){
+                $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
+            }
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('animal');
+        }
+
         $animalsOfUser = $animalRepository
         ->getConnectedUserAnimals($this->getUser()->GetId());
-        return $this->render('animal/edit.html.twig', [
+        return $this->render('animal/index.html.twig', [
             'form' => $form,
+            'formCat' => $formCat,
+            'animalTypeCat' => $animalTypeCat,
             'animalsOfUser' => $animalsOfUser
         ]);
 

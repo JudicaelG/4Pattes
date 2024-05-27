@@ -6,11 +6,16 @@
 {% block javascripts %}
             <script src="{{ asset('js/ModalConfirmationDelete.js') }}"></script>
             <script src="{{ asset('js/AddingDateVaccine.js') }}"></script>
+            <script src="{{ asset('js/ManageTabForm.js') }}"></script>
 {% endblock %}
 
 {% block body %}
     <h2>{% trans %}Mon animal{% endtrans %}</h2>
-    <div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5">
+    <div class=" mx-3.5 tab flex" animal-is="{{animalTypeCat}}">
+        <button class="tabLinks active" onclick="openForm(event, 'Dog')">Ajouter un chien</button>
+        <button class="tabLinks" onclick="openForm(event, 'Cat')" id="cat">Ajouter un chat</button>
+    </div>
+    <div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5 tabcontent tabcontent-active" id="Dog">
         <div>
             {{form_start(form)}}
                 <div class="mx-2 my-2">                    
@@ -59,6 +64,61 @@
                 </div>
                  {{form_rest(form)}}
             {{form_end(form)}}
+            
+        </div>
+        <div class="hidden lg:grid">
+            <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+        </div>
+    </div>
+    <div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5 tabcontent" id="Cat">
+        <div>
+            {{form_start(formCat)}}
+                <div class="mx-2 my-2">                    
+                    <label class="block">{{field_label(formCat.name)|trans}}</label>                    
+                    <input name="{{field_name(formCat.name)}}" value="{{field_value(formCat.name)}}" class="w-full input-focus-red">
+                    <span class="error-form">{{ form_errors(formCat.name) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(formCat.birthday)|trans}}</label>
+                    <input type="date" name="{{field_name(formCat.birthday)}}" value="{{field_value(formCat.birthday)}}" class="w-full input-focus-red">
+                    <span class="error-form">{{ form_errors(formCat.birthday) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(formCat.weight)|trans}}</label>
+                    <input type="number" name="{{field_name(formCat.weight)}}" value="{{field_value(formCat.weight)}}" class="w-full input-focus-red">
+                    <span class="error-form">{{ form_errors(formCat.weight) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(formCat.breed_id)|trans}}</label>
+                    {{ form_widget(formCat.breed_id) }}
+                    <span class="error-form">{{ form_errors(formCat.breed_id) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(formCat.profilePhoto)|trans}}</label>
+                    <input type="file" name="{{field_name(formCat.profilePhoto)}}" value="{{field_value(formCat.profilePhoto)}}" class="w-full">
+                    <span class="error-form">{{ form_errors(formCat.profilePhoto) }}</span>
+                </div>
+                <div class="mx-2 my-2 ">
+                    <label class="block">{% trans %}Vaccins{% endtrans %}</label>
+                    <div class="grid grid-cols-4 gap-2.5">
+                        {% for vaccinated in formCat.vaccinateds %}
+                            <div class="">
+                                {% for vaccine in vaccinated.vars.value.getVaccineId() %}
+                                    {{ form_label(formCat.name, vaccine.name) }}
+                                {% endfor %}
+                                {{ form_widget(vaccinated) }}
+                                <span class="error-form">{{ form_errors(vaccinated) }}</span>
+                            </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="my-2 mx-2 float-right">
+                    <button type="submit" id="{{field_label(formCat.save)}}" name="{{field_name(formCat.save)}}" class="bg-primary p-2 text-white min-w-11">
+                        {% trans %}Ajouter{% endtrans %}
+                    </button>
+                </div>
+                 {{form_rest(formCat)}}
+            {{form_end(formCat)}}
             
         </div>
         <div class="hidden lg:grid">

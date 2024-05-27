@@ -134,3 +134,21 @@ body {
     border-color: #B50707;
     border-width: 3px;
   }
+
+  .tabcontent {
+    display: none;
+  }
+
+  .tabcontent-active {
+    display:grid;
+  }
+
+  .tabLinks{
+    background-color: #D15B4B;
+    margin: 0;
+    padding: 0.5em;
+  }
+
+  .active{
+    background-color: #FEC4B7;    
+  }

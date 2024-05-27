@@ -21,7 +21,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AnimalType extends AbstractType
+class AnimalCatType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {   
@@ -34,13 +34,13 @@ class AnimalType extends AbstractType
                 'class' => Breed::class,
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('b')
-                        ->where('b.type=\'dog\'')
-                        ->orderBy('b.name', 'ASC');   
+                        ->where('b.type=\'cat\'')
+                        ->orderBy('b.name', 'ASC');                        
                 },
                 'group_by' => 'type',
                 'choice_label' => 'name',
                 'label' => 'Race',
-                
+                'attr' => ['class' => 'mt-1 w-full']
             ])
             ->add('weight', null, ['label' => 'Poids'])
             ->add('profilePhoto', FileType::class, [

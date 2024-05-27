@@ -23,7 +23,8 @@ class EditVaccineDateAnimalType extends AbstractType
         $builder
             ->add('last_date_injection', DateType::class, [
                 'label' => 'Date de la dernière injection',
-                'required' => false
+                'required' => false,
+                'attr' => ['class' => 'mt-1 w-full']
             ])
         ;
     }
