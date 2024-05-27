@@ -52,7 +52,42 @@ class CatBreedFixtures extends Fixture implements FixtureGroupInterface
             return $breedNames;
         }
 
-        // URL de départ
+        $filePath = __DIR__ . '/catBreed.json';
+
+        // Vérifier si le fichier existe
+        if (!file_exists($filePath)) {
+            die('Le fichier ' . $filePath . ' est introuvable.');
+        }
+
+        $jsonData = file_get_contents($filePath);
+
+        // Vérifier si le fichier a été lu correctement
+        if ($jsonData === false) {
+            die('Erreur de lecture du fichier data.json');
+        }
+
+        // Décoder le JSON en tableau associatif
+        $data = json_decode($jsonData, true);
+
+        // Vérifier si le JSON a été correctement décodé
+        if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+            die('Erreur de décodage JSON : ' . json_last_error_msg());
+        }
+
+        // Vérifier si Dataset_1 existe
+        if (!isset($data['Dataset_1'])) {
+            die('Dataset_1 est manquant dans les données JSON');
+        }
+
+        // Lire et afficher chaque ligne de Dataset_1
+        foreach ($data['Dataset_1'] as $row) {
+            $breed = new Breed();
+            $breed->setName($row['Race']);
+            $breed->setType("cat");
+            $manager->persist($breed);
+        }
+
+        /*// URL de départ
         $startUrl = "https://api.thecatapi.com/v1/breeds";
 
         // Appel de la fonction pour récupérer les noms des races de chiens
@@ -64,7 +99,7 @@ class CatBreedFixtures extends Fixture implements FixtureGroupInterface
             $breed->setName($breedName);
             $breed->setType("cat");
             $manager->persist($breed);
-        }
+        }*/
 
         $manager->flush();
     }

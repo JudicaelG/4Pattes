@@ -1,0 +1,2044 @@
+{
+  "Dataset_1": [
+    {
+      "Column_1": "Affenpinscher"
+    },
+    {
+      "Column_1": "Chien courant d'Istrie à poil dur"
+    },
+    {
+      "Column_1": "Chien courant d'Istrie à poil ras"
+    },
+    {
+      "Column_1": "Chien courant de Bosnie"
+    },
+    {
+      "Column_1": "Chien courant de Halden"
+    },
+    {
+      "Column_1": "Chien courant de Hamilton"
+    },
+    {
+      "Column_1": "Chien courant de Hygen"
+    },
+    {
+      "Column_1": "Chien courant de Posavatz"
+    },
+    {
+      "Column_1": "Chien courant de Schiller"
+    },
+    {
+      "Column_1": "Chien courant de Transylvanie"
+    },
+    {
+      "Column_1": "Chien courant du Småland"
+    },
+    {
+      "Column_1": "Chien courant espagnol"
+    },
+    {
+      "Column_1": "Chien courant Finnois"
+    },
+    {
+      "Column_1": "Chien courant grec"
+    },
+    {
+      "Column_1": "Chien courant italien"
+    },
+    {
+      "Column_1": "Chien courant norvégien"
+    },
+    {
+      "Column_1": "Chien courant serbe"
+    },
+    {
+      "Column_1": "Chien courant slovaque"
+    },
+    {
+      "Column_1": "Chien chinois à crête"
+    },
+    {
+      "Column_1": "Chien courant suisse"
+    },
+    {
+      "Column_1": "Chesapeake Bay Retriever"
+    },
+    {
+      "Column_1": "Cavalier King Charles Spaniel"
+    },
+    {
+      "Column_1": "Braque Hongrois à poil court"
+    },
+    {
+      "Column_1": "Braque hongrois à poil dur"
+    },
+    {
+      "Column_1": "Braque Italien"
+    },
+    {
+      "Column_1": "Braque Saint-Germain"
+    },
+    {
+      "Column_1": "Braque Slovaque à poil dur"
+    },
+    {
+      "Column_1": "Briquet Griffon Vendéen"
+    },
+    {
+      "Column_1": "Broholmer"
+    },
+    {
+      "Column_1": "Buhund Norvégien"
+    },
+    {
+      "Column_1": "Bull Terrier"
+    },
+    {
+      "Column_1": "Bulldog Anglais"
+    },
+    {
+      "Column_1": "Bulldog Continental"
+    },
+    {
+      "Column_1": "Bullmastiff"
+    },
+    {
+      "Column_1": "Cairn Terrier"
+    },
+    {
+      "Column_1": "Cane Corso"
+    },
+    {
+      "Column_1": "Caniche"
+    },
+    {
+      "Column_1": "Cao de Castro Laboreiro"
+    },
+    {
+      "Column_1": "Carlin"
+    },
+    {
+      "Column_1": "Cavapoo"
+    },
+    {
+      "Column_1": "Chien courant yougoslave de montagne"
+    },
+    {
+      "Column_1": "Chien courant yougoslave tricolore"
+    },
+    {
+      "Column_1": "Chien d'arrêt frison"
+    },
+    {
+      "Column_1": "Chien d’Élan Norvégien Noir"
+    },
+    {
+      "Column_1": "Chien d’élan suédois"
+    },
+    {
+      "Column_1": "Chien Finnois de Laponie"
+    },
+    {
+      "Column_1": "Chien Jindo Coréen"
+    },
+    {
+      "Column_1": "Chien Loup de Saarloos"
+    },
+    {
+      "Column_1": "Chien Loup Tchécoslovaque"
+    },
+    {
+      "Column_1": "Chien norvégien de Macareux"
+    },
+    {
+      "Column_1": "Chien nu du Pérou"
+    },
+    {
+      "Column_1": "Chien nu mexicain"
+    },
+    {
+      "Column_1": "Chien rouge de Bavière"
+    },
+    {
+      "Column_1": "Chien rouge de Hanovre"
+    },
+    {
+      "Column_1": "Chien suédois de Laponie"
+    },
+    {
+      "Column_1": "Chien thaïlandais"
+    },
+    {
+      "Column_1": "Chihuahua"
+    },
+    {
+      "Column_1": "Chow Chow"
+    },
+    {
+      "Column_1": "Cirneco de l’Etna"
+    },
+    {
+      "Column_1": "Clumber-Spaniel"
+    },
+    {
+      "Column_1": "Chien d’élan norvégien gris"
+    },
+    {
+      "Column_1": "Chien d’Artois"
+    },
+    {
+      "Column_1": "Chien d’arrêt allemand à poil long"
+    },
+    {
+      "Column_1": "Chien du pharaon"
+    },
+    {
+      "Column_1": "Chien d'arrêt portugais"
+    },
+    {
+      "Column_1": "Chien d'eau américain"
+    },
+    {
+      "Column_1": "Chien d'eau espagnol"
+    },
+    {
+      "Column_1": "Chien d'eau frison"
+    },
+    {
+      "Column_1": "Chien d'eau irlandais"
+    },
+    {
+      "Column_1": "Chien d'Eau Portugais"
+    },
+    {
+      "Column_1": "Chien d'eau romagnol"
+    },
+    {
+      "Column_1": "Chien d'ours de Carélie"
+    },
+    {
+      "Column_1": "Braque Français"
+    },
+    {
+      "Column_1": "Chien d'Oysel"
+    },
+    {
+      "Column_1": "Chien de berger de Majorque"
+    },
+    {
+      "Column_1": "Chien de Berger Roumain de Mioritza"
+    },
+    {
+      "Column_1": "Chien de Berger Roumain des Carpathes"
+    },
+    {
+      "Column_1": "Chien de Canaan"
+    },
+    {
+      "Column_1": "Chien de montagne des Pyrénées"
+    },
+    {
+      "Column_1": "Chien de montagne portugais"
+    },
+    {
+      "Column_1": "Chien de Saint Hubert"
+    },
+    {
+      "Column_1": "Chien du Groenland"
+    },
+    {
+      "Column_1": "Chien de berger de Croatie"
+    },
+    {
+      "Column_1": "Cocker Américain"
+    },
+    {
+      "Column_1": "Braque du Bourbonnais"
+    },
+    {
+      "Column_1": "Braque de l'Ariège"
+    },
+    {
+      "Column_1": "Berger Allemand"
+    },
+    {
+      "Column_1": "Berger Américain Miniature"
+    },
+    {
+      "Column_1": "Berger Australien"
+    },
+    {
+      "Column_1": "Berger Belge Groenendael"
+    },
+    {
+      "Column_1": "Berger Belge Laekenois"
+    },
+    {
+      "Column_1": "Berger Belge Malinois"
+    },
+    {
+      "Column_1": "Berger Belge Tervueren"
+    },
+    {
+      "Column_1": "Berger Blanc Suisse"
+    },
+    {
+      "Column_1": "Berger Catalan"
+    },
+    {
+      "Column_1": "Berger d'Anatolie"
+    },
+    {
+      "Column_1": "Berger d'Asie Centrale"
+    },
+    {
+      "Column_1": "Berger de Bergame"
+    },
+    {
+      "Column_1": "Berger de Bohême"
+    },
+    {
+      "Column_1": "Berger de Brie"
+    },
+    {
+      "Column_1": "Berger de l'Atlas"
+    },
+    {
+      "Column_1": "Berger de Maremme et des Abruzzes"
+    },
+    {
+      "Column_1": "Berger de Picardie"
+    },
+    {
+      "Column_1": "Bedlington Terrier"
+    },
+    {
+      "Column_1": "Berger de Russie"
+    },
+    {
+      "Column_1": "Beauceron"
+    },
+    {
+      "Column_1": "Beagle-Harrier"
+    },
+    {
+      "Column_1": "Akita Américain"
+    },
+    {
+      "Column_1": "Akita Inu"
+    },
+    {
+      "Column_1": "American Staffordshire Terrier"
+    },
+    {
+      "Column_1": "Ancien chien d'arrêt danois"
+    },
+    {
+      "Column_1": "Anglo-Français de Petite Vènerie"
+    },
+    {
+      "Column_1": "Ariégeois"
+    },
+    {
+      "Column_1": "Barbet"
+    },
+    {
+      "Column_1": "Barbu Tchèque"
+    },
+    {
+      "Column_1": "Barzoï"
+    },
+    {
+      "Column_1": "Basenji"
+    },
+    {
+      "Column_1": "Basset Artésien-Normand"
+    },
+    {
+      "Column_1": "Basset Bleu de Gascogne"
+    },
+    {
+      "Column_1": "Basset de Westphalie"
+    },
+    {
+      "Column_1": "Basset des Alpes"
+    },
+    {
+      "Column_1": "Basset Fauve de Bretagne"
+    },
+    {
+      "Column_1": "Basset Hound"
+    },
+    {
+      "Column_1": "Beagle"
+    },
+    {
+      "Column_1": "Bearded Collie"
+    },
+    {
+      "Column_1": "Berger de Savoie"
+    },
+    {
+      "Column_1": "Berger des Pyrénées"
+    },
+    {
+      "Column_1": "Berger des Shetland"
+    },
+    {
+      "Column_1": "Bouledogue Français"
+    },
+    {
+      "Column_1": "Bouvier Australien"
+    },
+    {
+      "Column_1": "Bouvier Bernois"
+    },
+    {
+      "Column_1": "Bouvier d'Appenzell"
+    },
+    {
+      "Column_1": "Bouvier de l'Entlebuch"
+    },
+    {
+      "Column_1": "Bouvier des Ardennes"
+    },
+    {
+      "Column_1": "Bouvier des Flandres"
+    },
+    {
+      "Column_1": "Boxer"
+    },
+    {
+      "Column_1": "Brachet Allemand"
+    },
+    {
+      "Column_1": "Brachet autrichien noir et feu"
+    },
+    {
+      "Column_1": "Brachet de Styrie à poil dur"
+    },
+    {
+      "Column_1": "Brachet Polonais"
+    },
+    {
+      "Column_1": "Brachet Tyrolien"
+    },
+    {
+      "Column_1": "Braque allemand à poil court"
+    },
+    {
+      "Column_1": "Braque allemand à poil dur"
+    },
+    {
+      "Column_1": "Braque d'Auvergne"
+    },
+    {
+      "Column_1": "Braque de Burgos"
+    },
+    {
+      "Column_1": "Bouledogue Américain"
+    },
+    {
+      "Column_1": "Boston Terrier"
+    },
+    {
+      "Column_1": "Border Terrier"
+    },
+    {
+      "Column_1": "Border Collie"
+    },
+    {
+      "Column_1": "Berger du Caucase"
+    },
+    {
+      "Column_1": "Berger du massif du Karst"
+    },
+    {
+      "Column_1": "Berger finnois de Laponie"
+    },
+    {
+      "Column_1": "Berger Hollandais"
+    },
+    {
+      "Column_1": "Berger Islandais"
+    },
+    {
+      "Column_1": "Berger Polonais de Plaine"
+    },
+    {
+      "Column_1": "Berger Polonais de Podhale"
+    },
+    {
+      "Column_1": "Berger Portugais"
+    },
+    {
+      "Column_1": "Braque de Weimar"
+    },
+    {
+      "Column_1": "Berger Yougoslave"
+    },
+    {
+      "Column_1": "Bichon Bolonais"
+    },
+    {
+      "Column_1": "Bichon Havanais"
+    },
+    {
+      "Column_1": "Bichon Maltais"
+    },
+    {
+      "Column_1": "Biewer Yorkshire"
+    },
+    {
+      "Column_1": "Billy"
+    },
+    {
+      "Column_1": "Black and Tan Coonhound"
+    },
+    {
+      "Column_1": "Bobtail"
+    },
+    {
+      "Column_1": "Boerbull"
+    },
+    {
+      "Column_1": "Bichon à poil frisé"
+    },
+    {
+      "Column_1": "Airedale Terrier"
+    },
+    {
+      "Column_1": "Cocker Anglais"
+    },
+    {
+      "Column_1": "Colley à poil long"
+    },
+    {
+      "Column_1": "Pitbull"
+    },
+    {
+      "Column_1": "Podenco Canario"
+    },
+    {
+      "Column_1": "Podenco Ibicenco"
+    },
+    {
+      "Column_1": "Podengo portugais"
+    },
+    {
+      "Column_1": "Pointer Anglais"
+    },
+    {
+      "Column_1": "Poitevin"
+    },
+    {
+      "Column_1": "Pomsky"
+    },
+    {
+      "Column_1": "Porcelaine"
+    },
+    {
+      "Column_1": "Pudelpointer"
+    },
+    {
+      "Column_1": "Puli"
+    },
+    {
+      "Column_1": "Pumi"
+    },
+    {
+      "Column_1": "Ratonero Bodeguero Andaluz"
+    },
+    {
+      "Column_1": "Retriever de la Nouvelle-Écosse"
+    },
+    {
+      "Column_1": "Rhodesian-Ridgeback"
+    },
+    {
+      "Column_1": "Rottweiler"
+    },
+    {
+      "Column_1": "Saint-Bernard"
+    },
+    {
+      "Column_1": "Saluki"
+    },
+    {
+      "Column_1": "Pinscher Nain"
+    },
+    {
+      "Column_1": "Samoyède"
+    },
+    {
+      "Column_1": "Pinscher autrichien à poil court"
+    },
+    {
+      "Column_1": "Petit Lévrier Italien"
+    },
+    {
+      "Column_1": "Mastiff"
+    },
+    {
+      "Column_1": "Mâtin de l'Alentejo"
+    },
+    {
+      "Column_1": "Mâtin de Naples"
+    },
+    {
+      "Column_1": "Mâtin des Pyrénées"
+    },
+    {
+      "Column_1": "Mâtin Espagnol"
+    },
+    {
+      "Column_1": "Mudi"
+    },
+    {
+      "Column_1": "Norfolk Terrier"
+    },
+    {
+      "Column_1": "Norwich Terrier"
+    },
+    {
+      "Column_1": "Otterhound"
+    },
+    {
+      "Column_1": "Parson Russell Terrier"
+    },
+    {
+      "Column_1": "Pékinois"
+    },
+    {
+      "Column_1": "Petit Basset Griffon vendéen"
+    },
+    {
+      "Column_1": "Petit Brabançon"
+    },
+    {
+      "Column_1": "Petit Chien Courant Suisse"
+    },
+    {
+      "Column_1": "Petit chien hollandais de chasse au gibier d'eau"
+    },
+    {
+      "Column_1": "Petit Chien Lion"
+    },
+    {
+      "Column_1": "Petit Epagneul de Münster"
+    },
+    {
+      "Column_1": "Pinscher"
+    },
+    {
+      "Column_1": "Schapendoes"
+    },
+    {
+      "Column_1": "Schipperke"
+    },
+    {
+      "Column_1": "Schnauzer"
+    },
+    {
+      "Column_1": "Teckel"
+    },
+    {
+      "Column_1": "Terre-Neuve"
+    },
+    {
+      "Column_1": "Terrier australien"
+    },
+    {
+      "Column_1": "Terrier brésilien"
+    },
+    {
+      "Column_1": "Terrier de Manchester"
+    },
+    {
+      "Column_1": "Terrier Ecossais"
+    },
+    {
+      "Column_1": "Terrier japonais"
+    },
+    {
+      "Column_1": "Terrier Noir Russe"
+    },
+    {
+      "Column_1": "Terrier tchèque"
+    },
+    {
+      "Column_1": "Terrier Tibétain"
+    },
+    {
+      "Column_1": "Tosa"
+    },
+    {
+      "Column_1": "Volpino Italien"
+    },
+    {
+      "Column_1": "Welsh Corgi Cardigan"
+    },
+    {
+      "Column_1": "Welsh Corgi Pembroke"
+    },
+    {
+      "Column_1": "Welsh Springer Spaniel"
+    },
+    {
+      "Column_1": "Welsh Terrier"
+    },
+    {
+      "Column_1": "West Highland White Terrier"
+    },
+    {
+      "Column_1": "Tchouvatch Slovaque"
+    },
+    {
+      "Column_1": "Sussex-Spaniel"
+    },
+    {
+      "Column_1": "Staffordshire Bull Terrier"
+    },
+    {
+      "Column_1": "Springer Anglais"
+    },
+    {
+      "Column_1": "Sealyham Terrier"
+    },
+    {
+      "Column_1": "Setter Anglais"
+    },
+    {
+      "Column_1": "Setter Gordon"
+    },
+    {
+      "Column_1": "Setter Irlandais Rouge"
+    },
+    {
+      "Column_1": "Shar-Pei"
+    },
+    {
+      "Column_1": "Shiba Inu"
+    },
+    {
+      "Column_1": "Shih Tzu"
+    },
+    {
+      "Column_1": "Shikoku"
+    },
+    {
+      "Column_1": "Maltipoo"
+    },
+    {
+      "Column_1": "Silky Terrier"
+    },
+    {
+      "Column_1": "Sloughi"
+    },
+    {
+      "Column_1": "Smous des Pays-Bas"
+    },
+    {
+      "Column_1": "Spinone"
+    },
+    {
+      "Column_1": "Spitz Allemand"
+    },
+    {
+      "Column_1": "Spitz de Norrbotten"
+    },
+    {
+      "Column_1": "Spitz des Wisigoths"
+    },
+    {
+      "Column_1": "Spitz Finlandais"
+    },
+    {
+      "Column_1": "Spitz Japonais"
+    },
+    {
+      "Column_1": "Skye Terrier"
+    },
+    {
+      "Column_1": "Colley à poil court"
+    },
+    {
+      "Column_1": "Malamute de l'Alaska"
+    },
+    {
+      "Column_1": "Lévrier Polonais"
+    },
+    {
+      "Column_1": "Epagneul Picard"
+    },
+    {
+      "Column_1": "Epagneul Tibétain"
+    },
+    {
+      "Column_1": "Eurasier"
+    },
+    {
+      "Column_1": "Eurohound"
+    },
+    {
+      "Column_1": "Field-Spaniel"
+    },
+    {
+      "Column_1": "Fila Brasileiro"
+    },
+    {
+      "Column_1": "Fila de Sao Miguel"
+    },
+    {
+      "Column_1": "Flat-Coated Retriever"
+    },
+    {
+      "Column_1": "Fox Terrier"
+    },
+    {
+      "Column_1": "Foxhound américain"
+    },
+    {
+      "Column_1": "Foxhound anglais"
+    },
+    {
+      "Column_1": "Golden Retriever"
+    },
+    {
+      "Column_1": "Goldendoodle"
+    },
+    {
+      "Column_1": "Grand Anglo-Français blanc et noir"
+    },
+    {
+      "Column_1": "Grand Anglo-Français blanc et orange"
+    },
+    {
+      "Column_1": "Grand Anglo-Français tricolore"
+    },
+    {
+      "Column_1": "Grand Basset Griffon vendéen"
+    },
+    {
+      "Column_1": "Epagneul Nain Continental"
+    },
+    {
+      "Column_1": "Grand Bouvier Suisse"
+    },
+    {
+      "Column_1": "Epagneul Japonais"
+    },
+    {
+      "Column_1": "Epagneul de Pont-Audemer"
+    },
+    {
+      "Column_1": "Coton de Tuléar"
+    },
+    {
+      "Column_1": "Curly Coated Retriever"
+    },
+    {
+      "Column_1": "Cursinu"
+    },
+    {
+      "Column_1": "Dalmatien"
+    },
+    {
+      "Column_1": "Dandie-Dinmont-Terrier"
+    },
+    {
+      "Column_1": "Dobermann"
+    },
+    {
+      "Column_1": "Dogo Canario"
+    },
+    {
+      "Column_1": "Dogue Allemand"
+    },
+    {
+      "Column_1": "Dogue Argentin"
+    },
+    {
+      "Column_1": "Dogue de Bordeaux"
+    },
+    {
+      "Column_1": "Dogue de Majorque"
+    },
+    {
+      "Column_1": "Dogue du Tibet"
+    },
+    {
+      "Column_1": "Drever"
+    },
+    {
+      "Column_1": "English Toy Terrier"
+    },
+    {
+      "Column_1": "Epagneul à perdrix de Drente"
+    },
+    {
+      "Column_1": "Epagneul Bleu de Picardie"
+    },
+    {
+      "Column_1": "Epagneul Breton"
+    },
+    {
+      "Column_1": "Epagneul Français"
+    },
+    {
+      "Column_1": "Grand Épagneul de Münster"
+    },
+    {
+      "Column_1": "Grand Gascon saintongeois"
+    },
+    {
+      "Column_1": "Grand Griffon Vendéen"
+    },
+    {
+      "Column_1": "Komondor"
+    },
+    {
+      "Column_1": "Kromfohrländer"
+    },
+    {
+      "Column_1": "Kuvasz Hongrois"
+    },
+    {
+      "Column_1": "Labradoodle"
+    },
+    {
+      "Column_1": "Labrador Retriever"
+    },
+    {
+      "Column_1": "Laïka de Sibérie occidentale"
+    },
+    {
+      "Column_1": "Laïka de Sibérie orientale"
+    },
+    {
+      "Column_1": "Laïka Russo-Européen"
+    },
+    {
+      "Column_1": "Lakeland Terrier"
+    },
+    {
+      "Column_1": "Landseer"
+    },
+    {
+      "Column_1": "Leonberger"
+    },
+    {
+      "Column_1": "Lévrier Afghan"
+    },
+    {
+      "Column_1": "Lévrier Azawakh"
+    },
+    {
+      "Column_1": "Lévrier Écossais"
+    },
+    {
+      "Column_1": "Lévrier Espagnol"
+    },
+    {
+      "Column_1": "Lévrier Hongrois"
+    },
+    {
+      "Column_1": "Lévrier Irlandais"
+    },
+    {
+      "Column_1": "Kishu"
+    },
+    {
+      "Column_1": "King Charles Spaniel"
+    },
+    {
+      "Column_1": "Kerry Blue Terrier"
+    },
+    {
+      "Column_1": "Kelpie"
+    },
+    {
+      "Column_1": "Greyhound"
+    },
+    {
+      "Column_1": "Greyster"
+    },
+    {
+      "Column_1": "Griffon Belge"
+    },
+    {
+      "Column_1": "Griffon Bleu de Gascogne"
+    },
+    {
+      "Column_1": "Griffon Bruxellois"
+    },
+    {
+      "Column_1": "Griffon fauve de Bretagne"
+    },
+    {
+      "Column_1": "Griffon Korthals"
+    },
+    {
+      "Column_1": "Griffon Nivernais"
+    },
+    {
+      "Column_1": "Lhassa Apso"
+    },
+    {
+      "Column_1": "Harrier"
+    },
+    {
+      "Column_1": "Hovawart"
+    },
+    {
+      "Column_1": "Husky Sibérien"
+    },
+    {
+      "Column_1": "Irish Glen of Imaal Terrier"
+    },
+    {
+      "Column_1": "Irish Terrier"
+    },
+    {
+      "Column_1": "Irish Terrier à poil doux"
+    },
+    {
+      "Column_1": "Jack Russell Terrier"
+    },
+    {
+      "Column_1": "Jagdterrier"
+    },
+    {
+      "Column_1": "Kai"
+    },
+    {
+      "Column_1": "Hokkaïdo Ken"
+    },
+    {
+      "Column_1": "Affenpinscher"
+    },
+    {
+      "Column_1": "Yorkshire Terrier"
+    },
+    {
+      "Column_1": "Whippet"
+    },
+    {
+      "Column_1": "Chien chinois à crête"
+    },
+    {
+      "Column_1": "Chien courant d'Istrie à poil dur"
+    },
+    {
+      "Column_1": "Chien courant d'Istrie à poil ras"
+    },
+    {
+      "Column_1": "Chien courant de Bosnie"
+    },
+    {
+      "Column_1": "Chien courant de Halden"
+    },
+    {
+      "Column_1": "Chien courant de Hamilton"
+    },
+    {
+      "Column_1": "Chien courant de Hygen"
+    },
+    {
+      "Column_1": "Chien courant de Posavatz"
+    },
+    {
+      "Column_1": "Chien courant de Schiller"
+    },
+    {
+      "Column_1": "Chien courant de Transylvanie"
+    },
+    {
+      "Column_1": "Chien courant du Småland"
+    },
+    {
+      "Column_1": "Chien courant espagnol"
+    },
+    {
+      "Column_1": "Chien courant Finnois"
+    },
+    {
+      "Column_1": "Chien courant grec"
+    },
+    {
+      "Column_1": "Chien courant italien"
+    },
+    {
+      "Column_1": "Chien courant norvégien"
+    },
+    {
+      "Column_1": "Chien courant serbe"
+    },
+    {
+      "Column_1": "Chesapeake Bay Retriever"
+    },
+    {
+      "Column_1": "Chien courant slovaque"
+    },
+    {
+      "Column_1": "Cavapoo"
+    },
+    {
+      "Column_1": "Carlin"
+    },
+    {
+      "Column_1": "Braque Français"
+    },
+    {
+      "Column_1": "Braque Hongrois à poil court"
+    },
+    {
+      "Column_1": "Braque hongrois à poil dur"
+    },
+    {
+      "Column_1": "Braque Italien"
+    },
+    {
+      "Column_1": "Braque Saint-Germain"
+    },
+    {
+      "Column_1": "Braque Slovaque à poil dur"
+    },
+    {
+      "Column_1": "Briquet Griffon Vendéen"
+    },
+    {
+      "Column_1": "Broholmer"
+    },
+    {
+      "Column_1": "Buhund Norvégien"
+    },
+    {
+      "Column_1": "Bull Terrier"
+    },
+    {
+      "Column_1": "Bulldog Anglais"
+    },
+    {
+      "Column_1": "Bulldog Continental"
+    },
+    {
+      "Column_1": "Bullmastiff"
+    },
+    {
+      "Column_1": "Cairn Terrier"
+    },
+    {
+      "Column_1": "Cane Corso"
+    },
+    {
+      "Column_1": "Caniche"
+    },
+    {
+      "Column_1": "Cao de Castro Laboreiro"
+    },
+    {
+      "Column_1": "Cavalier King Charles Spaniel"
+    },
+    {
+      "Column_1": "Chien courant suisse"
+    },
+    {
+      "Column_1": "Chien courant yougoslave de montagne"
+    },
+    {
+      "Column_1": "Chien courant yougoslave tricolore"
+    },
+    {
+      "Column_1": "Chien d’élan norvégien gris"
+    },
+    {
+      "Column_1": "Chien d’Élan Norvégien Noir"
+    },
+    {
+      "Column_1": "Chien d’élan suédois"
+    },
+    {
+      "Column_1": "Chien Finnois de Laponie"
+    },
+    {
+      "Column_1": "Chien Jindo Coréen"
+    },
+    {
+      "Column_1": "Chien Loup de Saarloos"
+    },
+    {
+      "Column_1": "Chien Loup Tchécoslovaque"
+    },
+    {
+      "Column_1": "Chien norvégien de Macareux"
+    },
+    {
+      "Column_1": "Chien nu du Pérou"
+    },
+    {
+      "Column_1": "Chien nu mexicain"
+    },
+    {
+      "Column_1": "Chien rouge de Bavière"
+    },
+    {
+      "Column_1": "Chien rouge de Hanovre"
+    },
+    {
+      "Column_1": "Chien suédois de Laponie"
+    },
+    {
+      "Column_1": "Chien thaïlandais"
+    },
+    {
+      "Column_1": "Chihuahua"
+    },
+    {
+      "Column_1": "Chow Chow"
+    },
+    {
+      "Column_1": "Cirneco de l’Etna"
+    },
+    {
+      "Column_1": "Chien d’Artois"
+    },
+    {
+      "Column_1": "Chien d’arrêt allemand à poil long"
+    },
+    {
+      "Column_1": "Chien du pharaon"
+    },
+    {
+      "Column_1": "Chien du Groenland"
+    },
+    {
+      "Column_1": "Chien d'arrêt frison"
+    },
+    {
+      "Column_1": "Chien d'arrêt portugais"
+    },
+    {
+      "Column_1": "Chien d'eau américain"
+    },
+    {
+      "Column_1": "Chien d'eau espagnol"
+    },
+    {
+      "Column_1": "Chien d'eau frison"
+    },
+    {
+      "Column_1": "Chien d'eau irlandais"
+    },
+    {
+      "Column_1": "Chien d'Eau Portugais"
+    },
+    {
+      "Column_1": "Chien d'eau romagnol"
+    },
+    {
+      "Column_1": "Braque du Bourbonnais"
+    },
+    {
+      "Column_1": "Chien d'ours de Carélie"
+    },
+    {
+      "Column_1": "Chien de berger de Croatie"
+    },
+    {
+      "Column_1": "Chien de berger de Majorque"
+    },
+    {
+      "Column_1": "Chien de Berger Roumain de Mioritza"
+    },
+    {
+      "Column_1": "Chien de Berger Roumain des Carpathes"
+    },
+    {
+      "Column_1": "Chien de Canaan"
+    },
+    {
+      "Column_1": "Chien de montagne des Pyrénées"
+    },
+    {
+      "Column_1": "Chien de montagne portugais"
+    },
+    {
+      "Column_1": "Chien de Saint Hubert"
+    },
+    {
+      "Column_1": "Chien d'Oysel"
+    },
+    {
+      "Column_1": "Clumber-Spaniel"
+    },
+    {
+      "Column_1": "Braque de Weimar"
+    },
+    {
+      "Column_1": "Braque de Burgos"
+    },
+    {
+      "Column_1": "Bedlington Terrier"
+    },
+    {
+      "Column_1": "Berger Allemand"
+    },
+    {
+      "Column_1": "Berger Américain Miniature"
+    },
+    {
+      "Column_1": "Berger Australien"
+    },
+    {
+      "Column_1": "Berger Belge Groenendael"
+    },
+    {
+      "Column_1": "Berger Belge Laekenois"
+    },
+    {
+      "Column_1": "Berger Belge Malinois"
+    },
+    {
+      "Column_1": "Berger Belge Tervueren"
+    },
+    {
+      "Column_1": "Berger Blanc Suisse"
+    },
+    {
+      "Column_1": "Berger Catalan"
+    },
+    {
+      "Column_1": "Berger d'Anatolie"
+    },
+    {
+      "Column_1": "Berger d'Asie Centrale"
+    },
+    {
+      "Column_1": "Berger de Bergame"
+    },
+    {
+      "Column_1": "Berger de Bohême"
+    },
+    {
+      "Column_1": "Berger de Brie"
+    },
+    {
+      "Column_1": "Berger de l'Atlas"
+    },
+    {
+      "Column_1": "Berger de Maremme et des Abruzzes"
+    },
+    {
+      "Column_1": "Beauceron"
+    },
+    {
+      "Column_1": "Berger de Picardie"
+    },
+    {
+      "Column_1": "Bearded Collie"
+    },
+    {
+      "Column_1": "Beagle"
+    },
+    {
+      "Column_1": "Airedale Terrier"
+    },
+    {
+      "Column_1": "Akita Américain"
+    },
+    {
+      "Column_1": "Akita Inu"
+    },
+    {
+      "Column_1": "American Staffordshire Terrier"
+    },
+    {
+      "Column_1": "Ancien chien d'arrêt danois"
+    },
+    {
+      "Column_1": "Anglo-Français de Petite Vènerie"
+    },
+    {
+      "Column_1": "Ariégeois"
+    },
+    {
+      "Column_1": "Barbet"
+    },
+    {
+      "Column_1": "Barbu Tchèque"
+    },
+    {
+      "Column_1": "Barzoï"
+    },
+    {
+      "Column_1": "Basenji"
+    },
+    {
+      "Column_1": "Basset Artésien-Normand"
+    },
+    {
+      "Column_1": "Basset Bleu de Gascogne"
+    },
+    {
+      "Column_1": "Basset de Westphalie"
+    },
+    {
+      "Column_1": "Basset des Alpes"
+    },
+    {
+      "Column_1": "Basset Fauve de Bretagne"
+    },
+    {
+      "Column_1": "Basset Hound"
+    },
+    {
+      "Column_1": "Beagle-Harrier"
+    },
+    {
+      "Column_1": "Berger de Russie"
+    },
+    {
+      "Column_1": "Berger de Savoie"
+    },
+    {
+      "Column_1": "Berger des Pyrénées"
+    },
+    {
+      "Column_1": "Bouledogue Américain"
+    },
+    {
+      "Column_1": "Bouledogue Français"
+    },
+    {
+      "Column_1": "Bouvier Australien"
+    },
+    {
+      "Column_1": "Bouvier Bernois"
+    },
+    {
+      "Column_1": "Bouvier d'Appenzell"
+    },
+    {
+      "Column_1": "Bouvier de l'Entlebuch"
+    },
+    {
+      "Column_1": "Bouvier des Ardennes"
+    },
+    {
+      "Column_1": "Bouvier des Flandres"
+    },
+    {
+      "Column_1": "Boxer"
+    },
+    {
+      "Column_1": "Brachet Allemand"
+    },
+    {
+      "Column_1": "Brachet autrichien noir et feu"
+    },
+    {
+      "Column_1": "Brachet de Styrie à poil dur"
+    },
+    {
+      "Column_1": "Brachet Polonais"
+    },
+    {
+      "Column_1": "Brachet Tyrolien"
+    },
+    {
+      "Column_1": "Braque allemand à poil court"
+    },
+    {
+      "Column_1": "Braque allemand à poil dur"
+    },
+    {
+      "Column_1": "Braque d'Auvergne"
+    },
+    {
+      "Column_1": "Boston Terrier"
+    },
+    {
+      "Column_1": "Border Terrier"
+    },
+    {
+      "Column_1": "Border Collie"
+    },
+    {
+      "Column_1": "Boerbull"
+    },
+    {
+      "Column_1": "Berger des Shetland"
+    },
+    {
+      "Column_1": "Berger du Caucase"
+    },
+    {
+      "Column_1": "Berger du massif du Karst"
+    },
+    {
+      "Column_1": "Berger finnois de Laponie"
+    },
+    {
+      "Column_1": "Berger Hollandais"
+    },
+    {
+      "Column_1": "Berger Islandais"
+    },
+    {
+      "Column_1": "Berger Polonais de Plaine"
+    },
+    {
+      "Column_1": "Berger Polonais de Podhale"
+    },
+    {
+      "Column_1": "Braque de l'Ariège"
+    },
+    {
+      "Column_1": "Berger Portugais"
+    },
+    {
+      "Column_1": "Bichon à poil frisé"
+    },
+    {
+      "Column_1": "Bichon Bolonais"
+    },
+    {
+      "Column_1": "Bichon Havanais"
+    },
+    {
+      "Column_1": "Bichon Maltais"
+    },
+    {
+      "Column_1": "Biewer Yorkshire"
+    },
+    {
+      "Column_1": "Billy"
+    },
+    {
+      "Column_1": "Black and Tan Coonhound"
+    },
+    {
+      "Column_1": "Bobtail"
+    },
+    {
+      "Column_1": "Berger Yougoslave"
+    },
+    {
+      "Column_1": "Cocker Américain"
+    },
+    {
+      "Column_1": "Cocker Anglais"
+    },
+    {
+      "Column_1": "Colley à poil court"
+    },
+    {
+      "Column_1": "Pitbull"
+    },
+    {
+      "Column_1": "Podenco Canario"
+    },
+    {
+      "Column_1": "Podenco Ibicenco"
+    },
+    {
+      "Column_1": "Podengo portugais"
+    },
+    {
+      "Column_1": "Pointer Anglais"
+    },
+    {
+      "Column_1": "Poitevin"
+    },
+    {
+      "Column_1": "Pomsky"
+    },
+    {
+      "Column_1": "Porcelaine"
+    },
+    {
+      "Column_1": "Pudelpointer"
+    },
+    {
+      "Column_1": "Puli"
+    },
+    {
+      "Column_1": "Pumi"
+    },
+    {
+      "Column_1": "Ratonero Bodeguero Andaluz"
+    },
+    {
+      "Column_1": "Retriever de la Nouvelle-Écosse"
+    },
+    {
+      "Column_1": "Rhodesian-Ridgeback"
+    },
+    {
+      "Column_1": "Rottweiler"
+    },
+    {
+      "Column_1": "Saint-Bernard"
+    },
+    {
+      "Column_1": "Saluki"
+    },
+    {
+      "Column_1": "Pinscher Nain"
+    },
+    {
+      "Column_1": "Samoyède"
+    },
+    {
+      "Column_1": "Pinscher autrichien à poil court"
+    },
+    {
+      "Column_1": "Petit Lévrier Italien"
+    },
+    {
+      "Column_1": "Mastiff"
+    },
+    {
+      "Column_1": "Mâtin de l'Alentejo"
+    },
+    {
+      "Column_1": "Mâtin de Naples"
+    },
+    {
+      "Column_1": "Mâtin des Pyrénées"
+    },
+    {
+      "Column_1": "Mâtin Espagnol"
+    },
+    {
+      "Column_1": "Mudi"
+    },
+    {
+      "Column_1": "Norfolk Terrier"
+    },
+    {
+      "Column_1": "Norwich Terrier"
+    },
+    {
+      "Column_1": "Otterhound"
+    },
+    {
+      "Column_1": "Parson Russell Terrier"
+    },
+    {
+      "Column_1": "Pékinois"
+    },
+    {
+      "Column_1": "Petit Basset Griffon vendéen"
+    },
+    {
+      "Column_1": "Petit Brabançon"
+    },
+    {
+      "Column_1": "Petit Chien Courant Suisse"
+    },
+    {
+      "Column_1": "Petit chien hollandais de chasse au gibier d'eau"
+    },
+    {
+      "Column_1": "Petit Chien Lion"
+    },
+    {
+      "Column_1": "Petit Epagneul de Münster"
+    },
+    {
+      "Column_1": "Pinscher"
+    },
+    {
+      "Column_1": "Schapendoes"
+    },
+    {
+      "Column_1": "Schipperke"
+    },
+    {
+      "Column_1": "Schnauzer"
+    },
+    {
+      "Column_1": "Teckel"
+    },
+    {
+      "Column_1": "Terre-Neuve"
+    },
+    {
+      "Column_1": "Terrier australien"
+    },
+    {
+      "Column_1": "Terrier brésilien"
+    },
+    {
+      "Column_1": "Terrier de Manchester"
+    },
+    {
+      "Column_1": "Terrier Ecossais"
+    },
+    {
+      "Column_1": "Terrier japonais"
+    },
+    {
+      "Column_1": "Terrier Noir Russe"
+    },
+    {
+      "Column_1": "Terrier tchèque"
+    },
+    {
+      "Column_1": "Terrier Tibétain"
+    },
+    {
+      "Column_1": "Tosa"
+    },
+    {
+      "Column_1": "Volpino Italien"
+    },
+    {
+      "Column_1": "Welsh Corgi Cardigan"
+    },
+    {
+      "Column_1": "Welsh Corgi Pembroke"
+    },
+    {
+      "Column_1": "Welsh Springer Spaniel"
+    },
+    {
+      "Column_1": "Welsh Terrier"
+    },
+    {
+      "Column_1": "West Highland White Terrier"
+    },
+    {
+      "Column_1": "Tchouvatch Slovaque"
+    },
+    {
+      "Column_1": "Sussex-Spaniel"
+    },
+    {
+      "Column_1": "Staffordshire Bull Terrier"
+    },
+    {
+      "Column_1": "Springer Anglais"
+    },
+    {
+      "Column_1": "Sealyham Terrier"
+    },
+    {
+      "Column_1": "Setter Anglais"
+    },
+    {
+      "Column_1": "Setter Gordon"
+    },
+    {
+      "Column_1": "Setter Irlandais Rouge"
+    },
+    {
+      "Column_1": "Shar-Pei"
+    },
+    {
+      "Column_1": "Shiba Inu"
+    },
+    {
+      "Column_1": "Shih Tzu"
+    },
+    {
+      "Column_1": "Shikoku"
+    },
+    {
+      "Column_1": "Maltipoo"
+    },
+    {
+      "Column_1": "Silky Terrier"
+    },
+    {
+      "Column_1": "Sloughi"
+    },
+    {
+      "Column_1": "Smous des Pays-Bas"
+    },
+    {
+      "Column_1": "Spinone"
+    },
+    {
+      "Column_1": "Spitz Allemand"
+    },
+    {
+      "Column_1": "Spitz de Norrbotten"
+    },
+    {
+      "Column_1": "Spitz des Wisigoths"
+    },
+    {
+      "Column_1": "Spitz Finlandais"
+    },
+    {
+      "Column_1": "Spitz Japonais"
+    },
+    {
+      "Column_1": "Skye Terrier"
+    },
+    {
+      "Column_1": "Malamute de l'Alaska"
+    },
+    {
+      "Column_1": "Lhassa Apso"
+    },
+    {
+      "Column_1": "Lévrier Polonais"
+    },
+    {
+      "Column_1": "Epagneul Picard"
+    },
+    {
+      "Column_1": "Epagneul Tibétain"
+    },
+    {
+      "Column_1": "Eurasier"
+    },
+    {
+      "Column_1": "Eurohound"
+    },
+    {
+      "Column_1": "Field-Spaniel"
+    },
+    {
+      "Column_1": "Fila Brasileiro"
+    },
+    {
+      "Column_1": "Fila de Sao Miguel"
+    },
+    {
+      "Column_1": "Flat-Coated Retriever"
+    },
+    {
+      "Column_1": "Fox Terrier"
+    },
+    {
+      "Column_1": "Foxhound américain"
+    },
+    {
+      "Column_1": "Foxhound anglais"
+    },
+    {
+      "Column_1": "Golden Retriever"
+    },
+    {
+      "Column_1": "Goldendoodle"
+    },
+    {
+      "Column_1": "Grand Anglo-Français blanc et noir"
+    },
+    {
+      "Column_1": "Grand Anglo-Français blanc et orange"
+    },
+    {
+      "Column_1": "Grand Anglo-Français tricolore"
+    },
+    {
+      "Column_1": "Grand Basset Griffon vendéen"
+    },
+    {
+      "Column_1": "Epagneul Nain Continental"
+    },
+    {
+      "Column_1": "Epagneul Japonais"
+    },
+    {
+      "Column_1": "Epagneul Français"
+    },
+    {
+      "Column_1": "Epagneul de Pont-Audemer"
+    },
+    {
+      "Column_1": "Colley à poil long"
+    },
+    {
+      "Column_1": "Coton de Tuléar"
+    },
+    {
+      "Column_1": "Curly Coated Retriever"
+    },
+    {
+      "Column_1": "Cursinu"
+    },
+    {
+      "Column_1": "Dalmatien"
+    },
+    {
+      "Column_1": "Dandie-Dinmont-Terrier"
+    },
+    {
+      "Column_1": "Dobermann"
+    },
+    {
+      "Column_1": "Dogo Canario"
+    },
+    {
+      "Column_1": "Grand Bouvier Suisse"
+    },
+    {
+      "Column_1": "Dogue Allemand"
+    },
+    {
+      "Column_1": "Dogue de Bordeaux"
+    },
+    {
+      "Column_1": "Dogue de Majorque"
+    },
+    {
+      "Column_1": "Dogue du Tibet"
+    },
+    {
+      "Column_1": "Drever"
+    },
+    {
+      "Column_1": "English Toy Terrier"
+    },
+    {
+      "Column_1": "Epagneul à perdrix de Drente"
+    },
+    {
+      "Column_1": "Epagneul Bleu de Picardie"
+    },
+    {
+      "Column_1": "Epagneul Breton"
+    },
+    {
+      "Column_1": "Dogue Argentin"
+    },
+    {
+      "Column_1": "Whippet"
+    },
+    {
+      "Column_1": "Grand Épagneul de Münster"
+    },
+    {
+      "Column_1": "Grand Griffon Vendéen"
+    },
+    {
+      "Column_1": "Komondor"
+    },
+    {
+      "Column_1": "Kromfohrländer"
+    },
+    {
+      "Column_1": "Kuvasz Hongrois"
+    },
+    {
+      "Column_1": "Labradoodle"
+    },
+    {
+      "Column_1": "Labrador Retriever"
+    },
+    {
+      "Column_1": "Laïka de Sibérie occidentale"
+    },
+    {
+      "Column_1": "Laïka de Sibérie orientale"
+    },
+    {
+      "Column_1": "Laïka Russo-Européen"
+    },
+    {
+      "Column_1": "Lakeland Terrier"
+    },
+    {
+      "Column_1": "Landseer"
+    },
+    {
+      "Column_1": "Leonberger"
+    },
+    {
+      "Column_1": "Lévrier Afghan"
+    },
+    {
+      "Column_1": "Lévrier Azawakh"
+    },
+    {
+      "Column_1": "Lévrier Écossais"
+    },
+    {
+      "Column_1": "Lévrier Espagnol"
+    },
+    {
+      "Column_1": "Lévrier Hongrois"
+    },
+    {
+      "Column_1": "Lévrier Irlandais"
+    },
+    {
+      "Column_1": "Kishu"
+    },
+    {
+      "Column_1": "King Charles Spaniel"
+    },
+    {
+      "Column_1": "Kerry Blue Terrier"
+    },
+    {
+      "Column_1": "Kelpie"
+    },
+    {
+      "Column_1": "Greyhound"
+    },
+    {
+      "Column_1": "Greyster"
+    },
+    {
+      "Column_1": "Griffon Belge"
+    },
+    {
+      "Column_1": "Griffon Bleu de Gascogne"
+    },
+    {
+      "Column_1": "Griffon Bruxellois"
+    },
+    {
+      "Column_1": "Griffon fauve de Bretagne"
+    },
+    {
+      "Column_1": "Griffon Korthals"
+    },
+    {
+      "Column_1": "Griffon Nivernais"
+    },
+    {
+      "Column_1": "Grand Gascon saintongeois"
+    },
+    {
+      "Column_1": "Harrier"
+    },
+    {
+      "Column_1": "Hovawart"
+    },
+    {
+      "Column_1": "Husky Sibérien"
+    },
+    {
+      "Column_1": "Irish Glen of Imaal Terrier"
+    },
+    {
+      "Column_1": "Irish Terrier"
+    },
+    {
+      "Column_1": "Irish Terrier à poil doux"
+    },
+    {
+      "Column_1": "Jack Russell Terrier"
+    },
+    {
+      "Column_1": "Jagdterrier"
+    },
+    {
+      "Column_1": "Kai"
+    },
+    {
+      "Column_1": "Hokkaïdo Ken"
+    },
+    {
+      "Column_1": "Yorkshire Terrier"
+    }
+  ]
+}
