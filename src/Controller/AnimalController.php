@@ -15,6 +15,7 @@ use App\Form\AnimalEditType;
 use App\Form\AnimalType;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class AnimalController extends AbstractController
 {
@@ -78,7 +79,7 @@ class AnimalController extends AbstractController
         }
 
         $animalsOfUser = $animalRepository        
-        ->getConnectedUserAnimals($this->getUser()->getId());
+        ->getConnectedUserAnimals($this->getUser());
 
         return $this->render('animal/index.html.twig', [
             'form' => $form,
@@ -138,7 +139,7 @@ class AnimalController extends AbstractController
         }
 
         $animalsOfUser = $animalRepository
-        ->getConnectedUserAnimals($this->getUser()->GetId());
+        ->getConnectedUserAnimals($this->getUser());
         return $this->render('animal/index.html.twig', [
             'form' => $form,
             'formCat' => $formCat,
