@@ -2,16 +2,10 @@
 
 namespace App\Service;
 
-use Symfony\Component\Form\Test\FormInterface;
-use App\Entity\Animals;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
-use DateInterval;
 use DateTime;
 use DateTimeInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\PersistentCollection;
-use Symfony\Component\Form\Form;
 
 class AddVaccinated{
     public function __construct(){}
