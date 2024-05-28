@@ -15,7 +15,6 @@ use App\Form\AnimalEditType;
 use App\Form\AnimalType;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
-use Symfony\Bundle\SecurityBundle\Security;
 
 class AnimalController extends AbstractController
 {
