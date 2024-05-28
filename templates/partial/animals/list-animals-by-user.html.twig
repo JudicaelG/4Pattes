@@ -18,8 +18,7 @@
                         <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetNextRecall()|date("d/m/Y")}}</p>
                     {% endfor %}
                 {% endif %}
-            {% endfor %}                    
-            <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+            {% endfor %}
         </section>
         <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>
         <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"<button class="" >{% trans %}Modifier{% endtrans %}</button></a>
