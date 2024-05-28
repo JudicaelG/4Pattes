@@ -22,12 +22,29 @@ class AnimalController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
-        $animal = new Animals();
+        $vaccinsDog = $entityManager->getRepository(Vaccine::class)->findAll();
+        $dog = new Animals();
+        $cat = new Animals();
 
-        $animal->SetUserId($this->getUser());
-        
-        $form = $this->createForm(AnimalType::class, $animal);
-        $formCat = $this->createForm(AnimalCatType::class, $animal);
+        foreach($vaccinsDog as $vaccin){
+            if($vaccin->getType() == 'chien'){
+                $vaccinated = new Vaccinated();
+                $vaccinated->addVaccineId($vaccin);
+                $dog->addVaccinated($vaccinated);
+            }
+            if($vaccin->getType() == 'chat'){
+                $vaccinated = new Vaccinated();
+                $vaccinated->addVaccineId($vaccin);
+                $cat->addVaccinated($vaccinated);
+            }
+            
+        }
+
+        $dog->SetUserId($this->getUser());
+        $cat->SetUserId($this->getUser());
+
+        $form = $this->createForm(AnimalType::class, $dog);
+        $formCat = $this->createForm(AnimalCatType::class, $cat);
         
         $form->handleRequest($request);
         $formCat->handleRequest($request);
@@ -40,11 +57,11 @@ class AnimalController extends AbstractController
                 $animal->setProfilePhoto($photoProfileName);
             }
             foreach($animal->getVaccinateds() as $vaccinated){
-                if($vaccinated->getLastDateInjection()){
+                if($vaccinated->getLastDateInjection() != null){
                     $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
                 }
             }
-            //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
+
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
 
@@ -63,7 +80,7 @@ class AnimalController extends AbstractController
                     $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
                 }
             }
-            //$animal = $addVaccinated->AddVaccine($form->get('vaccine_id')->getData(), $form->get('vaccine_date'), $animal);   
+            
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
 

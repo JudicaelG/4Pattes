@@ -13,9 +13,11 @@
             <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.getAge()}}</p>
             <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
             {% for vaccine in animal.getVaccinateds() %}
-                {% for vaccineId in vaccine.getVaccineId() %}
-                    <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetNextRecall()|date("d/m/Y")}}</p>
-                {% endfor %}
+                {% if vaccine.GetNextRecall != null %}
+                    {% for vaccineId in vaccine.getVaccineId() %}
+                        <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetNextRecall()|date("d/m/Y")}}</p>
+                    {% endfor %}
+                {% endif %}
             {% endfor %}                    
             <h4 class="font-semibold">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
         </section>

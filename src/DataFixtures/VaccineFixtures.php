@@ -17,6 +17,7 @@ class VaccineFixtures extends Fixture
         $vaccine->setMonth4(true);
         $vaccine->setYear1(true);
         $vaccine->setAnnual3Recall(true);
+        $vaccine->setType('chien');
         
         $manager->persist($vaccine);
 
@@ -25,6 +26,98 @@ class VaccineFixtures extends Fixture
         $vaccine->setMonth3(true);
         $vaccine->setYear1(true);
         $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chien');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Piroplasmose");
+        $vaccine->setMonth5(true);
+        $vaccine->setMonth6(true);
+        $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chien');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Maladie de Lyme");
+        $vaccine->setMonth3(true);
+        $vaccine->setMonth4(true);
+        $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chien');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Leishmaniose");
+        $vaccine->setMonth6(true);
+        $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chien');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Toux de chenil");
+        $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chien');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Typhus");
+        $vaccine->setMonth2(true);
+        $vaccine->setMonth3(true);
+        $vaccine->setMonth4(true);
+        $vaccine->setYear1(true);
+        $vaccine->setAnnual3Recall(true);
+        $vaccine->setType('chat');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Coryza");
+        $vaccine->setMonth2(true);
+        $vaccine->setMonth3(true);
+        $vaccine->setMonth4(true);
+        $vaccine->setYear1(true);
+        $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chat');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Rage");
+        $vaccine->setMonth3(true);
+        $vaccine->setYear1(true);
+        $vaccine->setAnnualRecall(true);
+        $vaccine->setType('chat');
+        
+        $manager->persist($vaccine);
+
+        $manager->flush();
+
+        $vaccine = new Vaccine();
+        $vaccine->setName("Leucose");
+        $vaccine->setMonth2(true);
+        $vaccine->setMonth3(true);
+        $vaccine->setMonth4(true);
+        $vaccine->setYear1(true);
+        $vaccine->setAnnual3Recall(true);
+        $vaccine->setType('chat');
         
         $manager->persist($vaccine);
 

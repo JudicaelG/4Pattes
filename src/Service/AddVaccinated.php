@@ -11,7 +11,7 @@ class AddVaccinated{
     public function __construct(){}
 
     public function RecalculNextRecall(Vaccinated $vaccinated): Vaccinated{
-        if($vaccinated->getLastDateInjection()){
+        if($vaccinated->getLastDateInjection() != null){
             $nextRecall = $this->CalculNextRecall($vaccinated->getVaccineId()->first(), $vaccinated->getLastDateInjection());
             $vaccinated->setNextRecall($nextRecall);            
         }
