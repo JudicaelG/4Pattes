@@ -50,6 +50,9 @@ class Vaccine
     #[ORM\Column(nullable: true)]
     private ?bool $annual_3_recall = null;
 
+    #[ORM\Column(length: 6, options: ["default" => 'chien'])]
+    private ?string $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -209,5 +212,17 @@ class Vaccine
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }
