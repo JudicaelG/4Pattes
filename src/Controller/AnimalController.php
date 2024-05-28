@@ -22,14 +22,7 @@ class AnimalController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
-        $vaccins = $entityManager->getRepository(Vaccine::class)->findAll();
         $animal = new Animals();
-
-        foreach($vaccins as $vaccin){
-            $vaccinated = new Vaccinated();
-            $vaccinated->addVaccineId($vaccin);
-            $animal->addVaccinated($vaccinated);
-        }
 
         $animal->SetUserId($this->getUser());
         
