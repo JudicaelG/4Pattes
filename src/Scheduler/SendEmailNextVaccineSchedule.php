@@ -27,7 +27,7 @@ final class SendEmailNextVaccineSchedule implements ScheduleProviderInterface
         return (new Schedule())
             ->add(
                 // @TODO - Modify the frequency to suite your needs
-                RecurringMessage::every('1 hour', new SendEmailNextVaccineMessage($this->entitymanager, $this->notifier)),
+                RecurringMessage::cron('@monthly', new SendEmailNextVaccineMessage()),
             )
             ->stateful($this->cache)
         ;
