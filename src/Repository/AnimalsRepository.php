@@ -78,6 +78,21 @@ class AnimalsRepository extends ServiceEntityRepository
         ->getQuery()
         ->getOneOrNullResult();
     }
+
+    public function getAnimalWithVaccineAndVaccineDateAndDayBeforeNextRecall($id){
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT 
+                a, v, vv 
+                FROM App\Entity\vaccinated v
+            inner join v.vaccine_id vv
+            inner join v.animal_id a
+            WHERE a.user_id = :userId'
+        )->setParameter('userId', $id);
+
+        return $query->getResult();
+    }
     
 //    /**
 //     * @return Animals[] Returns an array of Animals objects

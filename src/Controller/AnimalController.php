@@ -13,13 +13,16 @@ use App\Entity\Vaccine;
 use App\Form\AnimalCatType;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
+use App\Mapper\AnimalMapper;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
+
+use function PHPSTORM_META\map;
 
 class AnimalController extends AbstractController
 {
     #[Route('/animal', name: 'animal')]
-    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated, AnimalMapper $animalMapper): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $vaccinsDog = $entityManager->getRepository(Vaccine::class)->findAll();
@@ -89,6 +92,7 @@ class AnimalController extends AbstractController
 
         $animalsOfUser = $animalRepository        
         ->getConnectedUserAnimals($this->getUser());
+        $animalsTest = $animalMapper->map($animalsOfUser);
 
         return $this->render('animal/index.html.twig', [
             'form' => $form,
