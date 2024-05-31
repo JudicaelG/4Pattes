@@ -2,17 +2,9 @@
 
 namespace App\DTO;
 
-use App\Entity\Animals;
-use App\Entity\Vaccine;
+use App\Enum\enumNextRecall;
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
-enum nextRecall {
-    case green;
-    case orange;
-    case red;
-}
 
 class VaccinatedDTO{
 
@@ -26,5 +18,5 @@ class VaccinatedDTO{
 
     public ?DateTime $last_date_injection;
 
-    public nextRecall $color;
+    public enumNextRecall $color;
 }

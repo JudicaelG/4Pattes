@@ -93,12 +93,15 @@ class AnimalController extends AbstractController
         $animalsOfUser = $animalRepository        
         ->getConnectedUserAnimals($this->getUser());
         $animalsTest = $animalMapper->map($animalsOfUser);
+        /*dump($animalsOfUser);
+        dump($animalsTest);
+        die();*/
 
         return $this->render('animal/index.html.twig', [
             'form' => $form,
             'formCat' => $formCat,
             'animalTypeCat' => false,
-            'animalsOfUser' => $animalsOfUser
+            'animalsOfUser' => $animalsTest
         ]);
     }
 

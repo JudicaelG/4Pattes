@@ -3,19 +3,20 @@
     <div class="bg-card-secondary shadow-xl">
         <section class="px-4 py-4">
             <h3>
-            {% if animal.getProfilePhoto %}
-                <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('uploads/animals/profilephoto/' ~ animal.getProfilePhoto())}}" />
+            {% if animal.profilePhoto %}
+                <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('uploads/animals/profilephoto/' ~ animal.profilePhoto)}}" />
             {% else %}
                 <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('images/default/dog.JPG')}}" />  
             {% endif %}
-                <span class="ml-4 font-bold inline">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h3>
+                <span class="ml-4 font-bold inline">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h3>
             <hr class="w-1/2 my-2">
-            <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.getAge()}}</p>
+            <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
             <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
-            {% for vaccine in animal.getVaccinateds() %}
-                {% if vaccine.GetNextRecall != null %}
-                    {% for vaccineId in vaccine.getVaccineId() %}
-                        <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2">{{vaccine.GetNextRecall()|date("d/m/Y")}}</p>
+            {% for vaccine in animal.vaccinated %}
+                
+                {% if vaccine.next_recall != null %}
+                    {% for vaccineId in vaccine.vaccine_id %}
+                        <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2 {{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</p>
                     {% endfor %}
                 {% endif %}
             {% endfor %}
