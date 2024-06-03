@@ -22,4 +22,13 @@ class AnimalDTO{
     public string $weight;
     
     public ?string $profilePhoto;
+
+    public function getAge()
+    {
+        $now = new \DateTime('now');
+        $age = $this->birthday;
+        $diffence = $now->diff($age);
+
+        return $diffence->format('%y an et %m mois');
+    }
 }

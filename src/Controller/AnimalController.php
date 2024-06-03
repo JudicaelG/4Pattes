@@ -16,6 +16,7 @@ use App\Form\AnimalType;
 use App\Mapper\AnimalMapper;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
+use Doctrine\ORM\EntityManager;
 
 use function PHPSTORM_META\map;
 
@@ -101,6 +102,15 @@ class AnimalController extends AbstractController
             'formCat' => $formCat,
             'animalTypeCat' => false,
             'animalsOfUser' => $animalsOfUser
+        ]);
+    }
+
+    #[Route('/animal/{id}', name: 'card_animal')]
+    public function animalCard(EntityManagerInterface $entityManager, int $id, AnimalMapper $animalMapper): Response{
+        $animal = $animalMapper->mapAnimal($entityManager->getRepository(Animals::class)->getAnimalWithVaccineAndVaccineDate($id));
+
+        return $this->render('animal/card.html.twig',[
+            'animal' => $animal,
         ]);
     }
 

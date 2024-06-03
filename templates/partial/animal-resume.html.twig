@@ -54,30 +54,32 @@
 
 <div class="w-full hidden lg:grid grid-cols-6 gap-2.5 mx-auto">
     {% for animal in animalsOfTheUser %}
-        <div class="h-96 shadow-lg parent-hover">            
-            <div class=" h-1/3 flex justify-center items-center bg-button-menu  rounded-t-lg child-hover">
-                <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h2>
-            </div>            
-            <div class="bg-card-secondary h-2/3 rounded-b-lg">
-                {% if animal.profilePhoto %}
-                <img src="{{asset('uploads/animals/profilephoto/' ~ animal.profilePhoto)}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
-                {% else %}
-                <img src="{{asset('images/default/dog.JPG')}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
-                {% endif %}
-                <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
-                <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
-                    {% for vaccine in animal.vaccinated %}
-                        {% if vaccine.next_recall != null %}
-                            {% if loop.first %}
-                                {% for vaccineId in vaccine.vaccine_id %}
-                                    <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin :{% endtrans %}</h4>
-                                    <p class="ml-4">{{ vaccineId.getName()}} : <span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
-                                {% endfor %}
+        <a href="{{path('card_animal', {id: animal.id})}}">
+            <div class="h-96 shadow-lg parent-hover">            
+                <div class=" h-1/3 flex justify-center items-center bg-button-menu  rounded-t-lg child-hover">
+                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h2>
+                </div>            
+                <div class="bg-card-secondary h-2/3 rounded-b-lg">
+                    {% if animal.profilePhoto %}
+                    <img src="{{asset('uploads/animals/profilephoto/' ~ animal.profilePhoto)}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
+                    {% else %}
+                    <img src="{{asset('images/default/dog.JPG')}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
+                    {% endif %}
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
+                        {% for vaccine in animal.vaccinated %}
+                            {% if vaccine.next_recall != null %}
+                                {% if loop.first %}
+                                    {% for vaccineId in vaccine.vaccine_id %}
+                                        <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin :{% endtrans %}</h4>
+                                        <p class="ml-4">{{ vaccineId.getName()}} : <span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
+                                    {% endfor %}
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 </div>
 

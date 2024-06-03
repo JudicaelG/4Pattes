@@ -34,4 +34,19 @@ class AnimalMapper implements IAnimalMapper{
 
         return $animalsDTO;
     }
+
+    public function mapAnimal($animal): AnimalDTO
+    {
+        $animalDTO = new AnimalDTO;
+        $animalDTO->id = $animal->getId();
+        $animalDTO->birthday = $animal->getBirthday();
+        $animalDTO->name = $animal->getName();
+        $animalDTO->breed_id = $animal->getBreedId();
+        $animalDTO->user_id = $animal->getUserId();
+        $animalDTO->vaccinated = $this->vaccinatedMapper->map($animal->getVaccinateds());
+        $animalDTO->weight = $animal->getWeight();
+        $animalDTO->profilePhoto = $animal->getProfilePhoto();
+
+        return $animalDTO;
+    }
 }

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{animal.name}}{% endblock %}
+
+{% block body %}
+<div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 m-4">
+    <div class= "col-span-full p-4">
+        <h1>
+            {% if animal.profilePhoto %}
+                <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('uploads/animals/profilephoto/' ~ animal.profilePhoto)}}" />
+            {% else %}
+                <img class="rounded-full w-24 h-24 mx-auto inline" src="{{asset('images/default/dog.JPG')}}" />  
+            {% endif %}
+                <span class="ml-4 font-bold inline">{{ animal.name }}</span>, {{ animal.breed_id.name }}
+        </h1>
+    </div>
+    <div class="my-4">
+    <h2 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h2><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}} - {{animal.getAge()}}</p><br/>
+    <h2 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h2><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
+        {% for vaccine in animal.vaccinated %}
+            {% if vaccine.next_recall != null %}
+                {% for vaccineId in vaccine.vaccine_id %}
+                    <h2 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin :{% endtrans %}</h2>
+                    <p class="ml-4">{{ vaccineId.getName()}} : <span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
