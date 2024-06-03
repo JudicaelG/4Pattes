@@ -90,9 +90,8 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('animal');
         }
 
-        $animalsOfUser = $animalRepository        
-        ->getConnectedUserAnimals($this->getUser());
-        $animalsTest = $animalMapper->map($animalsOfUser);
+        $animalsOfUser = $animalMapper->map($animalRepository        
+        ->getConnectedUserAnimals($this->getUser()));
         /*dump($animalsOfUser);
         dump($animalsTest);
         die();*/
@@ -101,7 +100,7 @@ class AnimalController extends AbstractController
             'form' => $form,
             'formCat' => $formCat,
             'animalTypeCat' => false,
-            'animalsOfUser' => $animalsTest
+            'animalsOfUser' => $animalsOfUser
         ]);
     }
 

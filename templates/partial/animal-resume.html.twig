@@ -9,8 +9,8 @@
                     <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
                 </div>
                 <div class="mx-4">
-                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
-                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
+                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h2>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
                     <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
                     <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
                     <h4 class="font-semibold ml-4 inline">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p>
@@ -22,8 +22,8 @@
                     <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
                 </div>
                 <div class="mx-4">
-                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
-                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
+                    <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h2>
+                    <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
                     <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
                     <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
                     <h4 class="font-semibold ml-4 inline">{% trans %}RDV vétérinaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p>
@@ -56,7 +56,7 @@
     {% for animal in animalsOfTheUser %}
         <div class="h-96 shadow-lg parent-hover">            
             <div class=" h-1/3 flex justify-center items-center bg-button-menu  rounded-t-lg child-hover">
-                <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.getBreedId().name }}</h2>
+                <h2><span class="font-bold">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h2>
             </div>            
             <div class="bg-card-secondary h-2/3 rounded-b-lg">
                 {% if animal.profilePhoto %}
@@ -64,13 +64,14 @@
                 {% else %}
                 <img src="{{asset('images/default/dog.JPG')}}" class="relative rounded-full w-24 h-24 mx-auto -top-12 border border-background" alt="{{animal.name}}"/>
                 {% endif %}
-                <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.getAge()}}</p><br/>
+                <h4 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}}</p><br/>
                 <h4 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
-                    {% for vaccine in animal.getVaccinateds() %}
-                        {% if vaccine.GetNextRecall != null %}
+                    {% for vaccine in animal.vaccinated %}
+                        {% if vaccine.next_recall != null %}
                             {% if loop.first %}
-                                {% for vaccineId in vaccine.getVaccineId() %}
-                                    <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-4">{{vaccine.GetNextRecall()|date("d/m/Y")}}</p>
+                                {% for vaccineId in vaccine.vaccine_id %}
+                                    <h4 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin :{% endtrans %}</h4>
+                                    <p class="ml-4">{{ vaccineId.getName()}} : <span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
                                 {% endfor %}
                             {% endif %}
                         {% endif %}

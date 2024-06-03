@@ -16,7 +16,7 @@
                 
                 {% if vaccine.next_recall != null %}
                     {% for vaccineId in vaccine.vaccine_id %}
-                        <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2 {{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</p>
+                        <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2"><span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
                     {% endfor %}
                 {% endif %}
             {% endfor %}
