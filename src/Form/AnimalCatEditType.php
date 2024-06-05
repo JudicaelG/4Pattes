@@ -4,7 +4,10 @@ namespace App\Form;
 
 use App\Entity\Animals;
 use App\Entity\Breed;
+use App\Entity\Vaccinated;
+use App\Entity\Vaccine;
 use App\Enum\Sexe;
+use DateTime;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -15,15 +18,30 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AnimalType extends AbstractType
+class AnimalCatEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {   
+        /*$entityMananger = $options['entityManager'];
+        
+        $vaccines = $entityMananger->getrepository(Vaccine::class)->findAll();
+
+
+        foreach($vaccines as $vaccin ){
+            $builder
+                ->add('date_'.$vaccin->getName(), DateType::class, [
+                    'label' => 'Date du vaccin '.$vaccin->getName(),
+                    'row_attr' => ['class' => 'hidden', 'id' => 'date_'.$vaccin->getName()],
+                    'mapped' => false,
+                ]);
+        }
+*/
         $builder
             ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('birthday', DateType::class, [
@@ -33,13 +51,13 @@ class AnimalType extends AbstractType
                 'class' => Breed::class,
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('b')
-                        ->where('b.type=\'dog\'')
-                        ->orderBy('b.name', 'ASC');   
+                        ->where('b.type=\'cat\'')
+                        ->orderBy('b.name', 'ASC');                        
                 },
                 'group_by' => 'type',
                 'choice_label' => 'name',
                 'label' => 'Race',
-                
+                'attr' => ['class' => 'mt-1 w-full']
             ])
             ->add('weight', null, ['label' => 'Poids'])
             ->add('sexe', ChoiceType::class, [
@@ -51,6 +69,7 @@ class AnimalType extends AbstractType
             ])
             ->add('sterilized', ChoiceType::class, [
                 'label' => 'Sterelisé',
+                'required' => true,
                 'choices' => [
                     'Oui' => true,
                     'Non' => false
@@ -61,7 +80,7 @@ class AnimalType extends AbstractType
                 'required' => false,
                 'label' => 'Photo de profil',
                 'constraints' => new File([
-                    'maxSize' => '9M',
+                    'maxSize' => '1024k',
                     'mimeTypes' => ['image/png', 'image/jpeg'],
                     'mimeTypesMessage' => 'Vous ne pouvez upload que des images de type jpg ou png',
                 ]),

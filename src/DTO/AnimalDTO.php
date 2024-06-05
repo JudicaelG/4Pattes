@@ -20,6 +20,10 @@ class AnimalDTO{
     public array $vaccinated;
     
     public string $weight;
+
+    public ?string $sexe;
+
+    public ?bool $sterilized;
     
     public ?string $profilePhoto;
 

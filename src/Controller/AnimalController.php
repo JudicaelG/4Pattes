@@ -10,15 +10,13 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Form\AnimalCatEditType;
 use App\Form\AnimalCatType;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
 use App\Mapper\AnimalMapper;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
-use Doctrine\ORM\EntityManager;
-
-use function PHPSTORM_META\map;
 
 class AnimalController extends AbstractController
 {
@@ -115,12 +113,12 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/animal/edit/{id}', name: 'edit_animal')]
-    public function new(Request $request, EntityManagerInterface $entityManager, int $id, AddVaccinated $addVaccinated): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, int $id, AddVaccinated $addVaccinated, AnimalMapper $animalMapper): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
         $animalTypeCat = false;
-        $formCat = $this->createForm(AnimalCatType::class);
+        $formCat = $this->createForm(AnimalCatEditType::class);
         $form = $this->createForm(AnimalEditType::class);
 
         if(!$animal){
@@ -129,7 +127,7 @@ class AnimalController extends AbstractController
 
         if($animal->getBreedId()->gettype() == 'cat'){
             $animalTypeCat = true;
-            $formCat = $this->createForm(AnimalCatType::class, $animal);
+            $formCat = $this->createForm(AnimalCatEditType::class, $animal);
         }else{
             $form = $this->createForm(AnimalEditType::class, $animal);
         }
@@ -163,8 +161,8 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('animal');
         }
 
-        $animalsOfUser = $animalRepository
-        ->getConnectedUserAnimals($this->getUser());
+        $animalsOfUser = $animalMapper->map($animalRepository        
+        ->getConnectedUserAnimals($this->getUser()));
         return $this->render('animal/index.html.twig', [
             'form' => $form,
             'formCat' => $formCat,

@@ -6,6 +6,7 @@ use App\Entity\Animals;
 use App\Entity\Breed;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Enum\Sexe;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -15,8 +16,10 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -55,6 +58,21 @@ class AnimalEditType extends AbstractType
                 'label' => 'Race'
             ])
             ->add('weight', null, ['label' => 'Poids'])
+            ->add('sexe', ChoiceType::class, [
+                'label' => 'Sexe',
+                'choices' => [
+                    'Male' => 'Male',
+                    'Femelle' => 'Femelle'
+                ]
+            ])
+            ->add('sterilized', ChoiceType::class, [
+                'label' => 'Sterelisé',
+                'required' => true,
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false
+                ]
+            ])
             ->add('profilePhoto', FileType::class, [
                 'mapped' => false,
                 'required' => false,

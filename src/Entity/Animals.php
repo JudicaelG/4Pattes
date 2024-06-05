@@ -46,6 +46,12 @@ class Animals
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $profilePhoto = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $sexe = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $sterilized = null;
+
     public function __construct()
     {
         $this->vaccinateds = new ArrayCollection();
@@ -167,6 +173,30 @@ class Animals
     public function setProfilePhoto(?string $profilePhoto): static
     {
         $this->profilePhoto = $profilePhoto;
+
+        return $this;
+    }
+
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(?string $sexe): static
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function isSterilized(): ?bool
+    {
+        return $this->sterilized;
+    }
+
+    public function setSterilized(?bool $sterilized): static
+    {
+        $this->sterilized = $sterilized;
 
         return $this;
     }

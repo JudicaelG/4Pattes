@@ -37,6 +37,16 @@
                     <label class="block">{{field_label(form.breed_id)|trans}}</label>
                     {{ form_widget(form.breed_id) }}
                     <span class="error-form">{{ form_errors(form.breed_id) }}</span>
+                </div>                
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(form.sexe)|trans}}</label>
+                    {{ form_widget(form.sexe) }}
+                    <span class="error-form">{{ form_errors(form.sexe) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(form.sterilized)|trans}}</label>
+                    {{ form_widget(form.sterilized) }}
+                    <span class="error-form">{{ form_errors(form.sterilized) }}</span>
                 </div>
                 <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.profilePhoto)|trans}}</label>

@@ -6,6 +6,7 @@ use App\Entity\Animals;
 use App\Entity\Breed;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Enum\Sexe;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\EntityRepository;
@@ -16,7 +17,9 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -43,6 +46,21 @@ class AnimalCatType extends AbstractType
                 'attr' => ['class' => 'mt-1 w-full']
             ])
             ->add('weight', null, ['label' => 'Poids'])
+            ->add('sexe', ChoiceType::class, [
+                'label' => 'Sexe',
+                'choices' => [
+                    'Male' => 'Male',
+                    'Femelle' => 'Femelle'
+                ]
+            ])
+            ->add('sterilized', ChoiceType::class, [
+                'required' => true,
+                'label' => 'Sterelisé',
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false
+                ]
+            ])
             ->add('profilePhoto', FileType::class, [
                 'mapped' => false,
                 'required' => false,

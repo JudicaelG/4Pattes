@@ -25,6 +25,8 @@ class AnimalMapper implements IAnimalMapper{
             $animalDTO->name = $animal->getName();
             $animalDTO->breed_id = $animal->getBreedId();
             $animalDTO->user_id = $animal->getUserId();
+            $animalDTO->sexe = $animal->getSexe();
+            $animalDTO->sterilized = $animal->isSterilized();
             $animalDTO->vaccinated = $this->vaccinatedMapper->map($animal->getVaccinateds());
             $animalDTO->weight = $animal->getWeight();
             $animalDTO->profilePhoto = $animal->getProfilePhoto();
@@ -43,6 +45,8 @@ class AnimalMapper implements IAnimalMapper{
         $animalDTO->name = $animal->getName();
         $animalDTO->breed_id = $animal->getBreedId();
         $animalDTO->user_id = $animal->getUserId();
+        $animalDTO->sexe = $animal->getSexe();
+        $animalDTO->sterilized = $animal->isSterilized();
         $animalDTO->vaccinated = $this->vaccinatedMapper->map($animal->getVaccinateds());
         $animalDTO->weight = $animal->getWeight();
         $animalDTO->profilePhoto = $animal->getProfilePhoto();
