@@ -52,6 +52,9 @@ class Animals
     #[ORM\Column(nullable: true)]
     private ?bool $sterilized = null;
 
+    #[ORM\ManyToOne(inversedBy: 'animals')]
+    private ?Veterinary $veterinary = null;
+
     public function __construct()
     {
         $this->vaccinateds = new ArrayCollection();
@@ -197,6 +200,18 @@ class Animals
     public function setSterilized(?bool $sterilized): static
     {
         $this->sterilized = $sterilized;
+
+        return $this;
+    }
+
+    public function getVeterinary(): ?Veterinary
+    {
+        return $this->veterinary;
+    }
+
+    public function setVeterinary(?Veterinary $veterinary): static
+    {
+        $this->veterinary = $veterinary;
 
         return $this;
     }

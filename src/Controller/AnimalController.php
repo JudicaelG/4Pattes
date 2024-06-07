@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Entity\Veterinary;
 use App\Form\AnimalCatEditType;
 use App\Form\AnimalCatType;
 use App\Form\AnimalEditType;
@@ -25,6 +26,7 @@ class AnimalController extends AbstractController
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
         $vaccinsDog = $entityManager->getRepository(Vaccine::class)->findAll();
+        $veterinaryOfUser = $entityManager->getRepository(Veterinary::class)->findOneByUser($this->getUser());
         $dog = new Animals();
         $cat = new Animals();
 
@@ -45,7 +47,7 @@ class AnimalController extends AbstractController
         $dog->SetUserId($this->getUser());
         $cat->SetUserId($this->getUser());
 
-        $form = $this->createForm(AnimalType::class, $dog);
+        $form = $this->createForm(AnimalType::class, $dog, ['veterinary' => $veterinaryOfUser]);
         $formCat = $this->createForm(AnimalCatType::class, $cat);
         
         $form->handleRequest($request);
@@ -53,6 +55,15 @@ class AnimalController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
             $animal = $form->getData();
+
+            if($form->has('add_veterinary')){
+                $veterinary = new Veterinary();
+                $veterinary = $form['add_veterinary']->getData();
+                $veterinary->setUserId($this->getUser());
+                $entityManager->persist($veterinary);
+                $animal->setVeterinary($veterinary);
+            } 
+            
             $photoProfile = $form->get('profilePhoto')->getData();
             if($photoProfile){
                 $photoProfileName = $fileUploader->upload($photoProfile);
@@ -63,7 +74,7 @@ class AnimalController extends AbstractController
                     $animal->addVaccinated($addVaccinated->RecalculNextRecall($vaccinated));
                 }
             }
-
+            $entityManager->flush();
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
 
@@ -91,9 +102,6 @@ class AnimalController extends AbstractController
 
         $animalsOfUser = $animalMapper->map($animalRepository        
         ->getConnectedUserAnimals($this->getUser()));
-        /*dump($animalsOfUser);
-        dump($animalsTest);
-        die();*/
 
         return $this->render('animal/index.html.twig', [
             'form' => $form,

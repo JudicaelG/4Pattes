@@ -55,6 +55,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $googleAuthenticatorSecret = null;
 
+    #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
+    private ?Veterinary $veterinary = null;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
@@ -284,5 +287,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
    public function setGoogleAuthenticatorSecret(?string $googleAuthenticatorSecret): void
    {
        $this->googleAuthenticatorSecret = $googleAuthenticatorSecret;
+   }
+
+   public function getVeterinary(): ?Veterinary
+   {
+       return $this->veterinary;
+   }
+
+   public function setVeterinary(Veterinary $veterinary): static
+   {
+       // set the owning side of the relation if necessary
+       if ($veterinary->getUserId() !== $this) {
+           $veterinary->setUserId($this);
+       }
+
+       $this->veterinary = $veterinary;
+
+       return $this;
    }
 }

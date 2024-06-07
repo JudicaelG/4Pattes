@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Animals;
 use App\Entity\Breed;
+use App\Entity\Veterinary;
 use App\Enum\Sexe;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -24,6 +25,7 @@ class AnimalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {   
+
         $builder
             ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('birthday', DateType::class, [
@@ -70,16 +72,34 @@ class AnimalType extends AbstractType
                 'entry_type' => EditVaccineDateAnimalType::class
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
-        ;
+        ;      
 
-        
+        if($options['veterinary'] == null){
+            $builder
+            ->add('add_veterinary', VeterinaryType::class,[
+                'mapped' => false,
+                'label' => 'Ajouter un vétérinaire'
+            ]);
+        }else{
+            $builder
+            ->add('veterinary', EntityType::class, [
+                'class' => Veterinary::class,
+                'query_builder' => function (EntityRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('v')
+                        ->orderBy('v.name', 'ASC');   
+                },
+                'choice_label' => 'name',
+                'label' => 'Ajouter un vétérinaire',
+                
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Animals::class,
-            'entityManager' => null,
+            'veterinary' => Veterinary::class,
         ]);
     }
 }

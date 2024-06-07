@@ -67,6 +67,44 @@
                             {% endfor %}
                     </div>
                 </div>
+                <div class="mx-2 my-2">                   
+                    {% if array.form.add_veterinary is defined %}
+                        <label class="block">{{field_label(form.add_veterinary)|trans}}</label>                
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="col-span-2">
+                                <label class="block">{{field_label(form.add_veterinary.name)|trans}}</label>
+                                {{ form_widget(form.add_veterinary.name) }}
+                                <span class="error-form">{{ form_errors(form.add_veterinary.name) }}</span>
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block">{{field_label(form.add_veterinary.adress)|trans}}</label>
+                                {{ form_widget(form.add_veterinary.adress) }}
+                                <span class="error-form">{{ form_errors(form.add_veterinary.adress) }}</span>
+                            </div>
+                            <div class="">
+                                <label class="block">{{field_label(form.add_veterinary.postalCode)|trans}}</label>
+                                {{ form_widget(form.add_veterinary.postalCode) }}
+                                <span class="error-form">{{ form_errors(form.add_veterinary.postalCode) }}</span>
+                            </div>
+                            <div class="">
+                                <label class="block">{{field_label(form.add_veterinary.city)|trans}}</label>
+                                {{ form_widget(form.add_veterinary.city) }}
+                                <span class="error-form">{{ form_errors(form.add_veterinary.city) }}</span>
+                            </div>
+                            <div class="">
+                                <label class="block">{{field_label(form.add_veterinary.phone)|trans}}</label>
+                                {{ form_widget(form.add_veterinary.phone) }}
+                                <span class="error-form">{{ form_errors(form.add_veterinary.phone) }}</span>
+                            </div>
+                        </div>                
+                    {% else %}
+                        <div>
+                            <label class="block">{{field_label(form.veterinary)|trans}}</label>
+                            {{ form_widget(form.veterinary) }}
+                            <span class="error-form">{{ form_errors(form.veterinary) }}</span>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
                         {% trans %}Ajouter{% endtrans %}
