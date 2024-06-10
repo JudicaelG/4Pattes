@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Animals;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
 use DateTime;
@@ -32,5 +33,23 @@ class AddVaccinated{
         }
         
         return $nextRecall;
+    }
+
+    public function AddAllVaccineToAnimal(Animals $animal, array $vaccins, string $typeVaccin): Animals{
+        foreach($vaccins as $vaccin){
+            if($vaccin->getType() == $typeVaccin){
+                $vaccinated = new Vaccinated();
+                $vaccinated->addVaccineId($vaccin);
+                $animal->addVaccinated($vaccinated);
+            }
+            if($vaccin->getType() == $typeVaccin){
+                $vaccinated = new Vaccinated();
+                $vaccinated->addVaccineId($vaccin);
+                $animal->addVaccinated($vaccinated);
+            }
+            
+        }
+
+        return $animal;
     }
 }

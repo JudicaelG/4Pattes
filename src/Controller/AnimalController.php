@@ -30,19 +30,8 @@ class AnimalController extends AbstractController
         $dog = new Animals();
         $cat = new Animals();
 
-        foreach($vaccins as $vaccin){
-            if($vaccin->getType() == 'chien'){
-                $vaccinated = new Vaccinated();
-                $vaccinated->addVaccineId($vaccin);
-                $dog->addVaccinated($vaccinated);
-            }
-            if($vaccin->getType() == 'chat'){
-                $vaccinated = new Vaccinated();
-                $vaccinated->addVaccineId($vaccin);
-                $cat->addVaccinated($vaccinated);
-            }
-            
-        }
+        $dog = $addVaccinated->AddAllVaccineToAnimal($dog, $vaccins, 'chien');
+        $cat = $addVaccinated->AddAllVaccineToAnimal($cat, $vaccins, 'chat');
 
         $dog->SetUserId($this->getUser());
         $cat->SetUserId($this->getUser());
