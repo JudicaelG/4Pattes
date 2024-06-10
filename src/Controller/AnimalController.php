@@ -25,12 +25,12 @@ class AnimalController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, AddVaccinated $addVaccinated, AnimalMapper $animalMapper): Response
     {
         $animalRepository = $entityManager->getRepository(Animals::class);
-        $vaccinsDog = $entityManager->getRepository(Vaccine::class)->findAll();
+        $vaccins = $entityManager->getRepository(Vaccine::class)->findAll();
         $veterinaryOfUser = $entityManager->getRepository(Veterinary::class)->findOneByUser($this->getUser());
         $dog = new Animals();
         $cat = new Animals();
 
-        foreach($vaccinsDog as $vaccin){
+        foreach($vaccins as $vaccin){
             if($vaccin->getType() == 'chien'){
                 $vaccinated = new Vaccinated();
                 $vaccinated->addVaccineId($vaccin);
@@ -48,7 +48,7 @@ class AnimalController extends AbstractController
         $cat->SetUserId($this->getUser());
 
         $form = $this->createForm(AnimalType::class, $dog, ['veterinary' => $veterinaryOfUser]);
-        $formCat = $this->createForm(AnimalCatType::class, $cat);
+        $formCat = $this->createForm(AnimalCatType::class, $cat, ['veterinary' => $veterinaryOfUser]);
         
         $form->handleRequest($request);
         $formCat->handleRequest($request);
@@ -126,6 +126,7 @@ class AnimalController extends AbstractController
         $animalRepository = $entityManager->getRepository(Animals::class);
         $animal = $animalRepository->getAnimalWithVaccineAndVaccineDate($id);
         $animalTypeCat = false;
+        $veterinaryOfUser = $entityManager->getRepository(Veterinary::class)->findOneByUser($this->getUser());
         $formCat = $this->createForm(AnimalCatEditType::class);
         $form = $this->createForm(AnimalEditType::class);
 
@@ -135,9 +136,9 @@ class AnimalController extends AbstractController
 
         if($animal->getBreedId()->gettype() == 'cat'){
             $animalTypeCat = true;
-            $formCat = $this->createForm(AnimalCatEditType::class, $animal);
+            $formCat = $this->createForm(AnimalCatEditType::class, $animal, ['veterinary' => $veterinaryOfUser]);
         }else{
-            $form = $this->createForm(AnimalEditType::class, $animal);
+            $form = $this->createForm(AnimalEditType::class, $animal, ['veterinary' => $veterinaryOfUser]);
         }
 
         

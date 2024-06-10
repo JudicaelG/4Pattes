@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% form_theme form 'tailwind_2_layout.html.twig' %}
+{% form_theme formCat 'tailwind_2_layout.html.twig' %}
 
 {% block title %}{% trans %}Mon animal{% endtrans %}{% endblock %}
 
@@ -142,6 +143,16 @@
                     <span class="error-form">{{ form_errors(formCat.breed_id) }}</span>
                 </div>
                 <div class="mx-2 my-2">
+                    <label class="block">{{field_label(formCat.sexe)|trans}}</label>
+                    {{ form_widget(formCat.sexe) }}
+                    <span class="error-form">{{ form_errors(formCat.sexe) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(formCat.sterilized)|trans}}</label>
+                    {{ form_widget(formCat.sterilized) }}
+                    <span class="error-form">{{ form_errors(formCat.sterilized) }}</span>
+                </div>
+                <div class="mx-2 my-2">
                     <label class="block">{{field_label(formCat.profilePhoto)|trans}}</label>
                     <input type="file" name="{{field_name(formCat.profilePhoto)}}" value="{{field_value(formCat.profilePhoto)}}" class="w-full">
                     <span class="error-form">{{ form_errors(formCat.profilePhoto) }}</span>
@@ -159,6 +170,44 @@
                             </div>
                             {% endfor %}
                     </div>
+                </div>
+                <div class="mx-2 my-2">                   
+                    {% if array.formCat.add_veterinary is defined %}
+                        <label class="block">{{field_label(formCat.add_veterinary)|trans}}</label>                
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="col-span-2">
+                                <label class="block">{{field_label(formCat.add_veterinary.name)|trans}}</label>
+                                {{ form_widget(formCat.add_veterinary.name) }}
+                                <span class="error-form">{{ form_errors(formCat.add_veterinary.name) }}</span>
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block">{{field_label(formCat.add_veterinary.adress)|trans}}</label>
+                                {{ form_widget(formCat.add_veterinary.adress) }}
+                                <span class="error-form">{{ form_errors(formCat.add_veterinary.adress) }}</span>
+                            </div>
+                            <div class="">
+                                <label class="block">{{field_label(formCat.add_veterinary.postalCode)|trans}}</label>
+                                {{ form_widget(formCat.add_veterinary.postalCode) }}
+                                <span class="error-form">{{ form_errors(formCat.add_veterinary.postalCode) }}</span>
+                            </div>
+                            <div class="">
+                                <label class="block">{{field_label(formCat.add_veterinary.city)|trans}}</label>
+                                {{ form_widget(formCat.add_veterinary.city) }}
+                                <span class="error-form">{{ form_errors(form.add_veterinary.city) }}</span>
+                            </div>
+                            <div class="">
+                                <label class="block">{{field_label(formCat.add_veterinary.phone)|trans}}</label>
+                                {{ form_widget(formCat.add_veterinary.phone) }}
+                                <span class="error-form">{{ form_errors(formCat.add_veterinary.phone) }}</span>
+                            </div>
+                        </div>                
+                    {% else %}
+                        <div>
+                            <label class="block">{{field_label(formCat.veterinary)|trans}}</label>
+                            {{ form_widget(formCat.veterinary) }}
+                            <span class="error-form">{{ form_errors(formCat.veterinary) }}</span>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="my-2 mx-2 float-right">
                     <button type="submit" id="{{field_label(formCat.save)}}" name="{{field_name(formCat.save)}}" class="bg-primary p-2 text-white min-w-11">

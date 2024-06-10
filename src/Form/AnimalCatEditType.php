@@ -6,6 +6,7 @@ use App\Entity\Animals;
 use App\Entity\Breed;
 use App\Entity\Vaccinated;
 use App\Entity\Vaccine;
+use App\Entity\Veterinary;
 use App\Enum\Sexe;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
@@ -91,6 +92,26 @@ class AnimalCatEditType extends AbstractType
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
         ;
 
+        if($options['veterinary'] == null){
+            $builder
+            ->add('add_veterinary', VeterinaryType::class,[
+                'mapped' => false,
+                'label' => 'Ajouter un vétérinaire'
+            ]);
+        }else{
+            $builder
+            ->add('veterinary', EntityType::class, [
+                'class' => Veterinary::class,
+                'query_builder' => function (EntityRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('v')
+                        ->orderBy('v.name', 'ASC');   
+                },
+                'choice_label' => 'name',
+                'label' => 'Ajouter un vétérinaire',
+                
+            ]);
+        }
+
         
     }
 
@@ -98,7 +119,7 @@ class AnimalCatEditType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Animals::class,
-            'entityManager' => null,
+            'veterinary' => Veterinary::class,
         ]);
     }
 }
