@@ -30,6 +30,7 @@ class AnimalMapper implements IAnimalMapper{
             $animalDTO->vaccinated = $this->vaccinatedMapper->map($animal->getVaccinateds());
             $animalDTO->weight = $animal->getWeight();
             $animalDTO->profilePhoto = $animal->getProfilePhoto();
+            $animalDTO->veterinary = $animal->getVeterinary();
 
             array_push($animalsDTO, $animalDTO);
         }
@@ -50,6 +51,7 @@ class AnimalMapper implements IAnimalMapper{
         $animalDTO->vaccinated = $this->vaccinatedMapper->map($animal->getVaccinateds());
         $animalDTO->weight = $animal->getWeight();
         $animalDTO->profilePhoto = $animal->getProfilePhoto();
+        $animalDTO->veterinary = $animal->getVeterinary();
 
         return $animalDTO;
     }

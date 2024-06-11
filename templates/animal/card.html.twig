@@ -17,14 +17,65 @@
     <div class="my-4">
     <h2 class="font-semibold ml-4 inline">{% trans %}Anniversaire{% endtrans %} : </h2><p class="ml-2 inline">{{animal.birthday|date("d/m/Y")}} - {{animal.getAge()}}</p><br/>
     <h2 class="font-semibold ml-4 inline">{% trans %}Poids{% endtrans %} : </h2><p class="ml-2 inline">{{animal.weight}} Kg</p><br/>
-        {% for vaccine in animal.vaccinated %}
-            {% if vaccine.next_recall != null %}
-                {% for vaccineId in vaccine.vaccine_id %}
-                    <h2 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin :{% endtrans %}</h2>
-                    <p class="ml-4">{{ vaccineId.getName()}} : <span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
+    {% if animal.sexe %}
+        <h4 class="font-semibold ml-4 inline">{% trans %}Sexe{% endtrans %} : </h4><p class="ml-2 inline">{{animal.sexe}}</p><br/>
+        {% endif %}
+        {% if animal.sterilized == false %}
+            <h4 class="font-semibold ml-4 inline">{% trans %}Stérilisé{% endtrans %} : </h4><p class="ml-2 inline">Non</p><br/>
+        {% elseif  animal.sterilized == true %}
+            <h4 class="font-semibold ml-4 inline">{% trans %}Stérilisé{% endtrans %} : </h4><p class="ml-2 inline">Oui</p><br/>
+        {% endif %}
+    {% for vaccine in animal.vaccinated %}
+        {% if vaccine.next_recall != null %}
+            {% for vaccineId in vaccine.vaccine_id %}
+                <h2 class="font-semibold ml-4 inline">{% trans %}Prochain vaccin :{% endtrans %}</h2>
+                <p class="ml-4">{{ vaccineId.getName()}} : <span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="my-4">
+        <h2 class="font-semibold">Vétérinaire traitant</h2>
+        <div>
+        {{form_start(form)}}
+                <div class="mx-2 my-2">                    
+                    <label class="block">{{field_label(form.name)|trans}}</label>                    
+                    <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="w-full input-focus-red" required>
+                    <span class="error-form">{{ form_errors(form.name) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(form.adress)|trans}}</label>
+                    <input type="text" name="{{field_name(form.adress)}}" value="{{field_value(form.adress)}}" class="w-full input-focus-red" required>
+                    <span class="error-form">{{ form_errors(form.adress) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(form.postalCode)|trans}}</label>
+                    <input type="number" name="{{field_name(form.postalCode)}}" value="{{field_value(form.postalCode)}}" class="w-full input-focus-red" required>
+                    <span class="error-form">{{ form_errors(form.postalCode) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(form.city)|trans}}</label>
+                    <input type="text" name="{{field_name(form.city)}}" value="{{field_value(form.city)}}" class="w-full input-focus-red" required>
+                    <span class="error-form">{{ form_errors(form.city) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block">{{field_label(form.phone)|trans}}</label>
+                    <input type="phone" name="{{field_name(form.phone)}}" value="{{field_value(form.phone)}}" class="w-full input-focus-red" required>
+                    <span class="error-form">{{ form_errors(form.phone) }}</span>
+                </div>
+                <div class="my-2 mx-2 float-right">
+                    <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary p-2 text-white min-w-11">
+                        {% trans %}Modifier{% endtrans %}
+                    </button>
+                </div>
+                 {{form_rest(form)}}
+            {{form_end(form)}}
+            {#<h3 class="font-semibold ml-4 inline">{% trans %}Nom{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.name}}</p><br/>
+            <h3 class="font-semibold ml-4 inline">{% trans %}Adresse{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.adress}}</p><br/>
+            <h3 class="font-semibold ml-4 inline">{% trans %}Code postal{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.postalCode}}</p><br/>
+            <h3 class="font-semibold ml-4 inline">{% trans %}Ville{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.city}}</p><br/>
+            <h3 class="font-semibold ml-4 inline">{% trans %}Numéro de téléphone{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.phone}}</p><br/>#}
+        </div>
     </div>
 </div>
 {% endblock %}

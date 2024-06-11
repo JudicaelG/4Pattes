@@ -79,6 +79,19 @@ class AnimalsRepository extends ServiceEntityRepository
         ->getOneOrNullResult();
     }
 
+    
+    public function getAnimalWithVaccineAndVaccineDateAndVeterinary($id){
+        return $this->createQueryBuilder('a')
+        ->andWhere('a.id = :id') 
+        ->setParameter('id', $id)
+        ->leftJoin('a.vaccinateds', 'v')
+        ->addSelect('v')
+        ->leftJoin('a.veterinary', 'vet')
+        ->addSelect('vet')
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
+
     public function getAnimalWithVaccineAndVaccineDateAndDayBeforeNextRecall($id){
         $entityManager = $this->getEntityManager();
 

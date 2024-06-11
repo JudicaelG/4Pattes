@@ -4,6 +4,7 @@ namespace App\DTO;
 
 use App\Entity\Breed;
 use App\Entity\User;
+use App\Entity\Veterinary;
 use DateTime;
 
 class AnimalDTO{
@@ -26,6 +27,8 @@ class AnimalDTO{
     public ?bool $sterilized;
     
     public ?string $profilePhoto;
+
+    public Veterinary $veterinary;
 
     public function getAge()
     {

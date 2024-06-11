@@ -10,23 +10,36 @@
             {% endif %}
                 <span class="ml-4 font-bold inline">{{ animal.name }}</span>, {{ animal.breed_id.name }}</h3>
             <hr class="w-1/2 my-2">
-            <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
-            <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
-            {% if animal.sexe %}
-            <h4 class="font-semibold">{% trans %}Sexe{% endtrans %} : </h4><p class="ml-2">{{animal.sexe}}</p>
-            {% endif %}
-            {% if animal.sterilized == false %}
-                <h4 class="font-semibold">{% trans %}Stérilisé{% endtrans %} : </h4><p class="ml-2">Non</p>
-            {% elseif  animal.sterilized == true %}
-                <h4 class="font-semibold">{% trans %}Stérilisé{% endtrans %} : </h4><p class="ml-2">Oui</p>
-            {% endif %}
-            {% for vaccine in animal.vaccinated %}                
-                {% if vaccine.next_recall != null %}
-                    {% for vaccineId in vaccine.vaccine_id %}
-                        <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2"><span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
+            <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                    <h4 class="font-semibold">{% trans %}Anniversaire{% endtrans %} : </h4><p class="ml-2">{{animal.birthday|date("d/m/Y")}}</p>
+                    <h4 class="font-semibold">{% trans %}Poids{% endtrans %} : </h4><p class="ml-2">{{animal.weight}} Kg</p>
+                    {% if animal.sexe %}
+                    <h4 class="font-semibold">{% trans %}Sexe{% endtrans %} : </h4><p class="ml-2">{{animal.sexe}}</p>
+                    {% endif %}
+                    {% if animal.sterilized == false %}
+                        <h4 class="font-semibold">{% trans %}Stérilisé{% endtrans %} : </h4><p class="ml-2">Non</p>
+                    {% elseif  animal.sterilized == true %}
+                        <h4 class="font-semibold">{% trans %}Stérilisé{% endtrans %} : </h4><p class="ml-2">Oui</p>
+                    {% endif %}
+                    {% for vaccine in animal.vaccinated %}                
+                        {% if vaccine.next_recall != null %}
+                            {% for vaccineId in vaccine.vaccine_id %}
+                                <h4 class="font-semibold">{% trans %}Prochain vaccin {% endtrans %} {{ vaccineId.getName()}} : </h4><p class="ml-2"><span class="{{vaccine.color.name}}">{{vaccine.next_recall|date("d/m/Y")}}</span> ({{vaccine.last_date_injection|date("d/m/Y")}})</p>
+                            {% endfor %}
+                        {% endif %}
                     {% endfor %}
-                {% endif %}
-            {% endfor %}
+                </div>
+                <div>
+                    <h2 class="font-semibold">Vétérinaire traitant</h2>
+                    <div>
+                        <h3 class="font-semibold ml-4 inline">{% trans %}Nom{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.name}}</p><br/>
+                        <h3 class="font-semibold ml-4 inline">{% trans %}Adresse{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.adress}}</p><br/>
+                        <h3 class="font-semibold ml-4 inline">{% trans %}Code postal{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.postalCode}}</p><br/>
+                        <h3 class="font-semibold ml-4 inline">{% trans %}Ville{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.city}}</p><br/>
+                        <h3 class="font-semibold ml-4 inline">{% trans %}Numéro de téléphone{% endtrans %} : </h3><p class="ml-2 inline">{{animal.veterinary.phone}}</p><br/>
+                    </div>
+                </div>
         </section>
         <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>
         <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"><button class="" >{% trans %}Modifier{% endtrans %}</button></a>

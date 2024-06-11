@@ -31,6 +31,7 @@ class VeterinaryType extends AbstractType
             ->add('phone', TelType::class, [
                 'label' => 'Téléphone du vétérinaire'
             ])
+            ->add('save', SubmitType::class)
         ;
     }
 

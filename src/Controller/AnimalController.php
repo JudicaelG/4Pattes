@@ -15,6 +15,7 @@ use App\Form\AnimalCatEditType;
 use App\Form\AnimalCatType;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
+use App\Form\VeterinaryType;
 use App\Mapper\AnimalMapper;
 use App\Service\AddVaccinated;
 use App\Service\FileUploader;
@@ -102,10 +103,13 @@ class AnimalController extends AbstractController
 
     #[Route('/animal/{id}', name: 'card_animal')]
     public function animalCard(EntityManagerInterface $entityManager, int $id, AnimalMapper $animalMapper): Response{
-        $animal = $animalMapper->mapAnimal($entityManager->getRepository(Animals::class)->getAnimalWithVaccineAndVaccineDate($id));
+        $animal = $animalMapper->mapAnimal($entityManager->getRepository(Animals::class)->getAnimalWithVaccineAndVaccineDateAndVeterinary($id));
+
+        $form = $this->createForm(VeterinaryType::class, $animal->veterinary);
 
         return $this->render('animal/card.html.twig',[
             'animal' => $animal,
+            'form' => $form,
         ]);
     }
 
