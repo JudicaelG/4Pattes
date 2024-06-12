@@ -105,7 +105,8 @@ class AnimalController extends AbstractController
     public function animalCard(EntityManagerInterface $entityManager, int $id, AnimalMapper $animalMapper): Response{
         $animal = $animalMapper->mapAnimal($entityManager->getRepository(Animals::class)->getAnimalWithVaccineAndVaccineDateAndVeterinary($id));
 
-        $form = $this->createForm(VeterinaryType::class, $animal->veterinary);
+        $form = $this->createForm(VeterinaryType::class, $animal->veterinary, ['action' => $this->generateUrl('app_veterinary_edit', ['id' => $animal->veterinary->getId()])]);
+
 
         return $this->render('animal/card.html.twig',[
             'animal' => $animal,
