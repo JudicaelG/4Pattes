@@ -164,3 +164,34 @@ body {
   .orange{
     color: #FF8100;
   }
+
+/* Message flash */
+.flash-success{
+  background-color: #6EC964;
+  color: #0A6A00;  
+}
+
+.flash-warning{
+  background-color: #FFA45C;
+  color: #AC4C00;  
+}
+
+.flash-error{
+  background-color: #FD5B6A;
+  color: #A60010;
+}
+
+.flash{
+  padding: 1em;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.6s;
+}

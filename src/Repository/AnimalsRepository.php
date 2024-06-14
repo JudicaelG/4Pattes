@@ -34,7 +34,7 @@ class AnimalsRepository extends ServiceEntityRepository
 
         $entityManager->flush();
 
-        return new Response('Your animal has been added !');
+        return new Response('Votre animal a été ajouté !');
     }
 
     public function deleteAnimal($id, $entityManager){       

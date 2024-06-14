@@ -68,6 +68,10 @@ class AnimalController extends AbstractController
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
 
+            if($animalInsert->getStatusCode() == 200){
+                $this->addFlash('success', $animalInsert->getContent());
+            }
+
             return $this->redirectToRoute('animal');
         }
         if($formCat->isSubmitted() && $formCat->isValid()){
@@ -86,6 +90,10 @@ class AnimalController extends AbstractController
             
             $animalInsert = $animalRepository
             ->saveAnimal($animal);
+
+            if($animalInsert->getStatusCode() == 200){
+                $this->addFlash('success', $animalInsert->getContent());
+            }
 
             return $this->redirectToRoute('animal');
         }

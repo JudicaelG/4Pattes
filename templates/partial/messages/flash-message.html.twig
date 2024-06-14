@@ -1,0 +1,8 @@
+{% for label, messages in app.flashes(['success', 'warning', 'error']) %}
+    {% for message in messages %}
+        <div class="flash flash-{{ label }} m-4 rounded-lg">
+            {{ message }}
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+    {% endfor %}
+{% endfor %}
