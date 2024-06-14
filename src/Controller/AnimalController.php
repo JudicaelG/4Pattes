@@ -155,7 +155,7 @@ class AnimalController extends AbstractController
             }
 
             $entityManager->flush();
-
+            $this->addFlash('success', 'Votre animal a bien été modifié');
             return $this->redirectToRoute('animal');
         }
 
@@ -168,7 +168,7 @@ class AnimalController extends AbstractController
             }
 
             $entityManager->flush();
-
+            $this->addFlash('success', 'Votre animal a bien été modifié');
             return $this->redirectToRoute('animal');
         }
 
@@ -196,7 +196,7 @@ class AnimalController extends AbstractController
 
         $entityManager->remove($deleteAnimal);
         $entityManager->flush();
-
+        $this->addFlash('warning', 'Votre animal a bien été supprimé');
         return $this->redirectToRoute('animal');
     }
 
