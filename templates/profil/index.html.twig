@@ -4,9 +4,9 @@
 {% block title %}{% trans %}Mon profil{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h2>{% trans %}Mon profil{% endtrans %}</h2>
+    <h2 class="text-3xl font-bold my-3.5 mx-4">{% trans %}Mon profil{% endtrans %}</h2>
 
-    <div class="grid grid-cols-1 mx-3.5">
+    <div class="grid grid-cols-1 mx-4">
         {{form_start(form)}}
         <div class="mx-2 my-2">                    
             <label class="block">{{field_label(form.email)|trans}}</label>                    
@@ -27,11 +27,13 @@
         {{form_end(form)}}
     </div>
      
-    <h2>{% trans %}Double authentication {% endtrans %}</h2>
-    {% if displayQrCodeGa %}
-        <p><img src="{{ path("app_qr_code") }}" /></p>
-    {% else %}
-        <a href="{{path("app_activate_2fa")}}"><button class="bg-primary p-2 text-white min-w-11">Activer le 2FA</button></a>
-    {% endif %}
+    <h2 class="text-3xl font-bold my-3.5 mx-4">{% trans %}Double authentication {% endtrans %}</h2>
+    <div class="mx-4">
+        {% if displayQrCodeGa %}
+            <p><img src="{{ path("app_qr_code") }}" /></p>
+        {% else %}
+            <a href="{{path("app_activate_2fa")}}"><button class="bg-primary p-2 text-white min-w-11">Activer le 2FA</button></a>
+        {% endif %}
+    </div>
 
 {% endblock %}

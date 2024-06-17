@@ -4,7 +4,7 @@
 
 {% block body %}
     {% if app.user %}
-    <h1 class="text-3xl font-bold my-3.5">
+    <h1 class="text-3xl font-bold my-3.5 mx-4">
     {% if animalsOfTheUser %}
         Bonjour, 
         {% for animal in animalsOfTheUser %}            
@@ -18,10 +18,10 @@
         Bonjour !
     {% endif %}
     </h1>
-
-    {{ include ('partial/animal-resume.html.twig', {animalsOfTheUser: animalsOfTheUser}) }}
-
-    <div>
+    <div class="mx-4">
+        {{ include ('partial/animal-resume.html.twig', {animalsOfTheUser: animalsOfTheUser}) }}
+    </div>
+    <div class="mx-4">
         <h2 class="text-center uppercase my-3.5">Derniers articles</h2>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 mx-1">
             <div class="relative">
@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="my-3.5 bg-button-menu">
+    <div class="my-3.5 bg-button-menu mx-4">
         <h2 class="uppercase text-center">Prochaines sorties</h2>
         <div my-1 mx-1>
             <h3 class="uppercase">Sortie A - <span class="lowercase italic">Nom de la ville</span></h3>

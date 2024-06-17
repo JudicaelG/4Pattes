@@ -1,10 +1,10 @@
 <script src="{{ asset('js/carrousel.js') }}"></script>
 
-<div class="relative w-full h-52 mx-auto bg-card-secondary lg:hidden">
+<div class="relative w-full h-52 mx-auto bg-card-secondary lg:hidden mx-4">
 
     {% for animal in animalsOfTheUser %}
         {% if loop.first %}
-            <div class="slide relative h-40 flex flex-row justify-center items-center mx-14 my-4">
+            <div class="slide relative h-40 flex flex-row justify-center items-center mx-14 my-4 ">
                 <div class="mx-4">
                     <img src="{{asset('images/default/dog.JPG')}}" alt="nom de l'animal" class="w-28 h-28 rounded-full"/>
                 </div>
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<div class="w-full hidden lg:grid grid-cols-6 gap-2.5 mx-auto">
+<div class="w-full hidden lg:grid grid-cols-6 gap-2.5">
     {% for animal in animalsOfTheUser %}
         <a href="{{path('card_animal', {id: animal.id})}}">
             <div class="h-96 shadow-lg parent-hover">            
