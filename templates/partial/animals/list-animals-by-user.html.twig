@@ -1,6 +1,6 @@
 {% for animal in animalsOfUser %}
 
-    <div class="bg-card-secondary shadow-xl">
+    <div class="bg-card-secondary shadow-xl flex flex-col">
         <section class="px-4 py-4">
             <h3>
             {% if animal.profilePhoto %}
@@ -41,8 +41,11 @@
                     </div>
                 </div>
         </section>
-        <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>
-        <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"><button class="" >{% trans %}Modifier{% endtrans %}</button></a>
-        <a class="float-right bg-primary p-2 text-white mx-4 my-4" animal-id="{{animal.id}}" onclick="askDelete({{animal.id}})"><button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
+        <div class="margin-top-auto">
+            <a class="float-right bg-primary p-2 text-white mx-4 my-4" animal-id="{{animal.id}}" onclick="askDelete({{animal.id}})"><button class="" >{% trans %}Supprimer{% endtrans %}</button></a>
+            <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="https://www.i-cad.fr/" target="_blank" button class="" >I-CAD</button></a>
+            <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('edit_animal', {id: animal.id})}}"><button class="" >{% trans %}Modifier{% endtrans %}</button></a>
+            <a class="float-right bg-primary p-2 text-white mx-4 my-4" href="{{path('card_animal', {id: animal.id})}}"><button class="" >{% trans %}Détails{% endtrans %}</button></a>
+        </div>
     </div>
 {% endfor %}

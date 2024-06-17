@@ -195,3 +195,9 @@ body {
   cursor: pointer;
   transition: 0.6s;
 }
+
+
+/* fiche animal des utilisateurs */
+.margin-top-auto{
+  margin-top: auto;
+}
