@@ -11,7 +11,11 @@
 {% endblock %}
 
 {% block body %}
-    <h2>{% trans %}Mon animal{% endtrans %}</h2>
+    {% if animalsOfUser|length > 1 %}
+        <h1 class="text-3xl font-bold my-3.5">Mes animaux</h1>
+    {% else %}
+        <h1 class="text-3xl font-bold my-3.5 mx-4">Mon animal</h1>
+    {% endif %}
     {{ include ('partial/messages/flash-message.html.twig') }}
     <div class=" mx-3.5 tab flex" animal-is="{{animalTypeCat}}">
         <button class="tabLinks active" onclick="openForm(event, 'Dog')">Ajouter un chien</button>
