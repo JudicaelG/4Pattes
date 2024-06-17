@@ -1,0 +1,95 @@
+{{form_start(formCat)}}
+    <div class="mx-2 my-2">                    
+        <label class="block">{{field_label(formCat.name)|trans}}</label>                    
+        <input name="{{field_name(formCat.name)}}" value="{{field_value(formCat.name)}}" class="w-full input-focus-red" required>
+        <span class="error-form">{{ form_errors(formCat.name) }}</span>
+    </div>
+    <div class="mx-2 my-2">
+        <label class="block">{{field_label(formCat.birthday)|trans}}</label>
+        <input type="date" name="{{field_name(formCat.birthday)}}" value="{{field_value(formCat.birthday)}}" class="w-full input-focus-red" required>
+        <span class="error-form">{{ form_errors(formCat.birthday) }}</span>
+    </div>
+    <div class="mx-2 my-2">
+        <label class="block">{{field_label(formCat.weight)|trans}}</label>
+        <input type="number" step="0.1" name="{{field_name(formCat.weight)}}" value="{{field_value(formCat.weight)}}" class="w-full input-focus-red" required>
+        <span class="error-form">{{ form_errors(formCat.weight) }}</span>
+    </div>
+    <div class="mx-2 my-2">
+        <label class="block">{{field_label(formCat.breed_id)|trans}}</label>
+        {{ form_widget(formCat.breed_id) }}
+        <span class="error-form">{{ form_errors(formCat.breed_id) }}</span>
+    </div>
+    <div class="mx-2 my-2">
+        <label class="block">{{field_label(formCat.sexe)|trans}}</label>
+        {{ form_widget(formCat.sexe) }}
+        <span class="error-form">{{ form_errors(formCat.sexe) }}</span>
+    </div>
+    <div class="mx-2 my-2">
+        <label class="block">{{field_label(formCat.sterilized)|trans}}</label>
+        {{ form_widget(formCat.sterilized) }}
+        <span class="error-form">{{ form_errors(formCat.sterilized) }}</span>
+    </div>
+    <div class="mx-2 my-2">
+        <label class="block">{{field_label(formCat.profilePhoto)|trans}}</label>
+        <input type="file" name="{{field_name(formCat.profilePhoto)}}" value="{{field_value(formCat.profilePhoto)}}" class="w-full">
+        <span class="error-form">{{ form_errors(formCat.profilePhoto) }}</span>
+    </div>
+    <div class="mx-2 my-2 ">
+        <label class="block">{% trans %}Vaccins{% endtrans %}</label>
+        <div class="grid grid-cols-4 gap-2.5">
+            {% for vaccinated in formCat.vaccinateds %}
+                <div class="">
+                    {% for vaccine in vaccinated.vars.value.getVaccineId() %}
+                        {{ form_label(formCat.name, vaccine.name) }}
+                    {% endfor %}
+                    {{ form_widget(vaccinated) }}
+                    <span class="error-form">{{ form_errors(vaccinated) }}</span>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+    <div class="mx-2 my-2">                   
+        {% if array.formCat.add_veterinary is defined %}
+            <label class="block">{{field_label(formCat.add_veterinary)|trans}}</label>                
+            <div class="grid grid-cols-2 gap-2.5">
+                <div class="col-span-2">
+                    <label class="block">{{field_label(formCat.add_veterinary.name)|trans}}</label>
+                    {{ form_widget(formCat.add_veterinary.name) }}
+                    <span class="error-form">{{ form_errors(formCat.add_veterinary.name) }}</span>
+                </div>
+                <div class="col-span-2">
+                    <label class="block">{{field_label(formCat.add_veterinary.adress)|trans}}</label>
+                    {{ form_widget(formCat.add_veterinary.adress) }}
+                    <span class="error-form">{{ form_errors(formCat.add_veterinary.adress) }}</span>
+                </div>
+                <div class="">
+                    <label class="block">{{field_label(formCat.add_veterinary.postalCode)|trans}}</label>
+                    {{ form_widget(formCat.add_veterinary.postalCode) }}
+                    <span class="error-form">{{ form_errors(formCat.add_veterinary.postalCode) }}</span>
+                </div>
+                <div class="">
+                    <label class="block">{{field_label(formCat.add_veterinary.city)|trans}}</label>
+                    {{ form_widget(formCat.add_veterinary.city) }}
+                    <span class="error-form">{{ form_errors(form.add_veterinary.city) }}</span>
+                </div>
+                <div class="">
+                    <label class="block">{{field_label(formCat.add_veterinary.phone)|trans}}</label>
+                    {{ form_widget(formCat.add_veterinary.phone) }}
+                    <span class="error-form">{{ form_errors(formCat.add_veterinary.phone) }}</span>
+                </div>
+            </div>                
+        {% else %}
+            <div>
+                <label class="block">{{field_label(formCat.veterinary)|trans}}</label>
+                {{ form_widget(formCat.veterinary) }}
+                <span class="error-form">{{ form_errors(formCat.veterinary) }}</span>
+            </div>
+        {% endif %}
+    </div>
+    <div class="my-2 mx-2 float-right">
+        <button type="submit" id="{{field_label(formCat.save)}}" name="{{field_name(formCat.save)}}" class="bg-primary p-2 text-white min-w-11">
+            {% trans %}Ajouter{% endtrans %}
+        </button>
+    </div>
+        {{form_rest(formCat)}}
+{{form_end(formCat)}}
