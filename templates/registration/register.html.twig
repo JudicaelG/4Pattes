@@ -1,15 +1,25 @@
-{% extends 'base.html.twig' %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Regsiter !{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-{% block title %}Inscription{% endblock %}
-
-{% block body %}
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+<body>
     <div class="min-h-screen flex items-center justify-center w-full">
-        <div class="bg-secondary dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
+        <div class="bg-secondary dark:bg-gray-900 shadow-md rounded-lg px-8 py-6  lg:min-w-[410px] max-w-md">
             {% for flash_error in app.flashes('verify_email_error') %}
-                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                <div class="flash flash-error" role="alert">{{ flash_error }}</div>
             {% endfor %}
 
-            <h1>Inscription</h1>
+            <h1 class="text-2xl font-bold text-center mb-4 dark:text-gray-200">Inscription</h1>
 
             {{ form_errors(registrationForm) }}
 
@@ -29,4 +39,5 @@
             {{ form_end(registrationForm) }}
         </div>
     </div>
-{% endblock %}
+</body>
+</html>

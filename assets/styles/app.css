@@ -201,3 +201,8 @@ body {
 .margin-top-auto{
   margin-top: auto;
 }
+
+/* error form */
+.error-form{
+  color: black;
+}
