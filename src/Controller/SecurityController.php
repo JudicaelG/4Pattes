@@ -12,6 +12,7 @@ use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface as GoogleAuthenticator
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\MakerBundle\Security\Model\Authenticator;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
@@ -36,9 +37,12 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(): void
+    public function logout(Security $security): Response
     {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        $response = $security->logout();
+        $response = $security->logout(false);
+
+        return $this->redirectToRoute('app_login');
     }
 
     #[Route(path: '/authentication/2fa/qr-code', name: 'app_qr_code')]
