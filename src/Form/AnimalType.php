@@ -72,8 +72,7 @@ class AnimalType extends AbstractType
                 'entry_type' => EditVaccineDateAnimalType::class
             ])
             ->add('save', SubmitType::class, ['label' => 'Ajouter'])
-        ;      
-
+        ; 
         if($options['veterinary'] == null){
             $builder
             ->add('add_veterinary', VeterinaryType::class,[

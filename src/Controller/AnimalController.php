@@ -15,6 +15,7 @@ use App\Form\AnimalCatEditType;
 use App\Form\AnimalCatType;
 use App\Form\AnimalEditType;
 use App\Form\AnimalType;
+use App\Form\VeterinaryModifyType;
 use App\Form\VeterinaryType;
 use App\Mapper\AnimalMapper;
 use App\Service\AddVaccinated;
@@ -113,7 +114,7 @@ class AnimalController extends AbstractController
     public function animalCard(EntityManagerInterface $entityManager, int $id, AnimalMapper $animalMapper): Response{
         $animal = $animalMapper->mapAnimal($entityManager->getRepository(Animals::class)->getAnimalWithVaccineAndVaccineDateAndVeterinary($id));
 
-        $form = $this->createForm(VeterinaryType::class, $animal->veterinary, ['action' => $this->generateUrl('app_veterinary_edit', ['id' => $animal->veterinary->getId()])]);
+        $form = $this->createForm(VeterinaryModifyType::class, $animal->veterinary, ['action' => $this->generateUrl('app_veterinary_edit', ['id' => $animal->veterinary->getId()])]);
 
 
         return $this->render('animal/card.html.twig',[
