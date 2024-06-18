@@ -1,12 +1,37 @@
-{% extends 'base.html.twig' %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Réinitialisation du mot de passe !{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-{% block title %}Reset your password{% endblock %}
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+<body>
+    <div class="min-h-screen flex items-center justify-center w-full">
+        <div class="bg-secondary dark:bg-gray-900 shadow-md rounded-lg px-8 py-6  lg:min-w-[410px] max-w-md">
+        <h1 class="text-2xl font-bold text-center mb-4 dark:text-gray-200">Nouveau mot de passe</h1>
+        {{ form_errors(resetForm) }}
 
-{% block body %}
-    <h1>Reset your password</h1>
-
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
-{% endblock %}
+        {{ form_start(resetForm) }}
+                <div class="mb-4">
+                    <label class="block">{{field_label(resetForm.plainPassword.first)|trans}}</label>
+                    <input type="password" name="{{field_name(resetForm.plainPassword.first)}}" value="{{field_value(resetForm.plainPassword.first)}}" class="form-control shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <span class="error-form">{{ form_errors(resetForm.plainPassword.first) }}</span>
+                </div>
+                <div class="mb-4">
+                    <label class="block">{{field_label(resetForm.plainPassword.second)|trans}}</label>
+                    <input type="password" name="{{field_name(resetForm.plainPassword.second)}}" value="{{field_value(resetForm.plainPassword.second)}}" class="form-control shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <span class="error-form">{{ form_errors(resetForm.plainPassword.second) }}</span>
+                </div>
+            <button class="my-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary">Reset password</button>
+        {{ form_end(resetForm) }}
+        </div>
+    </div>
+</body>
+</html>
