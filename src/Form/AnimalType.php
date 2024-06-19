@@ -38,7 +38,6 @@ class AnimalType extends AbstractType
                         ->where('b.type=\'dog\'')
                         ->orderBy('b.name', 'ASC');   
                 },
-                'group_by' => 'type',
                 'choice_label' => 'name',
                 'label' => 'Race',
                 

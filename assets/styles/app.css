@@ -10,6 +10,7 @@ body {
     box-shadow: 0 4px 6px 10px rgb(0 0 0 / 0.1), 0 2px 4px -10px rgb(0 0 0 / 0.1);
 }
 
+/* Menu */
 @media (max-width: 1024px) {
     .semi-circle{
         height: 7rem;
@@ -94,76 +95,82 @@ body {
     box-shadow: 4px -2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
+/* fin menu */
+
+/* slide on mobile */
 .slides-container {
     -ms-overflow-style: none;
     /* Internet Explorer 10+ */
     scrollbar-width: none;
     /* Firefox */
-  }
+}
 
-  .slides-container::-webkit-scrollbar {
-    display: none;
-    /* Safari and Chrome */
-  }
+.slides-container::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
 
-  .text-white{
-    color: white;
-  }
+/* fin slide mobile */
 
-  .input-focus-red{
-    border-color: #B50707;
-    border-width: 3px;
-  }
+.text-white{
+  color: white;
+}
 
-  .parent-hover:hover {
-    background-color: #AF3929;
-    border-radius: 0.5rem;
-  }
+/* form */
+.input-border-red{
+  border-color: #B50707;
+  border-width: 1px;
+}
 
-  .parent-hover:hover .child-hover{
-    opacity: 0.8;
-    transition: all 0.2s;
-  }
+.parent-hover:hover {
+  background-color: #AF3929;
+  border-radius: 0.5rem;
+}
 
-  .error-form{
-    color: #910202;
-    font-weight: bold;
-  }
+.parent-hover:hover .child-hover{
+  opacity: 0.8;
+  transition: all 0.2s;
+}
 
-  .date_vaccine_input input{
-    border-color: #B50707;
-    border-width: 3px;
-  }
+.error-form{
+  color: #910202;
+  font-weight: bold;
+}
 
-  .tabcontent {
-    display: none;
-  }
+.date_vaccine_input input{
+  border-color: #B50707;
+  border-width: 3px;
+}
 
-  .tabcontent-active {
-    display:grid;
-  }
+.tabcontent {
+  display: none;
+}
 
-  .tabLinks{
-    background-color: #D15B4B;
-    margin: 0;
-    padding: 0.5em;
-  }
+.tabcontent-active {
+  display:grid;
+}
 
-  .active{
-    background-color: #FEC4B7;    
-  }
+.tabLinks{
+  background-color: #D15B4B;
+  margin: 0;
+  padding: 0.5em;
+}
 
-  .green{
-    color:#1CA01C;
-  }
+.active{
+  background-color: #FEC4B7;    
+}
 
-  .red{
-    color: #E0453C;
-  }
+.green{
+  color:#1CA01C;
+}
 
-  .orange{
-    color: #FF8100;
-  }
+.red{
+  color: #E0453C;
+}
+
+.orange{
+  color: #FF8100;
+}
 
 /* Message flash */
 .flash-success{
