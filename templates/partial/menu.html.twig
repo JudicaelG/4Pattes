@@ -1,6 +1,6 @@
 <nav class="fixed lg:static bottom-0 z-50 w-full h-16 lg:top-0 text-base max-w-full lg:z-0">
     <div class="grid h-full grid-cols-1 mx-auto justify-items-center">
-        {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if app.user %}
             <div class="semi-circle bg-primary shadow-t lg:rounded-none lg:w-full lg:h-16 lg:shadow-none lg:flex lg:items-center lg:justify-end">
                 <ul class="lg:hidden flex flex-auto flex-row">
                     <li class="rounded-full bg-button-menu p-2 menu-icon-profil"><a href="{{path('app_profil')}}"><img class="max-w-10" 
