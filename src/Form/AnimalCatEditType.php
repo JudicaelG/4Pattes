@@ -55,7 +55,6 @@ class AnimalCatEditType extends AbstractType
                         ->where('b.type=\'cat\'')
                         ->orderBy('b.name', 'ASC');                        
                 },
-                'group_by' => 'type',
                 'choice_label' => 'name',
                 'label' => 'Race',
                 'attr' => ['class' => 'mt-1 w-full']

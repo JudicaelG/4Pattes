@@ -52,9 +52,9 @@ class AnimalEditType extends AbstractType
                 'class' => Breed::class,
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('b')
+                        ->where('b.type=\'dog\'')
                         ->orderBy('b.name', 'ASC');
                 },
-                'group_by' => 'type',
                 'choice_label' => 'name',
                 'label' => 'Race'
             ])
