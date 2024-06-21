@@ -40,27 +40,32 @@
         {{form_start(form)}}
                 <div class="mx-2 my-2">                    
                     <label class="block">{{field_label(form.name)|trans}}</label>                    
-                    <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="w-full input-focus-red" required>
+                    <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
                     <span class="error-form">{{ form_errors(form.name) }}</span>
                 </div>
                 <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.adress)|trans}}</label>
-                    <input type="text" name="{{field_name(form.adress)}}" value="{{field_value(form.adress)}}" class="w-full input-focus-red" required>
+                    <input type="text" name="{{field_name(form.adress)}}" value="{{field_value(form.adress)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
                     <span class="error-form">{{ form_errors(form.adress) }}</span>
                 </div>
                 <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.postalCode)|trans}}</label>
-                    <input type="number" name="{{field_name(form.postalCode)}}" value="{{field_value(form.postalCode)}}" class="w-full input-focus-red" required>
+                    <input type="number" name="{{field_name(form.postalCode)}}" value="{{field_value(form.postalCode)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
                     <span class="error-form">{{ form_errors(form.postalCode) }}</span>
                 </div>
                 <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.city)|trans}}</label>
-                    <input type="text" name="{{field_name(form.city)}}" value="{{field_value(form.city)}}" class="w-full input-focus-red" required>
+                    <input type="text" name="{{field_name(form.city)}}" value="{{field_value(form.city)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
                     <span class="error-form">{{ form_errors(form.city) }}</span>
                 </div>
                 <div class="mx-2 my-2">
                     <label class="block">{{field_label(form.phone)|trans}}</label>
-                    <input type="phone" name="{{field_name(form.phone)}}" value="{{field_value(form.phone)}}" class="w-full input-focus-red" required>
+                    <input type="phone" name="{{field_name(form.phone)}}" value="{{field_value(form.phone)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
                     <span class="error-form">{{ form_errors(form.phone) }}</span>
                 </div>
                 <div class="my-2 mx-2 float-right">

@@ -5,7 +5,7 @@
 
 {% block body %}
     <h2 class="text-3xl font-bold my-3.5 mx-4">{% trans %}Mon profil{% endtrans %}</h2>
-
+    {{ include ('partial/messages/flash-message.html.twig') }}
     <div class="grid grid-cols-1 mx-4">
         {{form_start(form)}}
         <div class="mx-2 my-2">                    

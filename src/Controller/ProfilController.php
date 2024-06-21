@@ -21,7 +21,7 @@ class ProfilController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher, TokenStorageInterface $tokenStorage): Response
     {
 
-        $user = $entityManager->getRepository(User::class)->find($this->getUser()->getId());
+        $user = $entityManager->getRepository(User::class)->find($this->getUser());
         $userToken = $tokenStorage->getToken()->getUser();
 
         if(!$user){
@@ -31,7 +31,7 @@ class ProfilController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             if($form->get('email')->getData()){
                 $user->setEmail($form->get('email')->getData());
             }
@@ -40,7 +40,7 @@ class ProfilController extends AbstractController
             }
 
             $entityManager->flush();
-
+            $this->addFlash('success', 'Vos informations on été mise à jour');
             return $this->redirectToRoute('app_profil');
 
         }
