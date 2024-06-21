@@ -38,4 +38,11 @@
         {% endif %}
     </div>
 
+    <div class="lg:hidden">
+    <h2 class="text-3xl font-bold my-3.5 mx-4">{% trans %}Déconnexion {% endtrans %}</h2>
+    <div class="mx-4">
+        <a href="{{path("app_logout")}}"><button class="bg-primary p-2 text-white min-w-11">Déconnexion</button></a>
+    </div>
+    </div>
+
 {% endblock %}
