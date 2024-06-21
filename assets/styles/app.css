@@ -137,6 +137,12 @@ body {
   font-weight: bold;
 }
 
+.error-form-register{
+  color: black;
+  font-weight: bold;
+}
+
+
 .date_vaccine_input input{
   border-color: #B50707;
   border-width: 3px;
@@ -207,9 +213,4 @@ body {
 /* fiche animal des utilisateurs */
 .margin-top-auto{
   margin-top: auto;
-}
-
-/* error form */
-.error-form{
-  color: black;
 }
