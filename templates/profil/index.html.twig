@@ -10,12 +10,14 @@
         {{form_start(form)}}
         <div class="mx-2 my-2">                    
             <label class="block">{{field_label(form.email)|trans}}</label>                    
-            <input name="{{field_name(form.email)}}" value="{{field_value(form.email)}}" class="w-full input-focus-red">
+            <input name="{{field_name(form.email)}}" value="{{field_value(form.email)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
             <span class="error-form">{{ form_errors(form.email) }}</span>
         </div>
         <div class="mx-2 my-2">                    
             <label class="block">{{field_label(form.password)|trans}}</label>                    
-            <input type="password" name="{{field_name(form.password)}}" value="" class="w-full input-focus-red">
+            <input type="password" name="{{field_name(form.password)}}" value="" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
             <span class="error-form">{{ form_errors(form.password) }}</span>
         </div>
         <div class="my-2 mx-2 float-right">
