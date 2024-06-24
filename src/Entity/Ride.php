@@ -31,6 +31,12 @@ class Ride
     #[ORM\ManyToMany(targetEntity: Participant::class, mappedBy: 'Ride_id')]
     private Collection $participants;
 
+    #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 10, nullable: true)]
+    private ?string $lat = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 10, nullable: true)]
+    private ?string $lon = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -119,6 +125,30 @@ class Ride
         if ($this->participants->removeElement($participant)) {
             $participant->removeRideId($this);
         }
+
+        return $this;
+    }
+
+    public function getLat(): ?string
+    {
+        return $this->lat;
+    }
+
+    public function setLat(?string $lat): static
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getLon(): ?string
+    {
+        return $this->lon;
+    }
+
+    public function setLon(?string $lon): static
+    {
+        $this->lon = $lon;
 
         return $this;
     }
