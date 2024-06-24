@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'tailwind_2_layout.html.twig' %}
+
+{% block title %}{% trans %}Mon animal{% endtrans %}{% endblock %}
+
+{% block javascripts %}
+            <script src="{{ asset('js/ModalConfirmationDelete.js') }}"></script>
+            <script src="{{ asset('js/AddingDateVaccine.js') }}"></script>
+            <script src="{{ asset('js/ManageTabForm.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<h1 class="text-3xl font-bold my-3.5 mx-4">Organiser une promenade</h1>
+
+{{ include ('partial/messages/flash-message.html.twig') }}
+
+<div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5">    
+    <div class="mx-4">
+        {{form_start(form)}}
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3.5">
+                <div class="mx-2 my-2">                    
+                    <label class="block font-bold">{{field_label(form.name)|trans}}</label>                    
+                    <input name="{{field_name(form.name)}}" value="{{field_value(form.name)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                    focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
+                    <span class="error-form">{{ form_errors(form.name) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block font-bold">{{field_label(form.date)|trans}}</label>
+                    <input type="datetime-local" name="{{field_name(form.date)}}" value="{{field_value(form.date)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                    focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
+                    <span class="error-form">{{ form_errors(form.date) }}</span>
+                </div>
+                <div class="mx-2 my-2">
+                    <label class="block font-bold">{{field_label(form.location)|trans}}</label>
+                    <input type="string" name="{{field_name(form.location)}}" value="{{field_value(form.location)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                    focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
+                    <span class="error-form">{{ form_errors(form.location) }}</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1">
+                <label class="block font-bold">{{field_label(form.description)|trans}}</label>
+                <textarea name="{{field_name(form.description)}}" value="{{field_value(form.description)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                    focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required rows="10"></textarea>
+                <span class="error-form">{{ form_errors(form.description) }}</span>
+            </div>
+            <div class="my-2 mx-2 float-right">
+                <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary px-4 py-3 rounded-full focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-white min-w-11">
+                    {% trans %}Créer une balade{% endtrans %}
+                </button>
+            </div>
+        {{form_rest(form)}}
+        {{form_end(form)}}         
+    </div>
+    <div class="hidden lg:grid">
+        <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+    </div>    
+</div>
+
+{% endblock %}

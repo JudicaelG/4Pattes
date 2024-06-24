@@ -3,13 +3,12 @@
 namespace App\Service;
 
 class GetLatAndLongOfLocation{
-    public function __construct(String $nameOfCity){
-        $this->locationInformations = $this->GetLatAndLong($nameOfCity);
+    public function __construct(){
     }
 
     private $locationInformations;
     
-    private function GetLatAndLong(String $nameOfCity){
+    public function GetLatAndLong(String $nameOfCity){
         // URL de l'API
         $url = "https://geocode.maps.co/search?q=" . $nameOfCity . "&api_key=66795dffe2230999327237pif414bca";
 
@@ -28,7 +27,7 @@ class GetLatAndLongOfLocation{
             echo 'Erreur cURL : ' . curl_error($ch);
         } else {
             // Décoder la réponse JSON en tableau associatif
-            return $response;
+            $this->locationInformations = $response;
         }
 
         // Fermer la session cURL

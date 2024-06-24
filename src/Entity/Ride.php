@@ -37,6 +37,9 @@ class Ride
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 10, nullable: true)]
     private ?string $lon = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -149,6 +152,18 @@ class Ride
     public function setLon(?string $lon): static
     {
         $this->lon = $lon;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
