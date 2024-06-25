@@ -21,6 +21,18 @@ class ParticipantRepository extends ServiceEntityRepository
         parent::__construct($registry, Participant::class);
     }
 
+    public function findByUserIdAndRideId($userId, int $rideId): ?Participant{
+        return $this->createQueryBuilder('p')
+            ->join('p.user_id', 'u')
+            ->join('p.Ride_id', 'r')
+            ->andWhere('u.id = :userId')
+            ->andWhere('r.id = :rideId')
+            ->setParameter('userId', $userId)
+            ->setParameter('rideId', $rideId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return Participant[] Returns an array of Participant objects
 //     */
