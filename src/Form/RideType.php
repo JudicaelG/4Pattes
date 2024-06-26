@@ -21,7 +21,9 @@ class RideType extends AbstractType
             ->add('date', null, [
                 'widget' => 'single_text',
             ])
-            ->add('location')
+            ->add('location', null, [
+                'label' => 'Ville'
+            ])
             ->add('description', TextareaType::class, [
                 'attr' => ['class' => 'block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
                     focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none']
