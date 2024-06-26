@@ -1,6 +1,6 @@
 {% for ride in rides %}
 <div class="mx-3.5 my-3.5 flex flex-col">
-    <h3 class="uppercase font-bold">{{ride.name}} - <span class="lowercase italic">{{ride.location}} le {{ride.date|date("d/m/Y H:i")}}</span></h3>
+    <h3 class="uppercase font-bold">{{ride.name}} - <span class="lowercase italic">{{ride.location}} le {{ride.date|date("d/m/Y")}} à {{ride.date|date("H:i")}}</span></h3>
     <p class="mx-3.5 my-3.5 min-h-32 max-h-40 overflow-y-auto">{{ride.description}}</p>
     <a class="place-self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_not_participate', {id: ride.id})}}"><button>Participer</button></a>
 </div>
