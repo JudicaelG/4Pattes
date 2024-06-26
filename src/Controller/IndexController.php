@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Animals;
+use App\Entity\Ride;
 use App\Mapper\AnimalMapper;
 
 class IndexController extends AbstractController{
@@ -15,9 +16,11 @@ class IndexController extends AbstractController{
 
         $animalsOfTheUser = $animalMapper->map($entityManager->getRepository(Animals::class)
         ->getConnectedUserAnimals($this->getUser()));
+        $rides = $entityManager->getRepository(Ride::class)->findRidesWhereTheUserNotParticipate($this->getUser());
 
         return $this->render('index.html.twig',[
-            'animalsOfTheUser' => $animalsOfTheUser
+            'animalsOfTheUser' => $animalsOfTheUser,
+            'rides' => $rides,
         ]);
     }    
 }

@@ -214,3 +214,10 @@ body {
 .margin-top-auto{
   margin-top: auto;
 }
+
+
+/* hr of ride */
+.hr-ride{
+  color: #B50707;
+  border-width: 1px;  
+}

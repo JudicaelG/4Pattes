@@ -62,8 +62,8 @@
         {% for ride in rides %}
             <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
                 <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y H:i")}}</h3>
-                <hr class="w-1/2 my-2">
-                <p class="mx-3.5 my-3.5 min-h-32 max-h-40 overflow-y-auto">{{ride.description}}</p>
+                <hr class="hr-ride w-1/2 mx-auto">
+                <p class="mx-3.5 my-3.5 min-h-40 max-h-40 overflow-y-auto">{{ride.description}}</p>
                 <a class="place-self-end self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_participate', {id: ride.id})}}"><button>Participer</button></a>
             </div>
         {% endfor %}
@@ -73,15 +73,15 @@
         {% for ride in ridesCreatedByTheUser %}
             <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
                 <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y H:i")}}</h3>
-                <hr class="w-1/2 my-2">
-                <p class="mx-3.5 my-3.5 min-h-32 max-h-full overflow-y-auto">{{ride.description}}</p>
+                <hr class="hr-ride w-1/2 mx-auto">
+                <p class="mx-3.5 my-3.5 min-h-40 max-h-full overflow-y-auto">{{ride.description}}</p>
             </div>
         {% endfor %}
         {% for ride in ridesWhereTheUserParticipate %}
             <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
                 <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y H:i")}}</h3>
-                <hr class="w-1/2 my-2">
-                <p class="mx-3.5 my-3.5 min-h-32 max-h-40 overflow-y-auto">{{ride.description}}</p>
+                <hr class="hr-ride w-1/2 mx-auto">
+                <p class="mx-3.5 my-3.5 min-h-40 max-h-40 overflow-y-auto">{{ride.description}}</p>
                 <a class="place-self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_not_participate', {id: ride.id})}}"><button>Ne plus participer</button></a>
             </div>
         {% endfor %}

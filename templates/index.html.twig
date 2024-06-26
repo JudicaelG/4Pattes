@@ -55,11 +55,9 @@
         </div>
     </div>
     <div class="my-3.5 bg-button-menu mx-4">
-        <h2 class="uppercase text-center">Prochaines sorties</h2>
-        <div my-1 mx-1>
-            <h3 class="uppercase">Sortie A - <span class="lowercase italic">Nom de la ville</span></h3>
-            <p>Description</p>
-        </div>
+        <h2 class="text-3xl font-bold my-3.5 mx-4 text-center">Prochaines sorties</h2>
+        <hr class="hr-ride w-1/2 mx-auto">
+        {{ include ('partial/ride/list-of-ride.html.twig', {rides: rides}) }}
     </div>
     {% endif %}
 {% endblock %}
