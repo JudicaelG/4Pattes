@@ -24,7 +24,6 @@ class Animals
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\NotNull]
-    #[Assert\Date]
     #[Assert\Type("\DateTimeInterface")]
     private ?\DateTimeInterface $birthday = null;
 
@@ -53,7 +52,6 @@ class Animals
     private ?string $sexe = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\NotBlank]
     private ?bool $sterilized = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]

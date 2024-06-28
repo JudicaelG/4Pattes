@@ -50,6 +50,8 @@ class AnimalCatEditType extends AbstractType
             ])
             ->add('breed_id', EntityType::class, [
                 'class' => Breed::class,
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('b')
                         ->where('b.type=\'cat\'')
@@ -62,6 +64,8 @@ class AnimalCatEditType extends AbstractType
             ->add('weight', null, ['label' => 'Poids'])
             ->add('sexe', ChoiceType::class, [
                 'label' => 'Sexe',
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'choices' => [
                     'Male' => 'Male',
                     'Femelle' => 'Femelle'
@@ -69,6 +73,8 @@ class AnimalCatEditType extends AbstractType
             ])
             ->add('sterilized', ChoiceType::class, [
                 'label' => 'Sterelisé',
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'required' => true,
                 'choices' => [
                     'Oui' => true,
@@ -88,7 +94,7 @@ class AnimalCatEditType extends AbstractType
             ->add('vaccinateds', CollectionType::class,[
                 'entry_type' => EditVaccineDateAnimalType::class
             ])
-            ->add('save', SubmitType::class, ['label' => 'Ajouter'])
+            ->add('save', SubmitType::class, ['label' => 'Modifier'])
         ;
 
         if($options['veterinary'] == null){
@@ -101,6 +107,8 @@ class AnimalCatEditType extends AbstractType
             $builder
             ->add('veterinary', EntityType::class, [
                 'class' => Veterinary::class,
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('v')
                         ->orderBy('v.name', 'ASC');   

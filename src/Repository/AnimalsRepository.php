@@ -73,6 +73,8 @@ class AnimalsRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
         ->andWhere('a.id = :id') 
         ->setParameter('id', $id)
+        ->innerJoin('a.breed_id', 'b')
+        ->addSelect('b')
         ->leftJoin('a.vaccinateds', 'v')
         ->addSelect('v')
         ->getQuery()

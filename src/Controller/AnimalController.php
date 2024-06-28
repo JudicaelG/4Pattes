@@ -143,12 +143,10 @@ class AnimalController extends AbstractController
         }else{
             $form = $this->createForm(AnimalEditType::class, $animal, ['veterinary' => $veterinaryOfUser]);
         }
-
         
         $form->handleRequest($request);
         $formCat->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-
 
             $animal = $form->getData();
             foreach($animal->getVaccinateds() as $vaccinated){
@@ -161,7 +159,6 @@ class AnimalController extends AbstractController
         }
 
         if($formCat->isSubmitted() && $formCat->isValid()){
-
 
             $animal = $formCat->getData();
             foreach($animal->getVaccinateds() as $vaccinated){
@@ -179,7 +176,7 @@ class AnimalController extends AbstractController
             'form' => $form,
             'formCat' => $formCat,
             'animalTypeCat' => $animalTypeCat,
-            'animalsOfUser' => $animalsOfUser
+            'animalsOfUser' => $animalsOfUser,
         ]);
 
 

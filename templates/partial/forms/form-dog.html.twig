@@ -22,34 +22,19 @@
         </div>
         <div class="mx-2 my-2">
             <label class="block font-bold">{{field_label(form.sexe)|trans}}</label>
-            <select name="{{field_name(form.sexe)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
-                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
-                {% for label, value in field_choices(form.sexe) %}
-                    <option value="{{ value }}">{{ label }}</option>
-                {% endfor %}
-            </select>            
+            {{form_widget(form.sexe)}}            
             <span class="error-form">{{ form_errors(form.sexe) }}</span>
         </div>
         <div class="mx-2 my-2">
             <label class="block font-bold">{{field_label(form.sterilized)|trans}}</label>
-            <select name="{{field_name(form.sterilized)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
-                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
-                {% for label, value in field_choices(form.sterilized) %}
-                    <option value="{{ value }}">{{ label }}</option>
-                {% endfor %}
-            </select>     
+            {{form_widget(form.sterilized)}}  
             <span class="error-form">{{ form_errors(form.sterilized) }}</span>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2">
         <div class="mx-2 my-2">
             <label class="block font-bold">{{field_label(form.breed_id)|trans}}</label>
-            <select name="{{field_name(form.breed_id)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
-                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
-                {% for label, value in field_choices(form.breed_id) %}
-                    <option value="{{ value }}">{{ label }}</option>
-                {% endfor %}
-            </select>   
+            {{form_widget(form.breed_id)}}  
             <span class="error-form">{{ form_errors(form.breed_id) }}</span>
         </div>
         <div class="mx-2 my-2">
@@ -112,20 +97,21 @@
         {% else %}
             <div>
                 <label class="block font-bold">{{field_label(form.veterinary)|trans}}</label>
-                <select name="{{field_name(form.veterinary)}}" class="block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
-                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
-                {% for label, value in field_choices(form.veterinary) %}
-                    <option value="{{ value }}">{{ label }}</option>
-                {% endfor %}
-            </select> 
+                {{form_widget(form.veterinary)}}
                 <span class="error-form">{{ form_errors(form.veterinary) }}</span>
             </div>
         {% endif %}
     </div>
     <div class="my-2 mx-2 float-right">
         <button type="submit" id="{{field_label(form.save)}}" name="{{field_name(form.save)}}" class="bg-primary px-4 py-3 rounded-full focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-white min-w-11">
-            {% trans %}Ajouter{% endtrans %}
+            {{field_label(form.save)}}
         </button>
+        {% if field_label(form.save) == 'Modifier' %}
+        <a href="{{path('animal')}}"/><button type="button" class="bg-primary px-4 py-3 rounded-full focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-white min-w-11">
+            Annuler
+        </button>
+        </a>
+        {% endif %}
     </div>
         {{form_rest(form)}}
 {{form_end(form)}}

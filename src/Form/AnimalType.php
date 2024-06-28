@@ -39,12 +39,16 @@ class AnimalType extends AbstractType
                         ->orderBy('b.name', 'ASC');   
                 },
                 'choice_label' => 'name',
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'label' => 'Race',
                 
             ])
             ->add('weight', null, ['label' => 'Poids'])
             ->add('sexe', ChoiceType::class, [
                 'label' => 'Sexe',
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'choices' => [
                     'Male' => 'Male',
                     'Femelle' => 'Femelle'
@@ -52,6 +56,8 @@ class AnimalType extends AbstractType
             ])
             ->add('sterilized', ChoiceType::class, [
                 'label' => 'Sterelisé',
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'choices' => [
                     'Oui' => true,
                     'Non' => false
@@ -82,6 +88,8 @@ class AnimalType extends AbstractType
             $builder
             ->add('veterinary', EntityType::class, [
                 'class' => Veterinary::class,
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('v')
                         ->orderBy('v.name', 'ASC');   

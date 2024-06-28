@@ -36,6 +36,8 @@ class AnimalCatType extends AbstractType
             ])
             ->add('breed_id', EntityType::class, [
                 'class' => Breed::class,
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('b')
                         ->where('b.type=\'cat\'')
@@ -48,6 +50,8 @@ class AnimalCatType extends AbstractType
             ->add('weight', null, ['label' => 'Poids'])
             ->add('sexe', ChoiceType::class, [
                 'label' => 'Sexe',
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'choices' => [
                     'Male' => 'Male',
                     'Femelle' => 'Femelle'
@@ -55,6 +59,8 @@ class AnimalCatType extends AbstractType
             ])
             ->add('sterilized', ChoiceType::class, [
                 'required' => true,
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'label' => 'Sterelisé',
                 'choices' => [
                     'Oui' => true,
@@ -87,6 +93,8 @@ class AnimalCatType extends AbstractType
             $builder
             ->add('veterinary', EntityType::class, [
                 'class' => Veterinary::class,
+                'attr' => ['class' => "block w-full px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"],
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('v')
                         ->orderBy('v.name', 'ASC');   
