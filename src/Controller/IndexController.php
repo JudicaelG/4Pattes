@@ -17,10 +17,12 @@ class IndexController extends AbstractController{
         $animalsOfTheUser = $animalMapper->map($entityManager->getRepository(Animals::class)
         ->getConnectedUserAnimals($this->getUser()));
         $rides = $entityManager->getRepository(Ride::class)->findRidesWhereTheUserNotParticipate($this->getUser());
+        $ridesWithDistance = $entityManager->getRepository(Ride::class)->findAllRideWithCertainDistance(48.862725, 2.287592, 300);
 
         return $this->render('index.html.twig',[
             'animalsOfTheUser' => $animalsOfTheUser,
             'rides' => $rides,
+            'ridesWithDistance' => $ridesWithDistance
         ]);
     }    
 }

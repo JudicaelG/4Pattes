@@ -73,6 +73,21 @@ class RideRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+    public function findAllRideWithCertainDistance($lat, $lon, $setDistance): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM get_distance_between_location_user_ride_function(:lat, :lon)
+            WHERE distance <= :setDistance
+            ';
+
+        $resultSet = $conn->executeQuery($sql, ['lat' => $lat, 'lon' => $lon, 'setDistance' => $setDistance]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Ride[] Returns an array of Ride objects
 //     */
