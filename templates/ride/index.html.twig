@@ -5,8 +5,6 @@
 
 {% block javascripts %}
             <script src="{{ asset('js/ModalConfirmationDelete.js') }}"></script>
-            <script src="{{ asset('js/AddingDateVaccine.js') }}"></script>
-            <script src="{{ asset('js/ManageTabForm.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -57,7 +55,7 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-3.5 mx-3.5 my-3.5">
-    <section class="lg:grid lg:grid-cols-2 gap-3.5">
+    <div class="lg:grid lg:grid-cols-2 gap-3.5">
         <h2 class="text-2xl font-bold text-center col-span-2">Les promenades</h2>
         {% for ride in rides %}
             <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
@@ -67,8 +65,8 @@
                 <a class="place-self-end self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_participate', {id: ride.id})}}"><button>Participer</button></a>
             </div>
         {% endfor %}
-    </section>
-    <section class="lg:grid lg:grid-cols-2 gap-3.5">
+    </div>
+    <div class="lg:grid lg:grid-cols-2 gap-3.5">
         <h2 class="text-2xl font-bold text-center col-span-2">Mes promenades</h2>
         {% for ride in ridesCreatedByTheUser %}
             <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
@@ -85,10 +83,7 @@
                 <a class="place-self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_not_participate', {id: ride.id})}}"><button>Ne plus participer</button></a>
             </div>
         {% endfor %}
-    </section>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-3.5 mx-3.5 my-3.5">
+    </div>
     
 </div>
 
