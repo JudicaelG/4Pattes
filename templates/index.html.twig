@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'tailwind_2_layout.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
 
@@ -57,6 +58,29 @@
     <div class="my-3.5 bg-button-menu mx-4">
         <h2 class="text-3xl font-bold my-3.5 mx-4 text-center">Prochaines sorties</h2>
         <hr class="hr-ride w-1/2 mx-auto">
+        {{form_start(form)}}
+            
+            <div class="flex flex-row items-center my-4">
+                <div class=" flex flex-row items-center ml-4">
+                    <label class="inline-block font-bold">{{field_label(form.ville)|trans}}</label>                    
+                    <input name="{{field_name(form.ville)}}" value="{{field_value(form.ville)}}" class="inline-block w-full ml-4 px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                    focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
+                    <span class="error-form">{{ form_errors(form.ville) }}</span>
+                </div>
+                <div class="flex flex-row items-center ml-4 mr-4">
+                    <label class="inline-block font-bold">{{field_label(form.distance)|trans}}</label>                    
+                    <input name="{{field_name(form.distance)}}" value="{{field_value(form.distance)}}" min="0" max="400" step="1" type="number" placeholder="10 km" class="inline-block w-full ml-4 px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
+                    focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" required>
+                    <span class="error-form">{{ form_errors(form.ville) }}</span>
+                </div>
+                <div class"ml-4">
+                    <button type="submit" id="{{field_label(form.search)}}" name="{{field_name(form.search)}}" class="bg-primary px-4 py-3 rounded-full focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-white min-w-11">
+                        {{field_label(form.search)}}
+                    </button>
+                </div>
+                {{form_rest(form)}}
+            </div>
+        {{form_end(form)}}
         {{ include ('partial/ride/list-of-ride.html.twig', {rides: rides}) }}
     </div>
     {% endif %}

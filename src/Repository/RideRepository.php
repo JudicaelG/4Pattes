@@ -73,16 +73,19 @@ class RideRepository extends ServiceEntityRepository
         ->getResult();
     }
 
-    public function findAllRideWithCertainDistance($lat, $lon, $setDistance): array
+    public function findAllRideWithCertainDistance($lat, $lon, $setDistance, $actualUser): array
     {
+        $now = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $date = $now->format('Y-m-d H:i:s');
+
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-            SELECT * FROM get_distance_between_location_user_ride_function(:lat, :lon)
+            SELECT * FROM get_distance_between_location_user_ride_function(:lat, :lon, :actualUser, :dateNow)
             WHERE distance <= :setDistance
             ';
 
-        $resultSet = $conn->executeQuery($sql, ['lat' => $lat, 'lon' => $lon, 'setDistance' => $setDistance]);
+        $resultSet = $conn->executeQuery($sql, ['lat' => $lat, 'lon' => $lon, 'setDistance' => $setDistance, 'actualUser' => $actualUser, 'dateNow' => $date]);
 
         // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();

@@ -1,6 +1,5 @@
-function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-    }
-  }
+navigator.geolocation.getCurrentPosition(function(location) {
+  console.log(location.coords.latitude);
+  console.log(location.coords.longitude);
+  console.log(location.coords.accuracy);
+});
