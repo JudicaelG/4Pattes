@@ -5,6 +5,7 @@
 
 {% block javascripts %}
             <script src="{{ asset('js/ModalConfirmationDelete.js') }}"></script>
+            <script src="{{ asset('js/ManageTabForm.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -54,20 +55,59 @@
     </div>    
 </div>
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-3.5 mx-3.5 my-3.5">
-    <div class="lg:grid lg:grid-cols-2 gap-3.5">
-        <h2 class="text-2xl font-bold text-center col-span-2">Les promenades</h2>
-        {% for ride in rides %}
-            <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
-                <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y")}} à {{ride.date|date("H:i")}}</h3>
-                <hr class="hr-ride w-1/2 mx-auto">
-                <p class="mx-3.5 my-3.5 min-h-40 max-h-40 overflow-y-auto">{{ride.description}}</p>
-                <a class="place-self-end self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_participate', {id: ride.id})}}"><button>Participer</button></a>
-            </div>
-        {% endfor %}
+<div class="mx-3.5 mt-3.5 tab flex">
+    <button class="tabLinks active rounded-tl-lg" onclick="openForm(event, 'les_promenades')">Les promenades</button>
+    <button class="tabLinks rounded-tr-lg" onclick="openForm(event, 'mes_promenades')">Mes promenades</button>
+</div>
+<div class="bg-card-secondary shadow-lg mx-3.5 tabcontent tabcontent-active min-h-32" id="les_promenades">
+    <h2 class="text-2xl font-bold text-center col-span-2">Les promenades</h2>
+    <hr class="hr-ride w-1/2 mx-auto col-span-2">
+    <div class="grid grid-cols-1 lg:grid lg:grid-cols-auto gap-3.5">
+        {% if rides %}
+            {% for ride in rides %}                
+                <div class="bg-button-menu shadow-xl flex flex-col my-3.5 mx-3.5 rounded-lg min-h-80 max-h-80">
+                    <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y")}} à {{ride.date|date("H:i")}}</h3>
+                    <hr class="hr-ride w-1/2 mx-auto">
+                    <p class="mx-3.5 my-3.5 min-h-40 max-h-40 overflow-y-auto">{{ride.description}}</p>
+                    <a class="place-self-end self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_participate', {id: ride.id})}}"><button>Participer</button></a>
+                </div>            
+            {% endfor %}
+        {% else %}
+            <p>Il n'y a pas de promenades de programmée !</p>
+        {% endif %}
     </div>
+</div>
+<div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5 tabcontent min-h-32" id="mes_promenades">
+    <h2 class="text-2xl font-bold text-center col-span-2">Mes promenades</h2>
+    <hr class="hr-ride w-1/2 mx-auto col-span-2">
+    <div class="grid grid-cols-1 lg:grid lg:grid-cols-auto gap-3.5">
+        {% if ridesCreatedByTheUser or ridesWhereTheUserParticipate %}
+            {% for ride in ridesCreatedByTheUser %}
+                <div class="bg-button-menu shadow-xl flex flex-col my-3.5 mx-3.5 rounded-lg min-h-80 max-h-80">
+                    <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y")}} à {{ride.date|date("H:i")}}</h3>
+                    <hr class="hr-ride w-1/2 mx-auto">
+                    <p class="mx-3.5 my-3.5 min-h-40 max-h-full overflow-y-auto">{{ride.description}}</p>
+                </div>
+            {% endfor %}
+            {% for ride in ridesWhereTheUserParticipate %}
+                <div class="bg-button-menu shadow-xl flex flex-col my-3.5 mx-3.5 rounded-lg min-h-80 max-h-80">
+                    <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y")}} à {{ride.date|date("H:i")}}</h3>
+                    <hr class="hr-ride w-1/2 mx-auto">
+                    <p class="mx-3.5 my-3.5 min-h-40 max-h-40 overflow-y-auto">{{ride.description}}</p>
+                    <a class="place-self-end bg-primary p-2 text-white mx-4 my-4 rounded-lg" href="{{path('app_ride_not_participate', {id: ride.id})}}"><button>Ne plus participer</button></a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Il n'y a pas de promenades de programmée !</p>
+        {% endif %}
+    </div>
+</div>
+<!--<div class="grid grid-cols-1 lg:grid-cols-2 gap-3.5 mx-3.5 my-3.5">
+    
+    
     <div class="lg:grid lg:grid-cols-2 gap-3.5">
         <h2 class="text-2xl font-bold text-center col-span-2">Mes promenades</h2>
+        <hr class="hr-ride w-1/2 mx-auto col-span-2">
         {% for ride in ridesCreatedByTheUser %}
             <div class="bg-card-secondary shadow-xl flex flex-col my-3.5 rounded-lg min-h-80 max-h-80">
                 <h3 class="mx-3.5 my-3.5"><span class="font-bold inline">{{ride.name}}</span> à {{ride.location}} le {{ride.date|date("d/m/Y")}} à {{ride.date|date("H:i")}}</h3>
@@ -85,6 +125,6 @@
         {% endfor %}
     </div>
     
-</div>
+</div>-->
 
 {% endblock %}

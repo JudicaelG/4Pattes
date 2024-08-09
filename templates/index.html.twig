@@ -58,9 +58,8 @@
     <div class="my-3.5 bg-button-menu mx-4">
         <h2 class="text-3xl font-bold my-3.5 mx-4 text-center">Prochaines sorties</h2>
         <hr class="hr-ride w-1/2 mx-auto">
-        {{form_start(form)}}
-            
-            <div class="flex flex-row items-center my-4">
+        {{form_start(form)}}            
+            <div class="flex flex-row items-center justify-center my-4">
                 <div class=" flex flex-row items-center ml-4">
                     <label class="inline-block font-bold">{{field_label(form.ville)|trans}}</label>                    
                     <input name="{{field_name(form.ville)}}" value="{{field_value(form.ville)}}" class="inline-block w-full ml-4 px-2 py-2 rounded-lg bg-white shadow-lg text-gray-700 
