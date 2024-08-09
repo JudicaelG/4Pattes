@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Participant;
 use App\Entity\Ride;
 use App\Form\RideType;
+use App\Form\SearchRideFormType;
 use App\Service\GetLatAndLongOfLocation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,8 +46,19 @@ class RideController extends AbstractController
             
         }
 
+        $formSearch = $this->createForm(SearchRideFormType::class);
+
+        $formSearch->handleRequest($request);
+        if($formSearch->isSubmitted() && $formSearch->isValid()){
+            $getLatAndLongOfLocation->GetLatAndLong($formSearch->get('ville')->getData());
+
+            $rides = $entityManager->getRepository(Ride::class)->findAllRideWithCertainDistance($getLatAndLongOfLocation->GetLat(), 
+                $getLatAndLongOfLocation->GetLong(), $formSearch->get('distance')->getData(), $this->getUser()->getId());
+        }
+
         return $this->render('ride/index.html.twig', [
             'form' => $form,
+            'formSearch' => $formSearch,
             'ridesCreatedByTheUser' => $ridesCreatedByTheUser,
             'rides' => $rides,
             'ridesWhereTheUserParticipate' => $ridesWhereTheUserParticipate

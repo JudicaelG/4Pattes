@@ -18,23 +18,27 @@
     {% endif %}
     {{ include ('partial/messages/flash-message.html.twig') }}
     <div class=" mx-3.5 tab flex" animal-is="{{animalTypeCat}}">
-        <button class="tabLinks active" onclick="openForm(event, 'Dog')">Ajouter un chien</button>
-        <button class="tabLinks" onclick="openForm(event, 'Cat')" id="cat">Ajouter un chat</button>
+        <button class="tabLinks active rounded-tl-lg" onclick="openForm(event, 'Dog')">Ajouter un chien</button>
+        <button class="tabLinks rounded-tr-lg" onclick="openForm(event, 'Cat')" id="cat">Ajouter un chat</button>
     </div>
-    <div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5 tabcontent tabcontent-active" id="Dog">
-        <div class="mx-4">
-            {{ include ('partial/forms/form-dog.html.twig', {form: form}) }}            
-        </div>
-        <div class="hidden lg:grid">
-            <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+    <div class="bg-card-secondary shadow-lg mx-3.5 tabcontent tabcontent-active" id="Dog">
+        <div class="grid grid-cols-1 lg:grid lg:grid-cols-2">
+            <div class="mx-4">
+                {{ include ('partial/forms/form-dog.html.twig', {form: form}) }}            
+            </div>
+            <div class="hidden lg:block">
+                <img src="{{asset('images/default/dog.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+            </div>
         </div>
     </div>
-    <div class="bg-card-secondary grid grid-cols-1 lg:grid-cols-2 shadow-lg mx-3.5 tabcontent" id="Cat">
-        <div>
-            {{ include ('partial/forms/form-cat.html.twig', {formCat: formCat}) }}            
-        </div>
-        <div class="hidden lg:grid">
-            <img src="{{asset('images/default/cat.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+    <div class="bg-card-secondary shadow-lg mx-3.5 tabcontent" id="Cat">
+        <div class="grid grid-cols-1 lg:grid lg:grid-cols-2">
+            <div>
+                {{ include ('partial/forms/form-cat.html.twig', {formCat: formCat}) }}            
+            </div>
+            <div class="hidden lg:block">
+                <img src="{{asset('images/default/cat.JPG')}}" class="w-full h-full object-cover" alt="dog"/>
+            </div>
         </div>
     </div>
     {{ include ('partial/messages/delete-message.html.twig') }}

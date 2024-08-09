@@ -153,7 +153,7 @@ body {
 }
 
 .tabcontent-active {
-  display:grid;
+  display:block;
 }
 
 .tabLinks{
