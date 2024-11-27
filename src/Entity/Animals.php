@@ -57,9 +57,16 @@ class Animals
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Veterinary $veterinary = null;
 
+    /**
+     * @var Collection<int, LostAnimal>
+     */
+    #[ORM\OneToMany(targetEntity: LostAnimal::class, mappedBy: 'animal_id')]
+    private Collection $LostAnimal;
+
     public function __construct()
     {
         $this->vaccinateds = new ArrayCollection();
+        $this->LostAnimal = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -214,6 +221,36 @@ class Animals
     public function setVeterinary(?Veterinary $veterinary): static
     {
         $this->veterinary = $veterinary;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LostAnimal>
+     */
+    public function getDescription(): Collection
+    {
+        return $this->LostAnimal;
+    }
+
+    public function addDescription(LostAnimal $LostAnimal): static
+    {
+        if (!$this->LostAnimal->contains($LostAnimal)) {
+            $this->LostAnimal->add($LostAnimal);
+            $LostAnimal->setAnimalId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDescription(LostAnimal $LostAnimal): static
+    {
+        if ($this->LostAnimal->removeElement($LostAnimal)) {
+            // set the owning side to null (unless already changed)
+            if ($LostAnimal->getAnimalId() === $this) {
+                $LostAnimal->setAnimalId(null);
+            }
+        }
 
         return $this;
     }
